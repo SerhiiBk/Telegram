@@ -2966,7 +2966,7 @@ static inline NSString *subtitleStringForUser(TGUser *user, bool &subtitleActive
                         if (it != changedUidToIndex->end())
                         {
                             TGUser *user = [users objectAtIndex:it->second];
-                            *item = user;
+                           *item = user;
                             
                             UITableViewCell *cell = [_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:itemIndex inSection:sectionIndex]];
                             if (cell != nil && [cell isKindOfClass:[TGContactCell class]])

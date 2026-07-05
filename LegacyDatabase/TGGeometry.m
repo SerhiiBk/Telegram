@@ -25,14 +25,14 @@ bool TGOrientationIsSideward(UIImageOrientation orientation, bool *mirrored)
     if (orientation == UIImageOrientationLeft || orientation == UIImageOrientationRight)
     {
         if (mirrored != NULL)
-            *mirrored = false;
+           *mirrored = false;
         
         return true;
     }
     else if (orientation == UIImageOrientationLeftMirrored || orientation == UIImageOrientationRightMirrored)
     {
         if (mirrored != NULL)
-            *mirrored = true;
+           *mirrored = true;
         
         return true;
     }

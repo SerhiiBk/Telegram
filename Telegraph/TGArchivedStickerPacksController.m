@@ -26,8 +26,8 @@
     SMetaDisposable *_packsDisposable;
     SMetaDisposable *_currentPacksDisposable;
     
-    NSArray<TGStickerPack *> *_packs;
-    NSSet<NSNumber *> *_installedPackIds;
+    NSArray *_packs;
+    NSSet *_installedPackIds;
     
     UIActivityIndicatorView *_activityIndicator;
     
@@ -105,7 +105,7 @@
     }
 }
 
-- (NSArray<TGStickerPack *> *)filteredPacks:(NSArray<TGStickerPack *> *)packs {
+- (NSArray *)filteredPacks:(NSArray *)packs {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (TGStickerPack *pack in packs) {
         if ([pack.packReference isKindOfClass:[TGStickerPackIdReference class]] && [_installedPackIds containsObject:@(((TGStickerPackIdReference *)pack.packReference).packId)]) {
@@ -116,7 +116,7 @@
     return result;
 }
 
-- (void)setPacks:(NSArray<TGStickerPack *> *)packs {
+- (void)setPacks:(NSArray *)packs {
     if (TGObjectCompare(_packs, packs)) {
         return;
     }

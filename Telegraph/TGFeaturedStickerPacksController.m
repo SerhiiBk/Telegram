@@ -19,9 +19,9 @@
     id<SDisposable> _packsDisposable;
     id<SDisposable> _updatedFeaturedStickerPacksDisposable;
     
-    NSSet<NSNumber *> *_initialUnreadPackIds;
-    NSSet<NSNumber *> *_installedPacks;
-    NSArray<TGStickerPack *> *_packs;
+    NSSet *_initialUnreadPackIds;
+    NSSet *_installedPacks;
+    NSArray *_packs;
     
     UIActivityIndicatorView *_activityIndicator;
     
@@ -73,7 +73,7 @@
                 }
                 //}
                 
-                NSMutableSet<NSNumber *> *installedPacks = [[NSMutableSet alloc] init];
+                NSMutableSet *installedPacks = [[NSMutableSet alloc] init];
                 for (TGStickerPack *pack in dict[@"packs"]) {
                     if ([pack.packReference isKindOfClass:[TGStickerPackIdReference class]]) {
                         int64_t packId = ((TGStickerPackIdReference *)pack.packReference).packId;
@@ -130,7 +130,7 @@
     }
 }
 
-- (void)setPacks:(NSArray<TGStickerPack *> *)packs installedPacks:(NSSet<NSNumber *> *)installedPacks {
+- (void)setPacks:(NSArray *)packs installedPacks:(NSSet *)installedPacks {
     _installedPacks = installedPacks;
     
     if (TGObjectCompare(_packs, packs)) {

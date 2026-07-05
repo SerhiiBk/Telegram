@@ -249,7 +249,7 @@
     }
     
     if (overlayHeight) {
-        *overlayHeight = overlayHeightValue;
+       *overlayHeight = overlayHeightValue;
     }
     
     height += overlayHeightValue;

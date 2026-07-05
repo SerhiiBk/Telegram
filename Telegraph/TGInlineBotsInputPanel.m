@@ -17,7 +17,7 @@
     
     SMetaDisposable *_recentBotsDisposable;
     
-    NSArray<TGUser *> *_users;
+    NSArray *_users;
     TGUser *_temporaryUser;
     
     UICollectionView *_collectionView;
@@ -231,7 +231,7 @@
         if (hadUser != (_temporaryUser != nil)) {
             @try {
                 if (_temporaryUser != nil) {
-                    NSMutableArray<NSArray *> *cellsWithFrames = [[NSMutableArray alloc] init];
+                    NSMutableArray *cellsWithFrames = [[NSMutableArray alloc] init];
                     for (UIView *cell in _collectionView.visibleCells) {
                         [cellsWithFrames addObject:@[cell, [NSValue valueWithCGRect:cell.frame]]];
                     }
@@ -250,7 +250,7 @@
                     }
                     
                     [_collectionView layoutSubviews];
-                    NSMutableArray<NSArray *> *updatedCellsWithFrames = [[NSMutableArray alloc] init];
+                    NSMutableArray *updatedCellsWithFrames = [[NSMutableArray alloc] init];
                     for (UIView *cell in _collectionView.visibleCells) {
                         for (NSArray *previous in cellsWithFrames) {
                             if (previous[0] == cell) {

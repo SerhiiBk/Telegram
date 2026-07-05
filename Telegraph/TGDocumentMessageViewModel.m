@@ -250,7 +250,7 @@ static CTFontRef textFontForSize(CGFloat size)
         _textModel.text = message.caption;
         _textModel.textCheckingResults = currentTextCheckingResults;
         if (sizeUpdated != NULL)
-            *sizeUpdated = true;
+           *sizeUpdated = true;
     }
     
     _sizeText = sizeString;
@@ -266,7 +266,7 @@ static CTFontRef textFontForSize(CGFloat size)
         _legacyThumbnailCacheUri = newLegacyThumbnailCacheUri;
         rebind = [self updateImage:document message:message dimensions:dimensions];
         if (sizeUpdated != NULL)
-            *sizeUpdated = true;
+           *sizeUpdated = true;
     }
     
     
@@ -281,7 +281,7 @@ static CTFontRef textFontForSize(CGFloat size)
     }
     
     if (sizeUpdated != NULL)
-        *sizeUpdated = true;
+       *sizeUpdated = true;
 }
 
 - (bool)updateImage:(TGDocumentMediaAttachment *)document message:(TGMessage *)message dimensions:(CGSize)dimensions
@@ -487,7 +487,7 @@ static CTFontRef textFontForSize(CGFloat size)
         [_textModel layoutForContainerSize:containerSize];
     
     if (needsContentsUpdate != NULL && updateContents)
-        *needsContentsUpdate = updateContents;
+       *needsContentsUpdate = updateContents;
     
     CGSize previewSize = CGSizeZero;
     if (_imageModel != nil)

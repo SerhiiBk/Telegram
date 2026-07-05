@@ -256,7 +256,7 @@
             int32_t maxParsedId = 0;
             int64_t minParsedPeerId = 0;
             int64_t maxParsedPeerId = 0;
-            NSMutableArray<TGMessage *> *parsedMessages = [[NSMutableArray alloc] init];
+            NSMutableArray *parsedMessages = [[NSMutableArray alloc] init];
             for (id desc in messages.messages) {
                 TGMessage *message = [[TGMessage alloc] initWithTelegraphMessageDesc:desc];
                 if (message.mid != 0) {

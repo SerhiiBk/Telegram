@@ -25,10 +25,10 @@
 @class FMStatement;
 
 @interface FMResultSet : NSObject {
-    FMDatabase          *_parentDB;
-    FMStatement         *_statement;
+    FMDatabase         *_parentDB;
+    FMStatement        *_statement;
     
-    NSString            *_query;
+    NSString           *_query;
     NSMutableDictionary *_columnNameToIndexMap;
     BOOL                _columnNamesSetup;
 }

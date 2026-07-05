@@ -20,7 +20,7 @@ typedef enum {
 @property (nonatomic) CGRect frame;
 
 - (bool)hasLinks;
-- (NSArray<TGInstantPageMedia *> *)medias;
+- (NSArray *)medias;
 
 @optional
 
@@ -31,12 +31,12 @@ typedef enum {
 - (bool)matchesView:(UIView<TGInstantPageDisplayView> *)view;
 - (bool)matchesEmbedIndex:(int32_t)embedIndex;
 - (TGInstantPageTextSelectionView *)textSelectionView;
-- (NSArray<TGInstantPageLinkSelectionView *> *)linkSelectionViews;
+- (NSArray *)linkSelectionViews;
 
 - (int32_t)distanceThresholdGroup;
-- (CGFloat)distanceThresholdWithGroupCount:(NSDictionary<NSNumber *, NSNumber *> *)groupCount;
+- (CGFloat)distanceThresholdWithGroupCount:(NSDictionary *)groupCount;
 
-- (NSArray<TGDocumentMediaAttachment *> *)audios;
+- (NSArray *)audios;
 
 @end
 
@@ -71,9 +71,9 @@ typedef enum {
 
 @property (nonatomic, readonly) CGPoint origin;
 @property (nonatomic, readonly) CGSize contentSize;
-@property (nonatomic, strong, readonly) NSArray<id<TGInstantPageLayoutItem> > *items;
+@property (nonatomic, strong, readonly) NSArray *items;
 
-- (instancetype)initWithOrigin:(CGPoint)origin contentSize:(CGSize)contentSize items:(NSArray<id<TGInstantPageLayoutItem> > *)items;
+- (instancetype)initWithOrigin:(CGPoint)origin contentSize:(CGSize)contentSize items:(NSArray *)items;
 
 + (TGInstantPageLayout *)makeLayoutForWebPage:(TGWebPageMediaAttachment *)webPage peerId:(int64_t)peerId messageId:(int32_t)messageId boundingWidth:(CGFloat)boundingWidth safeAreaInset:(UIEdgeInsets)safeAreaInset presentation:(TGInstantPagePresentation *)presentation showFeedbackButton:(bool)showFeedbackButto;
 

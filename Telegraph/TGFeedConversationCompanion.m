@@ -698,7 +698,7 @@
                     TGFeedPosition *maxPosition = ((TGFeedPosition *)resource[@"maxPosition"]);
                     
                     if (maxMessage.date >= minPosition.date && maxMessage.date <= maxPosition.date) {
-                        NSMutableArray<TGMessageIndex *> *messagesToDelete = [[NSMutableArray alloc] init];
+                        NSMutableArray *messagesToDelete = [[NSMutableArray alloc] init];
                         for (TGMessageModernConversationItem *item in _items)
                         {
                             if (item->_message.date < minPosition.date || item->_message.date > maxPosition.date || item->_message.hole != nil)

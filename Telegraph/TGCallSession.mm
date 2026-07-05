@@ -66,11 +66,11 @@ const NSTimeInterval TGCallPacketTimeout = 10;
 
 @interface TGCallAudioContext : NSObject
 
-@property (nonatomic, readonly) NSArray<TGAudioRoute *> *availableRoutes;
+@property (nonatomic, readonly) NSArray *availableRoutes;
 @property (nonatomic, readonly) TGAudioRoute *activeRoute;
 @property (nonatomic, readonly) bool speaker;
 
-- (instancetype)initWithAvailableRoutes:(NSArray<TGAudioRoute *> *)availableRoutes activeRoute:(TGAudioRoute *)activeRoute speaker:(bool)speaker;
+- (instancetype)initWithAvailableRoutes:(NSArray *)availableRoutes activeRoute:(TGAudioRoute *)activeRoute speaker:(bool)speaker;
 
 @end
 
@@ -1407,7 +1407,7 @@ static id<SDisposable> audioSession;
 
 @implementation TGCallAudioContext
 
-- (instancetype)initWithAvailableRoutes:(NSArray<TGAudioRoute *> *)availableRoutes activeRoute:(TGAudioRoute *)activeRoute speaker:(bool)speaker
+- (instancetype)initWithAvailableRoutes:(NSArray *)availableRoutes activeRoute:(TGAudioRoute *)activeRoute speaker:(bool)speaker
 {
     self = [super init];
     if (self != nil)

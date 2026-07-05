@@ -144,7 +144,7 @@ static void MurmurHash3_x86_32 ( const void * key, int len,
     
     h1 = fmix(h1);
     
-    *(uint32_t*)out = h1;
+   *(uint32_t*)out = h1;
 }
 
 int32_t murMurHash32(NSString *string)
@@ -214,7 +214,7 @@ int32_t murMurHash32(NSString *string)
     return [[SSignal alloc] initWithGenerator:^id<SDisposable>(SSubscriber *subscriber) {
         [_queue dispatch:^{
             NSString *normalizedQuery = [query lowercaseString];
-            NSMutableArray<TGLegacyUser *> *users = [[NSMutableArray alloc] init];
+            NSMutableArray *users = [[NSMutableArray alloc] init];
             
             //FMResultSet *result = [_database executeQuery:[NSString stringWithFormat:@"SELECT uid FROM contacts_v29"]];
             
@@ -301,11 +301,11 @@ int32_t murMurHash32(NSString *string)
     }];
 }
 
-- (NSArray<TGLegacyUser *> *)contactUsersMatchingPhoneSync:(NSString *)queryPhoneNumber {
-    __block NSArray<TGLegacyUser *> *resultUsers = nil;
+- (NSArray *)contactUsersMatchingPhoneSync:(NSString *)queryPhoneNumber {
+    __block NSArray *resultUsers = nil;
     [_queue dispatchSync:^{
         NSString *normalizedPhone = [TGLegacyDatabase cleanPhone:queryPhoneNumber clip:true];
-        NSMutableArray<TGLegacyUser *> *users = [[NSMutableArray alloc] init];
+        NSMutableArray *users = [[NSMutableArray alloc] init];
         
         FMResultSet *result = [_database executeQuery:[NSString stringWithFormat:@"SELECT uid, first_name, last_name, local_first_name, local_last_name, phone_number, access_hash FROM users_v29 WHERE uid IN (SELECT uid FROM contacts_v29)"]];
         while ([result next]) {
@@ -339,8 +339,8 @@ int32_t murMurHash32(NSString *string)
     return resultUsers;
 }
 
-- (NSArray<TGLegacyUser *> *)topUsers {
-    NSMutableArray<TGLegacyUser *> *users = [[NSMutableArray alloc] init];
+- (NSArray *)topUsers {
+    NSMutableArray *users = [[NSMutableArray alloc] init];
     
     FMResultSet *result = [_database executeQuery:[NSString stringWithFormat:@"SELECT u.uid, u.first_name, u.last_name, u.access_hash, u.photo_small FROM users_v29 u JOIN peer_rating_29 p ON u.uid = p.peer_id WHERE p.category = 1 ORDER BY p.rating DESC LIMIT 9"]];
     while ([result next]) {
@@ -356,8 +356,8 @@ int32_t murMurHash32(NSString *string)
     return users;
 }
 
-- (NSDictionary<NSNumber *, NSNumber *> *)unreadCountsForUsers:(NSArray<TGLegacyUser *> *)users {
-    NSMutableDictionary<NSNumber *, NSNumber *> *counts = [[NSMutableDictionary alloc] init];
+- (NSDictionary *)unreadCountsForUsers:(NSArray *)users {
+    NSMutableDictionary *counts = [[NSMutableDictionary alloc] init];
     
     NSMutableString *rangeString = [[NSMutableString alloc] init];
     bool first = true;

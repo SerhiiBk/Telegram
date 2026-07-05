@@ -14,7 +14,7 @@
     
     id<SDisposable> _disposable;
     
-    NSArray<TGUser *> *_users;
+    NSArray *_users;
     NSDictionary *_memberDatas;
     
     TGSwitchCollectionItem *_allEventsItem;
@@ -362,7 +362,7 @@ static bool filterIsFull(TGChannelEventFilter filter) {
 }
 
 - (void)updateDone {
-    NSArray<TGCheckCollectionItem *> *items = @[
+    NSArray *items = @[
         _restrictionsItem,
         _adminsItem,
         _newMembersItem,

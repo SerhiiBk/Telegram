@@ -18,8 +18,8 @@
 @property (nonatomic, strong, readonly) NSData *key;
 @property (nonatomic, strong, readonly) NSData *keyHash;
 @property (nonatomic, strong, readonly) TGCallConnectionDescription *defaultConnection;
-@property (nonatomic, strong, readonly) NSArray<TGCallConnectionDescription *> *alternativeConnections;
+@property (nonatomic, strong, readonly) NSArray *alternativeConnections;
 
-- (instancetype)initWithKey:(NSData *)key keyHash:(NSData *)keyHash defaultConnection:(TGCallConnectionDescription *)defaultConnection alternativeConnections:(NSArray<TGCallConnectionDescription *> *)alternativeConnections;
+- (instancetype)initWithKey:(NSData *)key keyHash:(NSData *)keyHash defaultConnection:(TGCallConnectionDescription *)defaultConnection alternativeConnections:(NSArray *)alternativeConnections;
 
 @end

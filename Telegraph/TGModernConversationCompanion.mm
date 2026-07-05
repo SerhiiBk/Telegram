@@ -1252,7 +1252,7 @@ static void dispatchOnMessageQueue(dispatch_block_t block, bool synchronous)
         if (memoryToRelease != NULL)
         {
             memory = malloc((int)(bytesPerRow * contextSize.height));
-            *memoryToRelease = memory;
+           *memoryToRelease = memory;
         }
         
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();

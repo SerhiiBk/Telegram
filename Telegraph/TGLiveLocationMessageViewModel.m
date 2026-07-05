@@ -240,13 +240,13 @@
         _subtitleModel.text = subtitle;
         [_bottomModel setNeedsSubmodelContentsUpdate];
         
-        *sizeUpdated = true;
+       *sizeUpdated = true;
     }
     
     if (_expired != previousExpired)
     {
         _animated = true;
-        *sizeUpdated = true;
+       *sizeUpdated = true;
     }
     
     if (!_expired && _message.mid != message.mid)
@@ -355,7 +355,7 @@
     if (updateTitleContents || updateSubitleContents)
         [_bottomModel setNeedsSubmodelContentsUpdate];
     
-    *needsContentsUpdate = updateTitleContents || updateSubitleContents;
+   *needsContentsUpdate = updateTitleContents || updateSubitleContents;
     
     CGFloat offsetX = TGScreenScaling() > 2 ? TGScreenPixel : 0.0f;
     CGFloat offsetY = _replyHeaderModel != nil ? 5.0f : 0.0f;

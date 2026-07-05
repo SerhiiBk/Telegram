@@ -11,7 +11,7 @@
 {
     TGUploadedMessageContentMedia *(^content)(TGContactModel *) = ^TGUploadedMessageContentMedia *(TGContactModel *contact)
     {
-        TGPhoneNumberModel *phoneNumber = contact.phoneNumbers.firstObject;
+        TGPhoneNumberModel *phoneNumber = contact.phoneNumbers.count == 0 ? nil : [contact.phoneNumbers objectAtIndex:0];
         Api86_InputMedia_inputMediaContact *inputContact = [Api86_InputMedia inputMediaContactWithPhoneNumber:phoneNumber.phoneNumber firstName:contact.firstName.length == 0 ? @"" : contact.firstName lastName:contact.lastName.length == 0 ? @"" : contact.lastName vcard:contact.vcard.vcardString];
         
         return [[TGUploadedMessageContentMedia alloc] initWithInputMedia:inputContact];

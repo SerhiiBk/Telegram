@@ -15,24 +15,24 @@ static int32_t fileSize(NSString *path) {
 }
 
 @interface MediaBox () {
-    NSString * _Nonnull _basePath;
+    NSString * _basePath;
     
-    SQueue * _Nonnull _statusQueue;
-    SQueue * _Nonnull _concurrentQueue;
-    SQueue * _Nonnull _dataQueue;
-    SQueue * _Nonnull _cacheQueue;
+    SQueue * _statusQueue;
+    SQueue * _concurrentQueue;
+    SQueue * _dataQueue;
+    SQueue * _cacheQueue;
     
-    NSMutableDictionary<id<MediaResourceId>, ResourceStatusContext *> * _Nonnull _statusContexts;
-    NSMutableDictionary<id<MediaResourceId>, ResourceDataContext *> * _Nonnull _dataContexts;
+    NSMutableDictionary * _statusContexts;
+    NSMutableDictionary * _dataContexts;
     
-    SVariable * _Nonnull _wrappedFetchResource;
+    SVariable * _wrappedFetchResource;
 }
 
 @end
 
 @implementation MediaBox
 
-- (_Nonnull instancetype)initWithBasePath:(NSString * _Nonnull)basePath {
+- ( instancetype)initWithBasePath:(NSString * )basePath {
     self = [super init];
     if (self != nil) {
         TGLog(@"MediaBox path %@", basePath);
@@ -63,11 +63,11 @@ static int32_t fileSize(NSString *path) {
     [_wrappedFetchResource set:[SSignal single:[fetchResource copy]]];
 }
 
-- (NSString * _Nonnull)fileNameForId:(id<MediaResourceId>)resourceId {
+- (NSString * )fileNameForId:(id<MediaResourceId>)resourceId {
     return [resourceId uniqueId];
 }
 
-- (ResourceStorePaths * _Nonnull)storePathsForId:(id<MediaResourceId>)resourceId {
+- (ResourceStorePaths * )storePathsForId:(id<MediaResourceId>)resourceId {
     return [[ResourceStorePaths alloc] initWithPartial:[[_basePath stringByAppendingPathComponent:[self fileNameForId:resourceId]] stringByAppendingString:@"_partial"] complete:[_basePath stringByAppendingPathComponent:[self fileNameForId:resourceId]]];
 }
 
@@ -161,7 +161,7 @@ static int32_t fileSize(NSString *path) {
     }];
 }
 
-- (SSignal *)resourceData:(id<MediaResource> _Nonnull)resource pathExtension:(NSString * _Nullable)pathExtension {
+- (SSignal *)resourceData:(id<MediaResource> )resource pathExtension:(NSString * )pathExtension {
     return [[SSignal alloc] initWithGenerator:^id<SDisposable>(SSubscriber *subscriber) {
         SMetaDisposable *disposable = [[SMetaDisposable alloc] init];
         

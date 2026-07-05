@@ -106,9 +106,9 @@
 @property (nonatomic, strong, readonly) NSData *gA;
 @property (nonatomic, readonly) int64_t keyFingerprint;
 @property (nonatomic, strong, readonly) TGCallConnectionDescription *defaultConnection;
-@property (nonatomic, strong, readonly) NSArray<TGCallConnectionDescription *> *alternativeConnections;
+@property (nonatomic, strong, readonly) NSArray *alternativeConnections;
 
-- (instancetype)initWithCallId:(int64_t)callId accessHash:(int64_t)accessHash date:(int32_t)date adminId:(int32_t)adminId participantId:(int32_t)participantId gA:(NSData *)gA keyFingerprint:(int64_t)keyFingerprint defaultConnection:(TGCallConnectionDescription *)defaultConnection alternativeConnections:(NSArray<TGCallConnectionDescription *> *)alternativeConnections;
+- (instancetype)initWithCallId:(int64_t)callId accessHash:(int64_t)accessHash date:(int32_t)date adminId:(int32_t)adminId participantId:(int32_t)participantId gA:(NSData *)gA keyFingerprint:(int64_t)keyFingerprint defaultConnection:(TGCallConnectionDescription *)defaultConnection alternativeConnections:(NSArray *)alternativeConnections;
 
 @end
 
@@ -123,9 +123,9 @@
 @property (nonatomic, strong, readonly) NSData *key;
 @property (nonatomic, readonly) int64_t keyFingerprint;
 @property (nonatomic, strong, readonly) TGCallConnectionDescription *defaultConnection;
-@property (nonatomic, strong, readonly) NSArray<TGCallConnectionDescription *> *alternativeConnections;
+@property (nonatomic, strong, readonly) NSArray *alternativeConnections;
 
-- (instancetype)initWithCallId:(int64_t)callId accessHash:(int64_t)accessHash date:(int32_t)date adminId:(int32_t)adminId participantId:(int32_t)participantId key:(NSData *)key keyFingerprint:(int64_t)keyFingerprint defaultConnection:(TGCallConnectionDescription *)defaultConnection alternativeConnections:(NSArray<TGCallConnectionDescription *> *)alternativeConnections;
+- (instancetype)initWithCallId:(int64_t)callId accessHash:(int64_t)accessHash date:(int32_t)date adminId:(int32_t)adminId participantId:(int32_t)participantId key:(NSData *)key keyFingerprint:(int64_t)keyFingerprint defaultConnection:(TGCallConnectionDescription *)defaultConnection alternativeConnections:(NSArray *)alternativeConnections;
 
 @end
 

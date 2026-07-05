@@ -2,8 +2,8 @@
 
 #import "ApiLayer86.h"
 
-#import <MTProtoKitDynamic/MTExportedAuthorizationData.h>
-#import <MTProtoKitDynamic/MTDatacenterAddress.h>
+#import <MTProtoKit/MTExportedAuthorizationData.h>
+#import <MTProtoKit/MTDatacenterAddress.h>
 
 @implementation TGShareMtSerialization
 
@@ -22,7 +22,7 @@
     Api86_FunctionContext *exportAuthorization = [Api86 auth_exportAuthorizationWithDcId:@(datacenterId)];
     
     if (data)
-        *data = exportAuthorization.payload;
+       *data = exportAuthorization.payload;
     
     return ^MTExportedAuthorizationData *(NSData *data) {
         id response = exportAuthorization.responseParser(data);
@@ -47,7 +47,7 @@
     Api86_FunctionContext *getConfig = [Api86 help_getConfig];
     
     if (data)
-        *data = getConfig.payload;
+       *data = getConfig.payload;
     
     return ^MTDatacenterAddressListData *(NSData *data) {
         id response = getConfig.responseParser(data);

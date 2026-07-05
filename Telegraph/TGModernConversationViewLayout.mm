@@ -413,7 +413,7 @@ static inline CGFloat addUnreadHeader(CGFloat currentHeight, CGFloat containerWi
     currentHeight += 4.0f;
     
     if (contentHeight != NULL)
-        *contentHeight = currentHeight;
+       *contentHeight = currentHeight;
     
     return layoutAttributes;
 }

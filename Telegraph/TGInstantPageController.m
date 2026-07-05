@@ -293,7 +293,7 @@
             } externalShareItemSignal:[SSignal single:externalText] sourceView:strongSelf.view sourceRect:nil barButtonItem:nil];
         }
     };
-    _pageView.openMedia = ^(NSArray<TGInstantPageMedia *> *medias, TGInstantPageMedia *centralMedia) {
+    _pageView.openMedia = ^(NSArray *medias, TGInstantPageMedia *centralMedia) {
         __strong TGInstantPageController *strongSelf = weakSelf;
         if (strongSelf != nil) {
             TGModernGalleryController *galleryController = [[TGModernGalleryController alloc] initWithContext:[TGLegacyComponentsContext shared]];
@@ -427,7 +427,7 @@
             controllerWindow.hidden = false;
         }
     };
-    _pageView.openAudio = ^(NSArray<TGDocumentMediaAttachment *> *audios, TGDocumentMediaAttachment *centralItem) {
+    _pageView.openAudio = ^(NSArray *audios, TGDocumentMediaAttachment *centralItem) {
         __strong TGInstantPageController *strongSelf = weakSelf;
         if (strongSelf != nil) {
             NSMutableArray *items = [[NSMutableArray alloc] init];

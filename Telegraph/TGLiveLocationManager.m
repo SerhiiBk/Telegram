@@ -30,11 +30,11 @@
     NSInteger _infrequentToken;
     
     bool _inhibitFrequentUpdates;
-    NSMutableSet<NSNumber *> *_frequentUpdateSubscribers;
+    NSMutableSet *_frequentUpdateSubscribers;
     bool _updatingFrequentLocation;
     int32_t _previousInfrequentSinkTime;
     
-    NSMutableDictionary<NSNumber *, TGLiveLocationSessionContext *> *_sessions;
+    NSMutableDictionary *_sessions;
     SPipe *_sessionPipe;
     SPipe *_sessionRemovalPipe;
     
@@ -99,7 +99,7 @@
     [_queue dispatch:^
     {
         int32_t currentTime = (int32_t)[[TGTelegramNetworking instance] globalTime];
-        NSArray<TGLiveLocationSession *> *storedSessions = [TGDatabaseInstance() loadLiveLocationSessions];
+        NSArray *storedSessions = [TGDatabaseInstance() loadLiveLocationSessions];
         for (TGLiveLocationSession *session in storedSessions)
         {
             if (session.expires > currentTime)
@@ -564,7 +564,7 @@
 
 #pragma mark -
 
-- (void)locationManager:(CLLocationManager *)__unused manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+- (void)locationManager:(CLLocationManager *)__unused manager didUpdateLocations:(NSArray *)locations
 {
     TGLog(@"LiveLocationManager: location manager updated location");
     _locationPipe.sink(locations.firstObject);

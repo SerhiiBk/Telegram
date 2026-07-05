@@ -51,12 +51,7 @@ const NSInteger TGRecentSearchLimit = 20;
     static NSUserDefaults *userDefaults;
     dispatch_once(&onceToken, ^
     {
-        NSString *groupName = [@"group." stringByAppendingString:[[NSBundle mainBundle] bundleIdentifier]];
-        
-        if ([groupName hasSuffix:@".Share"])
-            groupName = [groupName substringWithRange:NSMakeRange(0, groupName.length - @".Share".length)];
-        
-        userDefaults = [[NSUserDefaults alloc] initWithSuiteName:groupName];
+        userDefaults = [NSUserDefaults standardUserDefaults];
     });
     
     return userDefaults;
@@ -122,7 +117,7 @@ const NSInteger TGRecentSearchLimit = 20;
 + (SSignal *)recentPeerResultsWithContext:(TGShareContext *)context cachedChats:(NSArray *)cachedChats
 {
     TGLegacyDatabase *database = context.legacyDatabase;
-    NSArray<TGLegacyUser *> *topUsers =  [database topUsers];
+    NSArray *topUsers =  [database topUsers];
     
     NSMutableArray *topPeers = [[NSMutableArray alloc] init];
     NSMutableArray *recentPeers = [[NSMutableArray alloc] init];

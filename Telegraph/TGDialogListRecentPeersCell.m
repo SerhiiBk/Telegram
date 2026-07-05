@@ -101,7 +101,7 @@
     [self setNeedsLayout];
 }
 
-- (void)setPeers:(NSArray<TGConversation *> *)peers {
+- (void)setPeers:(NSArray *)peers {
     _recentPeers = peers;
     [_collectionView reloadData];
 }
@@ -373,7 +373,7 @@
         TGShareSheetSharePeersCell *cell = (TGShareSheetSharePeersCell *)[_collectionView cellForItemAtIndexPath:indexPath];
         if (cell != nil) {
             if (frame) {
-                *frame = [self convertRect:cell.frame fromView:_collectionView];
+               *frame = [self convertRect:cell.frame fromView:_collectionView];
             }
             return [cell peerId];
         }

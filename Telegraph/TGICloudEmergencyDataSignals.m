@@ -191,7 +191,7 @@
         CKContainer *container = [CKContainer defaultContainer];
         CKDatabase *publicDatabase = [container databaseWithDatabaseScope:CKDatabaseScopePublic];
         if (publicDatabase != nil) {
-            [publicDatabase fetchAllSubscriptionsWithCompletionHandler:^(NSArray<CKSubscription *> *subscriptions, NSError *error) {
+            [publicDatabase fetchAllSubscriptionsWithCompletionHandler:^(NSArray *subscriptions, NSError *error) {
                 if (error) {
                     TGLog(@"[TGICloudEmergencyDataSignals fetchAllSubscriptionsWithCompletionHandler error %@]", [error description]);
                 } else {

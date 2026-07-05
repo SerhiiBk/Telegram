@@ -17,7 +17,7 @@
 
 #import "TGPreviewPresentationHelper.h"
 
-static NSArray<TGConversation *> *sortedConversations(NSArray<TGConversation *> *conversations) {
+static NSArray *sortedConversations(NSArray *conversations) {
     return conversations;
     /*return [conversations sortedArrayUsingComparator:^NSComparisonResult(TGConversation *lhs, TGConversation *rhs) {
         if (lhs.chatCreationDate > rhs.chatCreationDate) {
@@ -30,7 +30,7 @@ static NSArray<TGConversation *> *sortedConversations(NSArray<TGConversation *> 
 
 @interface TGGroupsInCommonController () {
     id<SDisposable> _updatedGroupsInCommonDisposable;
-    NSArray<TGConversation *> *_conversations;
+    NSArray *_conversations;
     
     TGCollectionMenuSection *_conversationsSection;
     
@@ -100,7 +100,7 @@ static NSArray<TGConversation *> *sortedConversations(NSArray<TGConversation *> 
     [self check3DTouch];
 }
 
-- (void)setConversations:(NSArray<TGConversation *> *)conversations {
+- (void)setConversations:(NSArray *)conversations {
     _conversations = conversations;
     
     if (conversations.count != 0) {

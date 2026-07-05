@@ -87,7 +87,7 @@ NSString *extractFileUrl(id fileLocation)
                 {
                     NSData *imageData = concreteSize.bytes;
                     if (cachedData != NULL)
-                        *cachedData = imageData;
+                       *cachedData = imageData;
                     else
                     {
                         if (url != nil)
@@ -144,7 +144,7 @@ NSString *extractFileUrl(id fileLocation)
                 {
                     NSData *imageData = concreteSize.bytes;
                     if (cachedData != NULL)
-                    *cachedData = imageData;
+                   *cachedData = imageData;
                     else
                     {
                         if (url != nil)
@@ -200,7 +200,7 @@ NSString *extractFileUrl(id fileLocation)
                 {
                     NSData *imageData = concreteSize.bytes;
                     if (cachedData != NULL)
-                        *cachedData = imageData;
+                       *cachedData = imageData;
                     else
                     {
                         if (url != nil)
@@ -256,7 +256,7 @@ NSString *extractFileUrl(id fileLocation)
                 {
                     NSData *imageData = concreteSize.bytes;
                     if (cachedData != NULL)
-                        *cachedData = imageData;
+                       *cachedData = imageData;
                     else
                     {
                         if (url != nil)
@@ -312,7 +312,7 @@ NSString *extractFileUrl(id fileLocation)
                 {
                     NSData *imageData = concreteSize.bytes;
                     if (cachedData != NULL)
-                        *cachedData = imageData;
+                       *cachedData = imageData;
                     else
                     {
                         if (url != nil)

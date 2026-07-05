@@ -7,8 +7,8 @@
 
 @interface TGInstantPageSlideshowView : UIView <TGInstantPageDisplayView>
 
-@property (nonatomic, strong, readonly) NSArray<TGInstantPageMedia *> *medias;
+@property (nonatomic, strong, readonly) NSArray *medias;
 
-- (instancetype)initWithFrame:(CGRect)frame medias:(NSArray<TGInstantPageMedia *> *)medias;
+- (instancetype)initWithFrame:(CGRect)frame medias:(NSArray *)medias;
 
 @end

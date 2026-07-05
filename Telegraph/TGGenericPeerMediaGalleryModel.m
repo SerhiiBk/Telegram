@@ -646,11 +646,11 @@
                 NSUInteger index = [strongSelf.items indexOfObject:item];
                 if (index != NSNotFound)
                 {
-                    *position = strongSelf->_loadingCompleted ? index : (strongSelf->_incompleteCount - strongSelf.items.count + index);
+                   *position = strongSelf->_loadingCompleted ? index : (strongSelf->_incompleteCount - strongSelf.items.count + index);
                 }
             }
             if (count != NULL)
-                *count = strongSelf->_loadingCompleted ? strongSelf.items.count : strongSelf->_incompleteCount;
+               *count = strongSelf->_loadingCompleted ? strongSelf.items.count : strongSelf->_incompleteCount;
         }
     }];
 }
@@ -944,7 +944,7 @@
     else if ([item isKindOfClass:[TGGenericPeerMediaGalleryVideoItem class]])
     {
         if (isVideo != NULL)
-            *isVideo = true;
+           *isVideo = true;
         
         TGGenericPeerMediaGalleryVideoItem *videoItem = (TGGenericPeerMediaGalleryVideoItem *)item;
         return [NSURL fileURLWithPath:[videoItem filePath]];

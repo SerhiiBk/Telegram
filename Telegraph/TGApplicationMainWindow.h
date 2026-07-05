@@ -4,6 +4,6 @@
 
 @interface TGApplicationMainWindow : UIWindow
 
-- (void)presentOverlayController:(TGViewController * _Nonnull)controller;
+- (void)presentOverlayController:(TGViewController * )controller;
 
 @end

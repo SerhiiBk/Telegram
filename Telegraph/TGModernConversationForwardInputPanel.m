@@ -142,7 +142,7 @@ typedef enum {
             case TGCommonMediaTypeFiles:
             {
                 if (breakInTheMiddle)
-                    *breakInTheMiddle = true;
+                   *breakInTheMiddle = true;
                 for (id attachment in ((TGMessage *)messages[0]).mediaAttachments)
                 {
                     if ([attachment isKindOfClass:[TGDocumentMediaAttachment class]])

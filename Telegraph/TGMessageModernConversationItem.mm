@@ -272,7 +272,7 @@ static UIColor *coloredNameForUid(int uid, __unused int currentUserId)
     if (_viewModel == nil) {
         _viewModel = [self createMessageViewModel:_message containerSize:containerSize];
         if (sizeUpdated) {
-            *sizeUpdated = true;
+           *sizeUpdated = true;
         }
         
         if (rebindCell) {
@@ -288,7 +288,7 @@ static UIColor *coloredNameForUid(int uid, __unused int currentUserId)
         }
     } else {
         if (sizeUpdated) {
-            *sizeUpdated = true;
+           *sizeUpdated = true;
         }
         [_viewModel updateMessage:message viewStorage:viewStorage sizeUpdated:sizeUpdated];
     }
@@ -508,7 +508,7 @@ static UIColor *coloredNameForUid(int uid, __unused int currentUserId)
             if (sizeUpdated)
             {
                 if (sizeChanged)
-                    *sizeChanged = true;
+                   *sizeChanged = true;
                 _layoutIsInvalid = true;
             }
         }

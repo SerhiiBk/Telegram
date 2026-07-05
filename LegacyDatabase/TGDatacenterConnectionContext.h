@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 
-#import <MTProtoKitDynamic/MTContext.h>
-#import <MTProtoKitDynamic/MTProto.h>
-#import <MTProtoKitDynamic/MTRequestMessageService.h>
+#import <MTProtoKit/MTContext.h>
+#import <MTProtoKit/MTProto.h>
+#import <MTProtoKit/MTRequestMessageService.h>
 #import <SSignalKit/SSignalKit.h>
 #import "ApiLayer86.h"
 

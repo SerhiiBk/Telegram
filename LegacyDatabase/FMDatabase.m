@@ -716,7 +716,7 @@
                 sqlite3_finalize(pStmt);
                 
                 if (outErr) {
-                    *outErr = [self errorWithMessage:[NSString stringWithUTF8String:sqlite3_errmsg(_db)]];
+                   *outErr = [self errorWithMessage:[NSString stringWithUTF8String:sqlite3_errmsg(_db)]];
                 }
                 
                 _isExecutingStatement = NO;
@@ -785,8 +785,8 @@
     }
     
     /* Call sqlite3_step() to run the virtual machine. Since the SQL being
-     ** executed is not a SELECT statement, we assume no data will be returned.
-     */
+    ** executed is not a SELECT statement, we assume no data will be returned.
+    */
     numberOfRetries = 0;
     
     do {
@@ -853,8 +853,8 @@
     }
     else {
         /* Finalize the virtual machine. This releases all memory and other
-         ** resources allocated by the sqlite3_prepare() call above.
-         */
+        ** resources allocated by the sqlite3_prepare() call above.
+        */
         closeErrorCode = sqlite3_finalize(pStmt);
     }
     
@@ -965,7 +965,7 @@
     if (![self executeUpdate:[NSString stringWithFormat:@"savepoint '%@';", name]]) {
         
         if (*outErr) {
-            *outErr = [self lastError];
+           *outErr = [self lastError];
         }
         
         return NO;
@@ -981,7 +981,7 @@
     BOOL worked = [self executeUpdate:[NSString stringWithFormat:@"release savepoint '%@';", name]];
     
     if (!worked && *outErr) {
-        *outErr = [self lastError];
+       *outErr = [self lastError];
     }
     
     return worked;
@@ -994,7 +994,7 @@
     BOOL worked = [self executeUpdate:[NSString stringWithFormat:@"rollback transaction to savepoint '%@';", name]];
     
     if (!worked && *outErr) {
-        *outErr = [self lastError];
+       *outErr = [self lastError];
     }
     
     return worked;

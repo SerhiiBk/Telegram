@@ -182,8 +182,8 @@
     }] startWithNext:^(NSArray *completeMessages)
     {
         NSMutableDictionary *multipleMessagesByConversation = [[NSMutableDictionary alloc] init];
-        NSMutableDictionary<NSNumber *, TGDatabaseMessageDraft *> *updatePeerDrafts = [[NSMutableDictionary alloc] init];
-        NSMutableDictionary<NSNumber *, TGUnseenPeerMentionsState *> *resetPeerUnseenMentionsStates = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *updatePeerDrafts = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *resetPeerUnseenMentionsStates = [[NSMutableDictionary alloc] init];
         
         for (TGMessage *message in completeMessages)
         {

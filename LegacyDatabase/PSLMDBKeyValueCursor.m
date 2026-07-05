@@ -38,14 +38,14 @@
     
     if (rc == MDB_SUCCESS)
     {
-        *key = mdbKey.mv_data;
-        *keyLength = mdbKey.mv_size;
+       *key = mdbKey.mv_data;
+       *keyLength = mdbKey.mv_size;
         
         if (value != NULL)
-            *value = mdbData.mv_data;
+           *value = mdbData.mv_data;
         
         if (valueLength != NULL)
-            *valueLength = mdbData.mv_size;
+           *valueLength = mdbData.mv_size;
         
         return true;
     }
@@ -77,14 +77,14 @@
     
     if (rc == MDB_SUCCESS)
     {
-        *key = mdbKey.mv_data;
-        *keyLength = mdbKey.mv_size;
+       *key = mdbKey.mv_data;
+       *keyLength = mdbKey.mv_size;
         
         if (value != NULL)
-            *value = mdbData.mv_data;
+           *value = mdbData.mv_data;
         
         if (valueLength != NULL)
-            *valueLength = mdbData.mv_size;
+           *valueLength = mdbData.mv_size;
         
         return true;
     }
@@ -112,14 +112,14 @@
     
     if (rc == MDB_SUCCESS)
     {
-        *key = mdbKey.mv_data;
-        *keyLength = mdbKey.mv_size;
+       *key = mdbKey.mv_data;
+       *keyLength = mdbKey.mv_size;
         
         if (value != NULL)
-            *value = mdbData.mv_data;
+           *value = mdbData.mv_data;
         
         if (valueLength != NULL)
-            *valueLength = mdbData.mv_size;
+           *valueLength = mdbData.mv_size;
         
         return true;
     }

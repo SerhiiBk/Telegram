@@ -18,7 +18,7 @@
 @end
 
 @interface TGCurrencyFormatter () {
-    NSDictionary<NSString *, TGCurrencyFormatterEntry *> *_entries;
+    NSDictionary *_entries;
 }
 
 @end
@@ -37,7 +37,7 @@
 - (instancetype)init {
     self = [super init];
     if (self != nil) {
-        NSMutableDictionary<NSString *, TGCurrencyFormatterEntry *> *entries = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *entries = [[NSMutableDictionary alloc] init];
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencies" ofType:@"json"];
         NSData *data = [NSData dataWithContentsOfFile:filePath];
         if (data != nil) {

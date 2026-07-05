@@ -207,7 +207,7 @@
         
         if (isThumbnail && acceptPartialData && asyncTaskId != NULL)
         {
-            *asyncTaskId = [self loadDataAsyncWithUri:uri progress:progress partialCompletion:partialCompletion completion:completion];
+           *asyncTaskId = [self loadDataAsyncWithUri:uri progress:progress partialCompletion:partialCompletion completion:completion];
         }
         else
         {
@@ -276,7 +276,7 @@
     if ([[NSFileManager defaultManager] fileExistsAtPath:thumbnailPath isDirectory:NULL])
     {
         if (outIsThumbnail != NULL)
-            *outIsThumbnail = true;
+           *outIsThumbnail = true;
         
         return true;
     }
@@ -285,7 +285,7 @@
     if ([[NSFileManager defaultManager] fileExistsAtPath:temporaryThumbnailImagePath isDirectory:NULL])
     {
         if (outIsThumbnail != NULL)
-            *outIsThumbnail = true;
+           *outIsThumbnail = true;
         
         return true;
     }
@@ -296,7 +296,7 @@
         if ([[NSFileManager defaultManager] fileExistsAtPath:legacyThumbnailFilePath isDirectory:NULL])
         {
             if (outIsThumbnail != NULL)
-                *outIsThumbnail = true;
+               *outIsThumbnail = true;
             
             return true;
         }

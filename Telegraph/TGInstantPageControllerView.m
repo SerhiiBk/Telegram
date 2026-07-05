@@ -40,16 +40,16 @@
     
     TGInstantPagePresentation *_presentation;
     TGInstantPageLayout *_currentLayout;
-    NSArray<TGInstantPageTile *> *_currentLayoutTiles;
-    NSArray<id<TGInstantPageLayoutItem>> *_currentLayoutItemsWithViews;
-    NSArray<id<TGInstantPageLayoutItem>> *_currentLayoutItemsWithText;
-    NSArray<id<TGInstantPageLayoutItem>> *_currentLayoutItemsWithLinks;
-    NSDictionary<NSNumber *, NSNumber *> *_distanceThresholdGroupCount;
+    NSArray *_currentLayoutTiles;
+    NSArray *_currentLayoutItemsWithViews;
+    NSArray *_currentLayoutItemsWithText;
+    NSArray *_currentLayoutItemsWithLinks;
+    NSDictionary *_distanceThresholdGroupCount;
     
-    NSMutableDictionary<NSNumber *, TGInstantPageTileView *> *_visibleTiles;
-    NSMutableDictionary<NSNumber *, UIView<TGInstantPageDisplayView> *> *_visibleItemsWithViews;
-    NSMutableDictionary<NSNumber *, TGInstantPageTextSelectionView *> *_visibleTextSelectionViews;
-    NSMutableDictionary<NSNumber *, NSArray<TGInstantPageLinkSelectionView *> *> *_visibleLinkSelectionViews;
+    NSMutableDictionary *_visibleTiles;
+    NSMutableDictionary *_visibleItemsWithViews;
+    NSMutableDictionary *_visibleTextSelectionViews;
+    NSMutableDictionary *_visibleLinkSelectionViews;
     
     TGMenuContainerView *_menuContainerView;
     
@@ -356,7 +356,7 @@
     }];
     [_visibleTextSelectionViews removeAllObjects];
     
-    [_visibleLinkSelectionViews enumerateKeysAndObjectsUsingBlock:^(__unused NSNumber *key, NSArray<TGInstantPageLinkSelectionView *> *linkViews, __unused BOOL *stop) {
+    [_visibleLinkSelectionViews enumerateKeysAndObjectsUsingBlock:^(__unused NSNumber *key, NSArray *linkViews, __unused BOOL *stop) {
         for (UIView *linkView in linkViews) {
             [linkView removeFromSuperview];
         }
@@ -630,7 +630,7 @@
             [visibleItemLinkIndices addObject:@(itemIndex)];
             
             if (_visibleLinkSelectionViews[@(itemIndex)] == nil) {
-                NSArray<TGInstantPageLinkSelectionView *> *linkViews = [item linkSelectionViews];
+                NSArray *linkViews = [item linkSelectionViews];
                 for (TGInstantPageLinkSelectionView *linkView in linkViews) {
                     [linkView setColor:_presentation.textSelectionColor];
                     linkView.itemTapped = _urlItemTapped;
@@ -677,7 +677,7 @@
     [_visibleTextSelectionViews removeObjectsForKeys:removeItemTextIndices];
     
     NSMutableArray *removeItemLinkIndices = [[NSMutableArray alloc] init];
-    [_visibleLinkSelectionViews enumerateKeysAndObjectsUsingBlock:^(NSNumber *nIndex, NSArray<TGInstantPageLinkSelectionView *> *linkViews, __unused BOOL *stop) {
+    [_visibleLinkSelectionViews enumerateKeysAndObjectsUsingBlock:^(NSNumber *nIndex, NSArray *linkViews, __unused BOOL *stop) {
         if (![visibleItemLinkIndices containsObject:nIndex]) {
             for (UIView *linkView in linkViews) {
                 [linkView removeFromSuperview];
@@ -806,7 +806,7 @@
             UIView *view = [itemView transitionViewForMedia:media];
             if (view != nil) {
                 result = view;
-                *stop = true;
+               *stop = true;
             }
         }
     }];
@@ -964,7 +964,7 @@
             if (CGRectContainsPoint(item.frame, point)) {
                 closestItem = item;
                 blockIndex = @(index);
-                *stop = true;
+               *stop = true;
             } else {
                 CGFloat distance = fabs(point.y - item.frame.origin.y);
                 if (distance < previousDistance) {

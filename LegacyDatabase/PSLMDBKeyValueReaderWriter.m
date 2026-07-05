@@ -105,12 +105,12 @@
     [self enumerateKeysAndValuesBetweenLowerBoundKey:lowerBoundKey upperBoundKey:upperBoundKey options:selectKey == PSKeyValueReaderSelectHigherKey ? PSKeyValueReaderEnumerationReverse : 0 withBlock:^(PSData *key, PSData *value, bool *stop)
     {
         if (selectedKey)
-            *selectedKey = *key;
+           *selectedKey = *key;
         if (selectedValue)
-            *selectedValue = *value;
+           *selectedValue = *value;
         
         if (stop)
-            *stop = true;
+           *stop = true;
         
         result = true;
     }];

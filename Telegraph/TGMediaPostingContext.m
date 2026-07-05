@@ -237,7 +237,7 @@
         if ([self groupedIdForMessage:message] == groupedId)
             [indexesToRemove addIndex:index];
         else
-            *stop = true;
+           *stop = true;
     }];
 
     [_messages removeObjectsAtIndexes:indexesToRemove];

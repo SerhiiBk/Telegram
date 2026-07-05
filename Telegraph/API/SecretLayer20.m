@@ -249,7 +249,7 @@ static const char *Secret20__Serializer_Key = "Secret20__Serializer";
                 return nil;
             int32_t value = 0;
             [data getBytes:(void *)&value range:NSMakeRange(*offset, 4)];
-            *offset += 4;
+           *offset += 4;
             return @(value);
         } copy];
 
@@ -259,7 +259,7 @@ static const char *Secret20__Serializer_Key = "Secret20__Serializer";
                 return nil;
             int64_t value = 0;
             [data getBytes:(void *)&value range:NSMakeRange(*offset, 8)];
-            *offset += 8;
+           *offset += 8;
             return @(value);
         } copy];
 
@@ -269,7 +269,7 @@ static const char *Secret20__Serializer_Key = "Secret20__Serializer";
                 return nil;
             double value = 0;
             [data getBytes:(void *)&value range:NSMakeRange(*offset, 8)];
-            *offset += 8;
+           *offset += 8;
             return @(value);
         } copy];
 
@@ -279,7 +279,7 @@ static const char *Secret20__Serializer_Key = "Secret20__Serializer";
                 return nil;
             uint8_t tmp = 0;
             [data getBytes:(void *)&tmp range:NSMakeRange(*offset, 1)];
-            *offset += 1;
+           *offset += 1;
 
             int paddingBytes = 0;
 
@@ -290,7 +290,7 @@ static const char *Secret20__Serializer_Key = "Secret20__Serializer";
                 if (*offset + 3 > data.length)
                     return nil;
                 [data getBytes:((uint8_t *)&length) + 1 range:NSMakeRange(*offset, 3)];
-                *offset += 3;
+               *offset += 3;
                 length >>= 8;
 
                 paddingBytes = (((length % 4) == 0 ? length : (length + 4 - (length % 4)))) - length;
@@ -310,10 +310,10 @@ static const char *Secret20__Serializer_Key = "Secret20__Serializer";
                 else
                     object = [[NSString alloc] initWithBytes:((uint8_t *)data.bytes) + *offset length:length encoding:NSUTF8StringEncoding];
 
-                *offset += length;
+               *offset += length;
             }
 
-            *offset += paddingBytes;
+           *offset += paddingBytes;
 
             return object == nil ? (isData ? [NSData data] : @"") : object;
         } copy];
@@ -325,7 +325,7 @@ static const char *Secret20__Serializer_Key = "Secret20__Serializer";
 
             int32_t count = 0;
             [data getBytes:(void *)&count range:NSMakeRange(*offset, 4)];
-            *offset += 4;
+           *offset += 4;
 
             if (count < 0)
                 return nil;
@@ -348,7 +348,7 @@ static const char *Secret20__Serializer_Key = "Secret20__Serializer";
                     if (*offset + 4 > data.length)
                         return nil;
                     [data getBytes:(void *)&itemConstructorSignature range:NSMakeRange(*offset, 4)];
-                    *offset += 4;
+                   *offset += 4;
                 }
                 else
                     itemConstructorSignature = unboxedConstructorSignature;

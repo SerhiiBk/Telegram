@@ -191,8 +191,8 @@ static const NSUInteger loadMoreMemberCount = 100;
     
     SMetaDisposable *_searchDisposable;
     
-    NSArray<NSArray<TGUser *> *> *_searchResultUsers;
-    NSDictionary<NSNumber *, TGCachedConversationMember *> *_searchResultsMemberDatas;
+    NSArray *_searchResultUsers;
+    NSDictionary *_searchResultsMemberDatas;
     
     NSString *_searchString;
     
@@ -1972,7 +1972,7 @@ static const NSUInteger loadMoreMemberCount = 100;
         
         NSIndexPath *indexPath = nil;
         NSUInteger sectionIndex = 0;
-        for (NSArray<TGUser *> *section in _searchResultUsers) {
+        for (NSArray *section in _searchResultUsers) {
             NSUInteger index = 0;
             for (TGUser *user in section) {
                 if (user.uid == uid) {
@@ -2039,7 +2039,7 @@ static const NSUInteger loadMoreMemberCount = 100;
         
         NSIndexPath *indexPath = nil;
         NSUInteger sectionIndex = 0;
-        for (NSArray<TGUser *> *section in updatedSearchResultUsers) {
+        for (NSArray *section in updatedSearchResultUsers) {
             NSUInteger index = 0;
             for (TGUser *user in section) {
                 if (user.uid == uid) {

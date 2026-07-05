@@ -327,7 +327,7 @@
     return [SSignal single:message.text];
 }
 
-+ (SSignal *)shareItemsForMessages:(NSArray<TGMessage *> *)messages {
++ (SSignal *)shareItemsForMessages:(NSArray *)messages {
     NSMutableArray *signals = [[NSMutableArray alloc] init];
     for (TGMessage *message in messages) {
         [signals addObject:[self shareItemForMessage:message]];

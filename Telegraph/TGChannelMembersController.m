@@ -98,8 +98,8 @@
     
     SMetaDisposable *_searchDisposable;
     
-    NSArray<NSArray<TGUser *> *> *_searchResultUsers;
-    NSDictionary<NSNumber *, TGCachedConversationMember *> *_searchResultsMemberDatas;
+    NSArray *_searchResultUsers;
+    NSDictionary *_searchResultsMemberDatas;
     
     NSString *_searchString;
     
@@ -1801,7 +1801,7 @@
         
         NSIndexPath *indexPath = nil;
         NSUInteger sectionIndex = 0;
-        for (NSArray<TGUser *> *section in updatedSearchResultUsers) {
+        for (NSArray *section in updatedSearchResultUsers) {
             NSUInteger index = 0;
             for (TGUser *user in section) {
                 if (user.uid == uid) {

@@ -718,14 +718,14 @@ static UIImage *durationGameBackgroundImage()
     if (_siteModel != nil && [_siteModel layoutNeedsUpdatingForContainerSize:textContainerSize])
     {
         if (needsContentsUpdate)
-            *needsContentsUpdate = true;
+           *needsContentsUpdate = true;
         [_siteModel layoutForContainerSize:textContainerSize];
     }
     
     if ([_titleModel layoutNeedsUpdatingForContainerSize:textContainerSize])
     {
         if (needsContentsUpdate)
-            *needsContentsUpdate = true;
+           *needsContentsUpdate = true;
         [_titleModel layoutForContainerSize:textContainerSize];
     }
     
@@ -733,7 +733,7 @@ static UIImage *durationGameBackgroundImage()
     if (_textModel != nil && [_textModel layoutNeedsUpdatingForContainerSize:adjustedTextContainerSize])
     {
         if (needsContentsUpdate)
-            *needsContentsUpdate = true;
+           *needsContentsUpdate = true;
         NSInteger numberOfLines = 3;
         numberOfLines = MAX(0, numberOfLines - (NSInteger)_titleModel.measuredNumberOfLines);
         if (!_imageInText)
@@ -867,7 +867,7 @@ static UIImage *durationGameBackgroundImage()
         }
         
         if (regionData != nil)
-            *regionData = offsetRegionData;
+           *regionData = offsetRegionData;
     }
     
     return link;
@@ -986,7 +986,7 @@ static UIImage *durationGameBackgroundImage()
     }
     
     if (bottomInset)
-        *bottomInset = finalBottomInset;
+       *bottomInset = finalBottomInset;
 }
 
 - (bool)activateWebpageContents

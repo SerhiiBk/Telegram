@@ -47,7 +47,7 @@
         [mediaAttachments addObject:imageMediaAttachment];
         
         if (mediaLifetime != nil) {
-            *mediaLifetime = mediaPhoto.ttl_seconds;
+           *mediaLifetime = mediaPhoto.ttl_seconds;
         }
     }
     else if ([media isKindOfClass:[TLMessageMedia$messageMediaContact class]])
@@ -185,7 +185,7 @@
         }
         
         if (mediaLifetime != nil) {
-            *mediaLifetime = videoTTLSeconds;
+           *mediaLifetime = videoTTLSeconds;
         }
     }
     else if ([media isKindOfClass:[TLMessageMedia$messageMediaWebPage class]])

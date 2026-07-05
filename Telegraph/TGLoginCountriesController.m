@@ -182,7 +182,7 @@ static NSDictionary *countryCodes()
         {
             NSNumber *countryCode = [array objectAtIndex:0];
             if (code != nil)
-                *code = [countryCode intValue];
+               *code = [countryCode intValue];
             return [array objectAtIndex:2];
         }
     }

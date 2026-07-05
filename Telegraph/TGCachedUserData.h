@@ -6,9 +6,9 @@
 
 @interface TGCachedUserGroupsInCommon : NSObject <PSCoding>
 
-@property (nonatomic, strong, readonly) NSArray<TGConversation *> *groups;
+@property (nonatomic, strong, readonly) NSArray *groups;
 
-- (instancetype)initWithGroups:(NSArray<TGConversation *> *)groups;
+- (instancetype)initWithGroups:(NSArray *)groups;
 
 @end
 

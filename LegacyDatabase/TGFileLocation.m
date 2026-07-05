@@ -52,13 +52,13 @@ bool extractFileUrlComponents(NSString *fileUrl, int *datacenterId, int64_t *vol
         return false;
     
     if (datacenterId != NULL)
-        *datacenterId = [[fileUrl substringWithRange:datacenterIdRange] intValue];
+       *datacenterId = [[fileUrl substringWithRange:datacenterIdRange] intValue];
     if (volumeId != NULL)
-        *volumeId = [[fileUrl substringWithRange:volumeIdRange] longLongValue];
+       *volumeId = [[fileUrl substringWithRange:volumeIdRange] longLongValue];
     if (localId != NULL)
-        *localId = [[fileUrl substringWithRange:localIdRange] intValue];
+       *localId = [[fileUrl substringWithRange:localIdRange] intValue];
     if (secret != NULL)
-        *secret = [[fileUrl substringWithRange:secretRange] longLongValue];
+       *secret = [[fileUrl substringWithRange:secretRange] longLongValue];
     
     return true;
 }

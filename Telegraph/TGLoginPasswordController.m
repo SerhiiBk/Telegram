@@ -289,11 +289,11 @@
     if (_phoneNumber != nil)
     {
         if (phoneNumber)
-            *phoneNumber = _phoneNumber;
+           *phoneNumber = _phoneNumber;
         if (phoneCode)
-            *phoneCode = _phoneCode;
+           *phoneCode = _phoneCode;
         if (phoneCodeHash)
-            *phoneCodeHash = _phoneCodeHash;
+           *phoneCodeHash = _phoneCodeHash;
         
         return true;
     }
@@ -306,11 +306,11 @@
                 TGLoginCodeController *loginCodeController = controller;
                 
                 if (phoneNumber)
-                    *phoneNumber = loginCodeController.phoneNumber;
+                   *phoneNumber = loginCodeController.phoneNumber;
                 if (phoneCode)
-                    *phoneCode = loginCodeController.phoneCode;
+                   *phoneCode = loginCodeController.phoneCode;
                 if (phoneCodeHash)
-                    *phoneCodeHash = loginCodeController.phoneCodeHash;
+                   *phoneCodeHash = loginCodeController.phoneCodeHash;
                 
                 return true;
             }

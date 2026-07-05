@@ -405,7 +405,7 @@
             }
             
             // copy frame into frames ptr and increment ptr
-            *frames++ = frame;
+           *frames++ = frame;
             
             
             if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
@@ -421,9 +421,9 @@
         }
         
         /**
-         * Check if row actually contains any items before changing offset,
-         * because linear partitioning algorithm might return a row with no items.
-         */
+        * Check if row actually contains any items before changing offset,
+        * because linear partitioning algorithm might return a row with no items.
+        */
         if ([row count] > 0) {
             // move offset to next line
             if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
@@ -438,10 +438,10 @@
     }
     
     if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-        *sectionSize = CGSizeMake(viewportWidth, (contentMaxValueInScrollDirection - sectionOffset.y) + self.sectionInset.bottom);
+       *sectionSize = CGSizeMake(viewportWidth, (contentMaxValueInScrollDirection - sectionOffset.y) + self.sectionInset.bottom);
     }
     else {
-        *sectionSize = CGSizeMake((contentMaxValueInScrollDirection - sectionOffset.x) + self.sectionInset.right, viewportHeight);
+       *sectionSize = CGSizeMake((contentMaxValueInScrollDirection - sectionOffset.x) + self.sectionInset.right, viewportHeight);
     }
 }
 

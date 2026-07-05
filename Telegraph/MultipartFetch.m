@@ -71,8 +71,8 @@
     void (^_completed)();
     void (^_failed)();
     
-    NSMutableDictionary<NSNumber *, MultipartPendingPart *> *_fetchingParts;
-    NSMutableDictionary<NSNumber *, NSData *> *_fetchedParts;
+    NSMutableDictionary *_fetchingParts;
+    NSMutableDictionary *_fetchedParts;
     
     SVariable *_requestData;
     bool _switchedToCdn;

@@ -203,7 +203,7 @@ void freedomPIPInit();
         if ([view.location isEqual:location])
         {
             if (invisible != NULL)
-                *invisible = view.invisible;
+               *invisible = view.invisible;
             
             placeholderView = view;
             break;
@@ -748,7 +748,7 @@ void freedomPIPInit();
     }
     
     if (hide != NULL)
-        *hide = shouldHide;
+       *hide = shouldHide;
     
     return corner;
 }
@@ -764,7 +764,7 @@ void freedomPIPInit();
         bottom = true;
 
     if (hide != NULL && (location.x < TGEmbedPIPViewMargin || location.x > self.view.frame.size.width - TGEmbedPIPViewMargin))
-        *hide = true;
+       *hide = true;
     
     if (!right && !bottom)
         return TGEmbedPIPCornerTopLeft;
@@ -897,9 +897,9 @@ static TGEmbedPIPCorner defaultCorner = TGEmbedPIPCornerTopRight;
     if (playerView != NULL && hasPIP)
     {
         if (pipPlayerView != nil)
-            *playerView = pipPlayerView;
+           *playerView = pipPlayerView;
         else if (activePIPController != nil)
-            *playerView = activePIPController->_playerView;
+           *playerView = activePIPController->_playerView;
     }
     
     return hasPIP;

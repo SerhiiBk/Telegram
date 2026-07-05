@@ -43,7 +43,7 @@
 - (float)playbackPosition:(CFAbsoluteTime *)timestamp sync:(bool)sync
 {
     if (timestamp != NULL)
-        *timestamp = MTAbsoluteSystemTime();
+       *timestamp = MTAbsoluteSystemTime();
     
     TGModernConversationAudioPlayer *audioPlayer = _audioPlayer;
     return [audioPlayer playbackPositionSync:sync];

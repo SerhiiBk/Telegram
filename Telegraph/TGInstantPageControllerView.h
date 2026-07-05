@@ -21,8 +21,8 @@
 @property (nonatomic, copy) void (^shareText)(NSString *);
 @property (nonatomic, copy) void (^openUrl)(NSString *, int64_t);
 @property (nonatomic, copy) void (^openUrlOptions)(NSString *, int64_t);
-@property (nonatomic, copy) void (^openMedia)(NSArray<TGInstantPageMedia *> *, TGInstantPageMedia *);
-@property (nonatomic, copy) void (^openAudio)(NSArray<TGDocumentMediaAttachment *> *, TGDocumentMediaAttachment *);
+@property (nonatomic, copy) void (^openMedia)(NSArray *, TGInstantPageMedia *);
+@property (nonatomic, copy) void (^openAudio)(NSArray *, TGDocumentMediaAttachment *);
 @property (nonatomic, copy) TGEmbedPlayerController *(^openEmbedFullscreen)(TGEmbedPlayerView *, UIView *);
 @property (nonatomic, copy) TGEmbedPIPPlaceholderView *(^openEmbedPIP)(TGEmbedPlayerView *, UIView *, TGPIPSourceLocation *, TGEmbedPIPCorner, TGEmbedPlayerController *);
 @property (nonatomic, copy) void (^openFeedback)();

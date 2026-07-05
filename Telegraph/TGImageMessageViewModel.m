@@ -493,16 +493,16 @@ static CTFontRef textFontForSize(CGFloat size)
         if (imageSize.width > imageSize.height)
         {
             if (renderSize)
-                *renderSize = CGSizeMake(imageSize.width * squareSide / imageSize.height, squareSide);
+               *renderSize = CGSizeMake(imageSize.width * squareSide / imageSize.height, squareSide);
         }
         else
         {
             if (renderSize)
-                *renderSize = CGSizeMake(squareSide, imageSize.height * squareSide / imageSize.width);
+               *renderSize = CGSizeMake(squareSide, imageSize.height * squareSide / imageSize.width);
         }
         
         if (thumbnailSize)
-            *thumbnailSize = CGSizeMake(squareSide, squareSide);
+           *thumbnailSize = CGSizeMake(squareSide, squareSide);
         
         return;
     }
@@ -557,7 +557,7 @@ static CTFontRef textFontForSize(CGFloat size)
     }
     
     if (renderSize != NULL)
-        *renderSize = imageSize;
+       *renderSize = imageSize;
     
     imageSize.width = MIN(imageTargetMaxSize.width, imageSize.width);
     imageSize.height = MIN(imageTargetMaxSize.height, imageSize.height);
@@ -566,7 +566,7 @@ static CTFontRef textFontForSize(CGFloat size)
     imageSize.height = MAX(imageTargetMinSize.height, imageSize.height);
     
     if (thumbnailSize != NULL)
-        *thumbnailSize = imageSize;
+       *thumbnailSize = imageSize;
 }
 
 - (UIColor *)dateColor
@@ -827,7 +827,7 @@ static CTFontRef textFontForSize(CGFloat size)
                 [_contentModel setNeedsSubmodelContentsUpdate];
             }
             
-            *sizeUpdated = true;
+           *sizeUpdated = true;
             
             if (rebind) {
                 UIView *container = _imageModel.boundView.superview;
@@ -880,7 +880,7 @@ static CTFontRef textFontForSize(CGFloat size)
         {
             _animateNextLayout = true;
             _originalImageSize = imageSize;
-            *sizeUpdated = true;
+           *sizeUpdated = true;
         }
         updated = true;
     }
@@ -932,7 +932,7 @@ static CTFontRef textFontForSize(CGFloat size)
         }
         
         if (sizeUpdated) {
-            *sizeUpdated = true;
+           *sizeUpdated = true;
         }
     }
     
@@ -1209,7 +1209,7 @@ static CTFontRef textFontForSize(CGFloat size)
             [_replyButtonsModel setReplyMarkup:replyMarkup hasReceipt:false];
         }
         if (sizeUpdated) {
-            *sizeUpdated = true;
+           *sizeUpdated = true;
         }
     }
 }
@@ -1831,7 +1831,7 @@ static CTFontRef textFontForSize(CGFloat size)
         [_textModel layoutForContainerSize:containerSize];
     
     if (needsContentsUpdate != NULL)
-        *needsContentsUpdate = updateContents;
+       *needsContentsUpdate = updateContents;
     
     CGSize size = _textModel.frame.size;
     

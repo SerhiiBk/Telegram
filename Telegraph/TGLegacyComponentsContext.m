@@ -130,11 +130,11 @@
     return [TGImageDownloadActor serverMediaDataForAssetUrl:url];
 }
 
-- (void)presentActionSheet:(NSArray<LegacyComponentsActionSheetAction *> *)actions view:(UIView *)view completion:(void (^)(LegacyComponentsActionSheetAction *))completion {
+- (void)presentActionSheet:(NSArray *)actions view:(UIView *)view completion:(void (^)(LegacyComponentsActionSheetAction *))completion {
     [self presentActionSheet:actions view:view sourceRect:nil completion:completion];
 }
 
-- (void)presentActionSheet:(NSArray<LegacyComponentsActionSheetAction *> *)actions view:(UIView *)view sourceRect:(CGRect (^)(void))sourceRect completion:(void (^)(LegacyComponentsActionSheetAction *))completion {
+- (void)presentActionSheet:(NSArray *)actions view:(UIView *)view sourceRect:(CGRect (^)(void))sourceRect completion:(void (^)(LegacyComponentsActionSheetAction *))completion {
     NSMutableArray *convertedActions = [[NSMutableArray alloc] init];
     for (LegacyComponentsActionSheetAction *action in actions) {
         TGActionSheetActionType type;

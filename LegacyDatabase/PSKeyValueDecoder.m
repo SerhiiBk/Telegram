@@ -125,7 +125,7 @@ static id<PSCoding> readObject(uint8_t const **currentPtr, PSKeyValueDecoder *te
         object = [(id<PSCoding>)[(id)objectClass alloc] initWithKeyValueCoder:tempCoder];
     }
 
-    *currentPtr = objectEnd;
+   *currentPtr = objectEnd;
     
     return object;
 }
@@ -154,7 +154,7 @@ static  NSArray *readArray(uint8_t const **currentPtr, PSKeyValueDecoder *tempCo
             [array addObject:object];
     }
     
-    *currentPtr = objectEnd;
+   *currentPtr = objectEnd;
     
     return array;
 }
@@ -187,7 +187,7 @@ static NSDictionary *readInt32Dictionary(uint8_t const **currentPtr, PSKeyValueD
         }
     }
     
-    *currentPtr = objectEnd;
+   *currentPtr = objectEnd;
     
     return dict;
 }
@@ -204,7 +204,7 @@ static NSData *readData(uint8_t const **currentPtr)
     
     NSData *data = [[NSData alloc] initWithBytes:*currentPtr length:length];
     
-    *currentPtr += length;
+   *currentPtr += length;
     
     return data;
 }
@@ -215,7 +215,7 @@ static void readBytes(uint8_t const **currentPtr, uint8_t *value, NSUInteger max
     
     memcpy(value, *currentPtr, MIN((uint32_t)maxLength, length));
     
-    *currentPtr += length;
+   *currentPtr += length;
 }
 
 static void skipData(uint8_t const **currentPtr)

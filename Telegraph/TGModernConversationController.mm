@@ -528,7 +528,7 @@ typedef enum {
     id<SDisposable> _automaticReadDisposable;
     bool _atBottom;
     
-    NSMutableSet<NSNumber *> *_readMentionsMessageIds;
+    NSMutableSet *_readMentionsMessageIds;
 }
 
 @end
@@ -7741,7 +7741,7 @@ typedef enum {
             if (item->_message.mid == messageIndex.messageId && item->_message.fromUid == messageIndex.peerId)
             {
                 [updatedMessageIndices removeObjectAtIndex:index];
-                *stop = true;
+               *stop = true;
                 
                 [messages addObject:item->_message];
             }
@@ -8982,7 +8982,7 @@ typedef enum {
     }
     
     if (!TGIsPad()) {
-        NSArray<TGUser *> *inlineBots = [TGDatabaseInstance() _syncCachedRecentInlineBots:0.14f];
+        NSArray *inlineBots = [TGDatabaseInstance() _syncCachedRecentInlineBots:0.14f];
         NSUInteger counter = 0;
         for (TGUser *user in inlineBots) {
             if (user.userName.length == 0)
@@ -12821,14 +12821,14 @@ static UIView *_findBackArrow(UIView *view)
     }
 }
 
-- (NSArray<id<UIPreviewActionItem>> * _Nonnull)previewActionItems {
+- (NSArray * )previewActionItems {
     if ([self isSavedMessages] || [self isFeed])
         return @[];
     
     __weak TGModernConversationController *weakSelf = self;
     int64_t peerId = ((TGGenericModernConversationCompanion *)_companion).conversationId;
     
-    UIPreviewAction *thumbAction = [UIPreviewAction actionWithTitle:@"👍" style:UIPreviewActionStyleDefault handler:^(__unused UIPreviewAction * _Nonnull action, __unused UIViewController * _Nonnull previewViewController) {
+    UIPreviewAction *thumbAction = [UIPreviewAction actionWithTitle:@"👍" style:UIPreviewActionStyleDefault handler:^(__unused UIPreviewAction * action, __unused UIViewController * previewViewController) {
         [[TGSendMessageSignals sendTextMessageWithPeerId:peerId text:@"👍" replyToMid:0] startWithNext:nil error: nil completed: ^ {
         }];
     }];
@@ -12841,7 +12841,7 @@ static UIView *_findBackArrow(UIView *view)
         [TGDatabaseInstance() loadPeerNotificationSettings:defaultPeerId soundId:NULL muteUntil:&muteUntil previewText:NULL messagesMuted:NULL notFound:NULL];
     }
     
-    UIPreviewAction *muteAction = [UIPreviewAction actionWithTitle:TGPeerIdIsChannel(peerId) ? TGLocalized(@"Conversation.Mute") :TGLocalized(@"Notification.Mute1h") style:UIPreviewActionStyleDefault handler:^(__unused UIPreviewAction * _Nonnull action, __unused UIViewController * _Nonnull previewViewController) {
+    UIPreviewAction *muteAction = [UIPreviewAction actionWithTitle:TGPeerIdIsChannel(peerId) ? TGLocalized(@"Conversation.Mute") :TGLocalized(@"Notification.Mute1h") style:UIPreviewActionStyleDefault handler:^(__unused UIPreviewAction * action, __unused UIViewController * previewViewController) {
         __strong TGModernConversationController *strongSelf = weakSelf;
         if (strongSelf != nil) {
             NSNumber *muteUntil = nil;
@@ -12875,7 +12875,7 @@ static UIView *_findBackArrow(UIView *view)
         }
     }];
     
-    UIPreviewAction *unmuteAction = [UIPreviewAction actionWithTitle:TGLocalized(@"Conversation.Unmute") style:UIPreviewActionStyleDefault handler:^(__unused UIPreviewAction * _Nonnull action, __unused UIViewController * _Nonnull previewViewController) {
+    UIPreviewAction *unmuteAction = [UIPreviewAction actionWithTitle:TGLocalized(@"Conversation.Unmute") style:UIPreviewActionStyleDefault handler:^(__unused UIPreviewAction * action, __unused UIViewController * previewViewController) {
         __strong TGModernConversationController *strongSelf = weakSelf;
         if (strongSelf != nil) {
             NSNumber *muteUntil = 0;
@@ -13085,7 +13085,7 @@ static UIView *_findBackArrow(UIView *view)
     }
 }
 
-- (void)broadcastForwardMessages:(NSArray<TGMessageIndex *> *)messageIndices caption:(NSString *)caption toPeerIds:(NSArray<NSNumber *> *)peerIds grouped:(bool)grouped {
+- (void)broadcastForwardMessages:(NSArray *)messageIndices caption:(NSString *)caption toPeerIds:(NSArray *)peerIds grouped:(bool)grouped {
     int64_t peerId = [messageIndices.firstObject peerId];
     int64_t accessHash = [TGDatabaseInstance() loadConversationWithId:peerId].accessHash;
     

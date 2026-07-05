@@ -240,7 +240,7 @@ const int32_t TGCallMaxLayer = 74;
             };
             
             TGCallConnectionDescription *defaultConnection = deserializeConnection(concreteCall.connection);
-            NSMutableArray<TGCallConnectionDescription *> *alternativeConnections = [[NSMutableArray alloc] init];
+            NSMutableArray *alternativeConnections = [[NSMutableArray alloc] init];
             for (id connection in concreteCall.alternative_connections) {
                 TGCallConnectionDescription *callConnection = deserializeConnection(connection);
                 if (callConnection != nil)

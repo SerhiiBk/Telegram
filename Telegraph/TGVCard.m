@@ -90,7 +90,7 @@
 
 @implementation TGVCardValueArray
 
-- (instancetype)initWithProperty:(ABPropertyID)property values:(NSArray<TGVCardValueArrayItem<id> *> *)values objectType:(Class)objectType
+- (instancetype)initWithProperty:(ABPropertyID)property values:(NSArray *)values objectType:(Class)objectType
 {
     self = [super init];
     if (self != nil)
@@ -199,7 +199,7 @@
         };
         
         TGVCardValueArray *(^getMultiStringValueProperty)(ABPropertyID) = ^TGVCardValueArray *(ABPropertyID property) {
-            NSMutableArray<TGVCardValueArrayItem<NSString *> *> *array = [[NSMutableArray alloc] init];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
             getMultiValuePropertyValues(property, array);
             
             if (array.count > 0) {
@@ -210,7 +210,7 @@
         };
         
         TGVCardValueArray *(^getMultiDictionaryValueProperty)(ABPropertyID) = ^TGVCardValueArray *(ABPropertyID property) {
-            NSMutableArray<TGVCardValueArrayItem<NSDictionary *> *> *array = [[NSMutableArray alloc] init];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
             getMultiValuePropertyValues(property, array);
             
             if (array.count > 0) {
@@ -321,7 +321,7 @@
             }
         }
         if (values.count > 0) {
-            *target = [[TGVCardValueArray alloc] initWithProperty:origin.property values:values objectType:origin.objectType];
+           *target = [[TGVCardValueArray alloc] initWithProperty:origin.property values:values objectType:origin.objectType];
         }
     };
 

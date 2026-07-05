@@ -20,17 +20,17 @@
 
 @end
 
-@interface TGVCardValueArrayItem<__covariant ObjectType> : NSObject
+@interface TGVCardValueArrayItem : NSObject
 
 @property (nonatomic, readonly) int64_t uniqueId;
 @property (nonatomic, readonly) NSString *label;
-@property (nonatomic, readonly) ObjectType value;
+@property (nonatomic, readonly) id value;
 
 @end
 
 @interface TGVCardValueArray : TGVCardValue
 
-@property (nonatomic, readonly) NSArray<TGVCardValueArrayItem *> *values;
+@property (nonatomic, readonly) NSArray *values;
 @property (nonatomic, readonly) Class objectType;
 
 @end

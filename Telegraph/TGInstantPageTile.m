@@ -1,7 +1,7 @@
 #import "TGInstantPageTile.h"
 
 @interface TGInstantPageTile () {
-    NSMutableArray<id<TGInstantPageLayoutItem>> *_items;
+    NSMutableArray *_items;
 }
 
 @end
@@ -17,8 +17,8 @@
     return self;
 }
 
-+ (NSArray<TGInstantPageTile *> *)tilesWithLayout:(TGInstantPageLayout *)layout boundingWidth:(CGFloat)boundingWidth {
-    NSMutableDictionary<NSNumber *, TGInstantPageTile *> *tileByOrigin = [[NSMutableDictionary alloc] init];
++ (NSArray *)tilesWithLayout:(TGInstantPageLayout *)layout boundingWidth:(CGFloat)boundingWidth {
+    NSMutableDictionary *tileByOrigin = [[NSMutableDictionary alloc] init];
     const CGFloat tileHeight = 256.0f;
     
     for (id<TGInstantPageLayoutItem> item in layout.items) {
@@ -36,7 +36,7 @@
         }
     }
     
-    NSMutableArray<TGInstantPageTile *> *tiles = [[NSMutableArray alloc] init];
+    NSMutableArray *tiles = [[NSMutableArray alloc] init];
     [tileByOrigin enumerateKeysAndObjectsUsingBlock:^(__unused NSNumber *key, TGInstantPageTile *tile, __unused BOOL *stop) {
         [tiles addObject:tile];
     }];

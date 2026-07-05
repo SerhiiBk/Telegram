@@ -505,7 +505,7 @@
                 if (it->second == obj)
                 {
                     [removedViews removeObjectForKey:key];
-                    *stop = true;
+                   *stop = true;
                 }
             }];
             

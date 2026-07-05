@@ -1,14 +1,16 @@
-#import <Availability.h>
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "LegacyComponentsIos6Compat.h"
 
-#ifndef __IPHONE_3_0
-#warning "This project uses features only available in iOS SDK 3.0 and later."
+#ifdef TG_PUBLIC_BUILD
+#ifndef TG_PUBLIC_NSLOG_DISABLED
+#define TG_PUBLIC_NSLOG_DISABLED 1
+#define NSLog(...) do { } while (0)
+#endif
 #endif
 
-#ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
-
-#import <MTProtoKit/MTLogging.h>
-#import "TGCommon.h"
-
+@interface NSArray (TGIOS6FirstObject)
+- (id)firstObject;
+@end
 #endif

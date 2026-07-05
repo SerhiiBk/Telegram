@@ -748,7 +748,7 @@ static NSMutableDictionary *queueItemsByPath() {
     }
     
     if (outShader != NULL) {
-        *outShader = shader;
+       *outShader = shader;
     }
     
     return true;
@@ -1007,7 +1007,7 @@ static NSMutableDictionary *queueItemsByPath() {
                 /*
                  The quad vertex data defines the region of 2D plane onto which we draw our pixel buffers.
                  Vertex data formed using (-1,-1) and (1,1) as the bottom left and top right coordinates respectively, covers the entire screen.
-                 */
+                */
                 GLfloat quadVertexData [] = {
                     (GLfloat)(-1 * normalizedSamplingSize.width), (GLfloat)(-1 * normalizedSamplingSize.height),
                     (GLfloat)normalizedSamplingSize.width, (GLfloat)(-1 * normalizedSamplingSize.height),
@@ -1021,7 +1021,7 @@ static NSMutableDictionary *queueItemsByPath() {
                 
                 /*
                  The texture vertices are set up such that we flip the texture vertically. This is so that our top left origin buffers match OpenGL's bottom left texture coordinate system.
-                 */
+                */
                 
                 /*
                  
@@ -1029,7 +1029,7 @@ static NSMutableDictionary *queueItemsByPath() {
                  |      |
                  0,1---1,1
                  
-                 */
+                */
                 
                 CGRect textureSamplingRect = CGRectMake(0, 0, 1, 1);
                 if (ABS(frame.angle - ((CGFloat)M_PI / 2.0f)) < FLT_EPSILON) {

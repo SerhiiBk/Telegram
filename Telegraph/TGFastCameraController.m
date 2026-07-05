@@ -718,7 +718,7 @@ NSString *const TGFastCameraUseRearCameraKey = @"fastCameraUseRear_v1";
         {
             TGCameraPreviewView *previewView = strongSelf->_previewView;
             if (previewView != nil)
-            *mirrored = previewView.captureConnection.videoMirrored;
+           *mirrored = previewView.captureConnection.videoMirrored;
         }
         
         return [TGCameraController _interfaceOrientationForDeviceOrientation:strongSelf->_camera.deviceAngleSampler.deviceOrientation];

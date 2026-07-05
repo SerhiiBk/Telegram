@@ -2,7 +2,7 @@
 //  TGShareNavigationBar.h
 //  Telegraph
 //
-//  Created by Ilya Laktyushin on 30/03/16.
+//  Created for Telegram iOS.
 //
 //
 

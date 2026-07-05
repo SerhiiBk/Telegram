@@ -2,10 +2,23 @@
 
 #import "TGShareMtSerialization.h"
 
-#import <MTProtoKitDynamic/MTProtoKitDynamic.h>
+#import <MTProtoKit/MTLogging.h>
+#import <MTProtoKit/MTDatacenterAuthInfo.h>
+#import <MTProtoKit/MTApiEnvironment.h>
+#import <MTProtoKit/MTSerialization.h>
+#import <MTProtoKit/MTContext.h>
+#import <MTProtoKit/MTFileBasedKeychain.h>
+#import <MTProtoKit/MTDatacenterAddressSet.h>
+#import <MTProtoKit/MTDatacenterAddress.h>
+#import "MTSignal.h"
+#import "MTBackupAddressSignals.h"
+#import "MTDisposable.h"
+#import <MTProtoKit/MTProto.h>
+#import <MTProtoKit/MTRequestMessageService.h>
+#import "MTAes.h"
+#import <MTProtoKit/MTEncryption.h>
 
 #import <CommonCrypto/CommonKeyDerivation.h>
-#import <CommonCrypto/CommonCryptoError.h>
 
 #import "../../config.h"
 
@@ -48,9 +61,8 @@
     {
         if ([bundleIdentifier hasSuffix:suffix])
         {
-            NSString *groupName = [@"group." stringByAppendingString:[[[NSBundle mainBundle] bundleIdentifier] substringToIndex:[[NSBundle mainBundle] bundleIdentifier].length - suffix.length]];
-            NSURL *groupURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:groupName];
-            return groupURL;
+            NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true) objectAtIndex:0];
+            return [NSURL fileURLWithPath:documentsPath isDirectory:true];
         }
     }
     
@@ -85,7 +97,7 @@ static void TGShareLoggingFunction(NSString *format, va_list args)
         buf[0] = [hex characterAtIndex:i];
         buf[1] = [hex characterAtIndex:i+1];
         char *b2 = NULL;
-        *bp++ = strtol(buf, &b2, 16);
+       *bp++ = strtol(buf, &b2, 16);
         NSAssert(b2 == buf + 2, @"String should be all hex digits: %@ (bad digit around %d)", hex, i);
     }
     
@@ -259,7 +271,7 @@ static void TGShareLoggingFunction(NSString *format, va_list args)
                             if ([mtContext authInfoForDatacenterWithId:[nDatacenterId integerValue]] == nil)
                                 [mtContext updateAuthInfoForDatacenterWithId:[nDatacenterId integerValue] authInfo:datacenterAuthInfo];
                             
-                            [datacenterAddressSets enumerateKeysAndObjectsUsingBlock:^(NSNumber *nDatacenterId, MTDatacenterAddressSet *addressSet, BOOL * _Nonnull stop)
+                            [datacenterAddressSets enumerateKeysAndObjectsUsingBlock:^(NSNumber *nDatacenterId, MTDatacenterAddressSet *addressSet, BOOL * stop)
                             {
                                 [mtContext updateAddressSetForDatacenterWithId:[nDatacenterId integerValue] addressSet:addressSet forceUpdateSchemes:true];
                             }];
@@ -337,7 +349,7 @@ static void TGShareLoggingFunction(NSString *format, va_list args)
                                 NSMutableData *key = [[NSMutableData alloc] initWithBytesNoCopy:malloc(32) length:32 freeWhenDone:true];
                                 
                                 int result = CCKeyDerivationPBKDF(kCCPBKDF2, passwordData.bytes, passwordData.length, salt.bytes, salt.length, kCCPRFHmacAlgSHA256, 1000, key.mutableBytes, 32);
-                                if (result != kCCSuccess)
+                                if (result != 0)
                                     return false;
                                 
                                 NSData *data = MTAesDecrypt(containerDict[@"data"], key, iv);

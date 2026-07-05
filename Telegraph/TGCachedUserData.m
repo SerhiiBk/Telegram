@@ -4,7 +4,7 @@
 
 @implementation TGCachedUserGroupsInCommon
 
-- (instancetype)initWithGroups:(NSArray<TGConversation *> *)groups {
+- (instancetype)initWithGroups:(NSArray *)groups {
     self = [super init];
     if (self != nil) {
         _groups = groups;

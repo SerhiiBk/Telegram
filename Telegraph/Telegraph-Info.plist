@@ -88,7 +88,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLName</key>
-			<string>org.telegram.TelegramHD</string>
+			<string>com.bkcserhii.tele6ram</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>telegram</string>
@@ -98,7 +98,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>org.telegram.TelegramHD.compatibility</string>
+			<string>com.bkcserhii.tele6ram.compatibility</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>tg</string>
@@ -108,7 +108,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLName</key>
-			<string>org.telegram.TelegramHD.dropbox</string>
+			<string>com.bkcserhii.tele6ram.dropbox</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>db-pa9wtoz9l514anx</string>
@@ -263,7 +263,7 @@
 			<key>UTTypeDescription</key>
 			<string>WebP File</string>
 			<key>UTTypeIdentifier</key>
-			<string>org.telegram.Telegram.webp</string>
+			<string>com.bkcserhii.tele6ram.webp</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>

@@ -314,7 +314,7 @@ static void computeImageVariance(uint8_t *memory, int width, int height, int str
     
     float variance = rnVariance + gnVariance + bnVariance;
     if (outVariance != NULL)
-        *outVariance = variance;
+       *outVariance = variance;
     
     //float luminanceVariance = ((uint64_t)((luminanceSumSq / 255) - ((uint64_t)luminanceSum * (uint64_t)luminanceSum / 255) / n)) / (255.0f * n);
     
@@ -337,10 +337,10 @@ static void computeImageVariance(uint8_t *memory, int width, int height, int str
     //TGLog(@"histogram: [%f %f %f %f %f %f %f %f %f %f]", floatHistogram[0], floatHistogram[1], floatHistogram[2], floatHistogram[3], floatHistogram[4], floatHistogram[5], floatHistogram[6], floatHistogram[7], floatHistogram[8], floatHistogram[9]);
     
     if (outLuminance != NULL)
-        *outLuminance = n0 < n1 ? 0.95f : 0.5f;
+       *outLuminance = n0 < n1 ? 0.95f : 0.5f;
     
     if (outRealLuminance != NULL)
-        *outRealLuminance = (luminanceSum / (norm * 255.0f));
+       *outRealLuminance = (luminanceSum / (norm * 255.0f));
 }
 
 static void fastScaleImage(uint8_t *sourceMemory, int sourceWidth, int sourceHeight, int sourceStride, uint8_t *targetMemory, int targetWidth, int targetHeight, int targetStride, CGRect sourceRectInTargetSpace)
@@ -360,7 +360,7 @@ static void fastScaleImage(uint8_t *sourceMemory, int sourceWidth, int sourceHei
             if (sourceX >= 0 && sourceY >= 0 && sourceX < sourceWidth && sourceY < sourceHeight)
             {
                 uint32_t color = *((uint32_t *)&sourceMemory[sourceY * sourceStride + sourceX * 4]);
-                *((uint32_t *)&targetMemory[y * targetStride + x * 4]) = color;
+               *((uint32_t *)&targetMemory[y * targetStride + x * 4]) = color;
             }
         }
     }
@@ -490,7 +490,7 @@ static void addAttachmentImageCorners(void *memory, const unsigned int width, co
             
             pixel = (alpha << 24) | (((((pixel >> 16) & 0xff) * alpha) >> 8) << 16) | (((((pixel >> 8) & 0xff) * alpha) >> 8) << 8) | (((((pixel >> 0) & 0xff) * alpha) >> 8) << 0);
             pixel = alphaComposePremultipliedPixels(*((uint32_t *)&contextMemory[y * contextStride + x * 4]), pixel);
-            *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
         }
     }
     
@@ -498,7 +498,7 @@ static void addAttachmentImageCorners(void *memory, const unsigned int width, co
     {
         for (unsigned int x = radiusWithPadding; x < rightRadius; x++)
         {
-            *((uint32_t *)(&memory[y * stride + x * 4])) = shadowColorArgb;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = shadowColorArgb;
         }
     }
     
@@ -506,7 +506,7 @@ static void addAttachmentImageCorners(void *memory, const unsigned int width, co
     {
         for (unsigned int x = radiusWithPadding; x < rightRadius; x++)
         {
-            *((uint32_t *)(&memory[y * stride + x * 4])) = strokeColorArgb;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = strokeColorArgb;
         }
     }
     
@@ -519,7 +519,7 @@ static void addAttachmentImageCorners(void *memory, const unsigned int width, co
 
             pixel = (alpha << 24) | (((((pixel >> 16) & 0xff) * alpha) >> 8) << 16) | (((((pixel >> 8) & 0xff) * alpha) >> 8) << 8) | (((((pixel >> 0) & 0xff) * alpha) >> 8) << 0);
             pixel = alphaComposePremultipliedPixels(*((uint32_t *)&contextMemory[y * contextStride + (width - 1 - x) * 4]), pixel);
-            *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
         }
     }
     
@@ -527,22 +527,22 @@ static void addAttachmentImageCorners(void *memory, const unsigned int width, co
     {
         for (int x = 0; x < shadowSize; x++)
         {
-            *((uint32_t *)(&memory[y * stride + x * 4])) = shadowColorArgb;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = shadowColorArgb;
         }
 
         for (int x = shadowSize; x < shadowSize + strokeWidth; x++)
         {
-            *((uint32_t *)(&memory[y * stride + x * 4])) = strokeColorArgb;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = strokeColorArgb;
         }
         
         for (unsigned int x = width - shadowSize - strokeWidth; x < width - shadowSize; x++)
         {
-            *((uint32_t *)(&memory[y * stride + x * 4])) = strokeColorArgb;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = strokeColorArgb;
         }
         
         for (unsigned int x = width - shadowSize; x < width; x++)
         {
-            *((uint32_t *)(&memory[y * stride + x * 4])) = shadowColorArgb;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = shadowColorArgb;
         }
     }
     
@@ -555,7 +555,7 @@ static void addAttachmentImageCorners(void *memory, const unsigned int width, co
             
             pixel = (alpha << 24) | (((((pixel >> 16) & 0xff) * alpha) >> 8) << 16) | (((((pixel >> 8) & 0xff) * alpha) >> 8) << 8) | (((((pixel >> 0) & 0xff) * alpha) >> 8) << 0);
             pixel = alphaComposePremultipliedPixels(*((uint32_t *)&contextMemory[(height - 1 - y) * contextStride + x * 4]), pixel);
-            *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
         }
     }
     
@@ -563,7 +563,7 @@ static void addAttachmentImageCorners(void *memory, const unsigned int width, co
     {
         for (unsigned int x = radiusWithPadding; x < rightRadius; x++)
         {
-            *((uint32_t *)(&memory[y * stride + x * 4])) = strokeColorArgb;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = strokeColorArgb;
         }
     }
     
@@ -571,7 +571,7 @@ static void addAttachmentImageCorners(void *memory, const unsigned int width, co
     {
         for (unsigned int x = radiusWithPadding; x < rightRadius; x++)
         {
-            *((uint32_t *)(&memory[y * stride + x * 4])) = shadowColorArgb;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = shadowColorArgb;
         }
     }
     
@@ -584,7 +584,7 @@ static void addAttachmentImageCorners(void *memory, const unsigned int width, co
 
             pixel = (alpha << 24) | (((((pixel >> 16) & 0xff) * alpha) >> 8) << 16) | (((((pixel >> 8) & 0xff) * alpha) >> 8) << 8) | (((((pixel >> 0) & 0xff) * alpha) >> 8) << 0);
             pixel = alphaComposePremultipliedPixels(*((uint32_t *)&contextMemory[(height - 1 - y) * contextStride + (width - 1 - x) * 4]), pixel);
-            *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
         }
     }
 }
@@ -637,7 +637,7 @@ void TGAddImageCorners(void *memory, const unsigned int width, const unsigned in
             
             pixel = (alpha << 24) | (((((pixel >> 16) & 0xff) * alpha) >> 8) << 16) | (((((pixel >> 8) & 0xff) * alpha) >> 8) << 8) | (((((pixel >> 0) & 0xff) * alpha) >> 8) << 0);
             pixel = alphaComposePremultipliedPixels(*((uint32_t *)&contextMemory[y * contextStride + x * 4]), pixel);
-            *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
         }
     }
     
@@ -650,7 +650,7 @@ void TGAddImageCorners(void *memory, const unsigned int width, const unsigned in
             
             pixel = (alpha << 24) | (((((pixel >> 16) & 0xff) * alpha) >> 8) << 16) | (((((pixel >> 8) & 0xff) * alpha) >> 8) << 8) | (((((pixel >> 0) & 0xff) * alpha) >> 8) << 0);
             pixel = alphaComposePremultipliedPixels(*((uint32_t *)&contextMemory[y * contextStride + (width - 1 - x) * 4]), pixel);
-            *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
         }
     }
     
@@ -663,7 +663,7 @@ void TGAddImageCorners(void *memory, const unsigned int width, const unsigned in
             
             pixel = (alpha << 24) | (((((pixel >> 16) & 0xff) * alpha) >> 8) << 16) | (((((pixel >> 8) & 0xff) * alpha) >> 8) << 8) | (((((pixel >> 0) & 0xff) * alpha) >> 8) << 0);
             pixel = alphaComposePremultipliedPixels(*((uint32_t *)&contextMemory[(height - 1 - y) * contextStride + x * 4]), pixel);
-            *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
         }
     }
     
@@ -676,7 +676,7 @@ void TGAddImageCorners(void *memory, const unsigned int width, const unsigned in
             
             pixel = (alpha << 24) | (((((pixel >> 16) & 0xff) * alpha) >> 8) << 16) | (((((pixel >> 8) & 0xff) * alpha) >> 8) << 8) | (((((pixel >> 0) & 0xff) * alpha) >> 8) << 0);
             pixel = alphaComposePremultipliedPixels(*((uint32_t *)&contextMemory[(height - 1 - y) * contextStride + (width - 1 - x) * 4]), pixel);
-            *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
+           *((uint32_t *)(&memory[y * stride + x * 4])) = pixel;
         }
     }
     
@@ -717,7 +717,7 @@ static int16_t *brightenMatrix(int32_t *outDivisor)
     });
     
     if (outDivisor != NULL)
-        *outDivisor = divisor;
+       *outDivisor = divisor;
     
     return saturationMatrix;
 }
@@ -755,7 +755,7 @@ static int16_t *lightBrightenMatrix(int32_t *outDivisor)
     });
     
     if (outDivisor != NULL)
-        *outDivisor = divisor;
+       *outDivisor = divisor;
     
     return saturationMatrix;
 }
@@ -793,7 +793,7 @@ static int16_t *secretMatrix(int32_t *outDivisor)
     });
     
     if (outDivisor != NULL)
-        *outDivisor = divisor;
+       *outDivisor = divisor;
     
     return saturationMatrix;
 }
@@ -1094,7 +1094,7 @@ UIImage *TGBlurredAttachmentWithCornerRadiusImage(UIImage *source, CGSize size, 
     
     if (averageColor != NULL)
     {
-        *averageColor = TGImageAverageColor(blurredMemory, blurredContextSize.width, blurredContextSize.height, (int)blurredBytesPerRow);
+       *averageColor = TGImageAverageColor(blurredMemory, blurredContextSize.width, blurredContextSize.height, (int)blurredBytesPerRow);
     }
     
     vImage_Buffer srcBuffer;
@@ -1228,7 +1228,7 @@ UIImage *TGSecretBlurredAttachmentWithCornerRadiusImage(UIImage *source, CGSize 
     
     if (averageColor != NULL)
     {
-        *averageColor = TGImageAverageColor(blurredMemory, blurredContextSize.width, blurredContextSize.height, (int)blurredBytesPerRow);
+       *averageColor = TGImageAverageColor(blurredMemory, blurredContextSize.width, blurredContextSize.height, (int)blurredBytesPerRow);
     }
     
     vImage_Buffer srcBuffer;
@@ -1344,7 +1344,7 @@ UIImage *TGBlurredFileImage(UIImage *source, CGSize size, uint32_t *averageColor
     
     if (averageColor != NULL)
     {
-        *averageColor = TGImageAverageColor(blurredMemory, blurredContextSize.width, blurredContextSize.height, (int)blurredBytesPerRow);
+       *averageColor = TGImageAverageColor(blurredMemory, blurredContextSize.width, blurredContextSize.height, (int)blurredBytesPerRow);
     }
     
     vImage_Buffer srcBuffer;
@@ -1527,7 +1527,7 @@ UIImage *TGBlurredRectangularImage(UIImage *source, CGSize size, CGSize renderSi
     
     if (averageColor != NULL)
     {
-        *averageColor = TGImageAverageColor(blurredMemory, blurredContextSize.width, blurredContextSize.height, (int)blurredBytesPerRow);
+       *averageColor = TGImageAverageColor(blurredMemory, blurredContextSize.width, blurredContextSize.height, (int)blurredBytesPerRow);
     }
     
     vImage_Buffer srcBuffer;
@@ -1626,7 +1626,7 @@ UIImage *TGLoadedAttachmentWithCornerRadiusImage(UIImage *source, CGSize size, u
     
     if (averageColor != NULL)
     {
-        *averageColor = TGImageAverageColor(targetMemory, targetContextSize.width, targetContextSize.height, (int)targetBytesPerRow);
+       *averageColor = TGImageAverageColor(targetMemory, targetContextSize.width, targetContextSize.height, (int)targetBytesPerRow);
     }
     
     TGStaticBackdropAreaData *timestampBackdropArea = createTimestampBackdropArea(targetMemory, targetContextSize.width, targetContextSize.height, (int)targetBytesPerRow, CGSizeMake(size.width, size.height));
@@ -1764,7 +1764,7 @@ UIImage *TGLoadedFileImage(UIImage *source, CGSize size, uint32_t *averageColor,
     UIGraphicsPopContext();
     
     if (averageColor != NULL)
-        *averageColor = TGImageAverageColor(targetMemory, targetContextSize.width, targetContextSize.height, (int)targetBytesPerRow);
+       *averageColor = TGImageAverageColor(targetMemory, targetContextSize.width, targetContextSize.height, (int)targetBytesPerRow);
     
     if (borderRadius != 0)
     {
@@ -1994,7 +1994,7 @@ void TGPlainImageAverageColor(UIImage *source, uint32_t *averageColor)
     UIGraphicsPopContext();
     
     if (averageColor != NULL)
-        *averageColor = TGImageAverageColor(targetMemory, targetContextSize.width, targetContextSize.height, (int)targetBytesPerRow);
+       *averageColor = TGImageAverageColor(targetMemory, targetContextSize.width, targetContextSize.height, (int)targetBytesPerRow);
     
     CGContextRelease(targetContext);
     free(targetMemory);
@@ -2104,7 +2104,7 @@ UIImage *TGScaleAndCropImageToPixelSize(UIImage *source, CGSize size, CGSize ren
     
     if (averageColor != NULL)
     {
-        *averageColor = TGImageAverageColor(targetMemory, targetContextSize.width, targetContextSize.height, (int)targetBytesPerRow);
+       *averageColor = TGImageAverageColor(targetMemory, targetContextSize.width, targetContextSize.height, (int)targetBytesPerRow);
     }
     
     if (pixelProcessingBlock)

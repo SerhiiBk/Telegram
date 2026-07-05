@@ -10,7 +10,7 @@
 
 @interface TGInstantPageSlideshowView () <UIScrollViewDelegate, TGModernGalleryTransitionView> {
     UIScrollView *_scrollView;
-    NSMutableDictionary<NSNumber *, TGInstantPageImageView *> *_visibleItemViews;
+    NSMutableDictionary *_visibleItemViews;
     CGSize _currentSize;
     void (^_openMedia)(id);
     TGPagerView *_pagerView;
@@ -20,7 +20,7 @@
 
 @implementation TGInstantPageSlideshowView
 
-- (instancetype)initWithFrame:(CGRect)frame medias:(NSArray<TGInstantPageMedia *> *)medias {
+- (instancetype)initWithFrame:(CGRect)frame medias:(NSArray *)medias {
     self = [super initWithFrame:frame];
     if (self != nil) {
         _medias = medias;
@@ -139,7 +139,7 @@
         UIView *result = [itemView transitionViewForMedia:media];
         if (result != nil) {
             resultView = self;
-            *stop = true;
+           *stop = true;
         }
     }];
     return resultView;

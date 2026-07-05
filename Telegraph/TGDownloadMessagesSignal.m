@@ -165,7 +165,7 @@
         return [SSignal single:@[]];
     }
     
-    return [request mapToSignal:^SSignal *(NSArray<TLStickerSetCovered *> *result) {
+    return [request mapToSignal:^SSignal *(NSArray *result) {
         NSMutableArray *signals = [[NSMutableArray alloc] init];
         for (TLStickerSetCovered *coveredSet in result) {
             TGStickerPackIdReference *reference = [[TGStickerPackIdReference alloc] initWithPackId:coveredSet.set.n_id packAccessHash:coveredSet.set.access_hash shortName:coveredSet.set.short_name];
@@ -262,7 +262,7 @@ static dispatch_block_t recursiveBlock(void (^block)(dispatch_block_t recurse))
     }];
     
     return [clear then:[[TGDatabaseInstance() modify:^id{
-        NSMutableDictionary<NSNumber *, TGUnseenPeerMentionsState *> *resetPeerUnseenMentionsStates = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *resetPeerUnseenMentionsStates = [[NSMutableDictionary alloc] init];
         resetPeerUnseenMentionsStates[@(peerId)] = [[TGUnseenPeerMentionsState alloc] initWithVersion:0 count:0 maxIdWithPrecalculatedCount:0];
         [TGDatabaseInstance() transactionResetPeerUnseenMentionsStates:resetPeerUnseenMentionsStates];
         return [SSignal complete];

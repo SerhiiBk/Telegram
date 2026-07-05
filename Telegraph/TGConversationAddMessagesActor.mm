@@ -45,7 +45,7 @@
 + (void)updatePeerRatings:(NSArray *)messages {
     if (messages.count != 0) {
         [TGDatabaseInstance() dispatchOnIndexThread:^{
-            NSMutableDictionary<NSNumber *, NSMutableArray<NSNumber *> *> *updatePeerRatingEvents = nil;
+            NSMutableDictionary *updatePeerRatingEvents = nil;
             
             for (TGMessage *message in messages) {
                 if (message.outgoing) {

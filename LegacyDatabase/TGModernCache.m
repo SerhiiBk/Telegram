@@ -26,6 +26,15 @@ typedef enum {
 
 @end
 
+static NSString *TGModernCacheHexString(NSData *data)
+{
+    const unsigned char *bytes = data.bytes;
+    NSMutableString *string = [[NSMutableString alloc] initWithCapacity:data.length * 2];
+    for (NSUInteger i = 0; i < data.length; i++)
+        [string appendFormat:@"%02x", bytes[i]];
+    return string;
+}
+
 @implementation TGModernCache
 
 - (instancetype)initWithPath:(NSString *)path size:(NSUInteger)size
@@ -145,7 +154,7 @@ typedef enum {
 
 - (NSString *)_filePathForKey:(NSData *)key
 {
-    return [[_path stringByAppendingPathComponent:@"store"] stringByAppendingPathComponent:[key base64EncodedStringWithOptions:0]];
+    return [[_path stringByAppendingPathComponent:@"store"] stringByAppendingPathComponent:TGModernCacheHexString(key)];
 }
 
 - (void)_dumpState:(id<PSKeyValueReader, PSKeyValueWriter>)readerWriter
@@ -219,7 +228,7 @@ typedef enum {
         [filePathsToRemove addObject:filePath];
         
         if (stop && remainingSize <= 0)
-            *stop = true;
+           *stop = true;
     }];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -235,7 +244,7 @@ typedef enum {
     }
     
     if (removedSize)
-        *removedSize = blockRemovedSize;
+       *removedSize = blockRemovedSize;
 }
 
 - (void)_updateLastAccessDateForKey:(NSData *)key size:(NSUInteger)size readerWriter:(id<PSKeyValueReader,PSKeyValueWriter>)readerWriter

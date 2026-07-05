@@ -228,7 +228,7 @@ static CTFontRef textFontForSize(CGFloat size)
         _textModel.text = message.caption;
         _textModel.textCheckingResults = message.textCheckingResults;
         if (sizeUpdated != NULL)
-            *sizeUpdated = true;
+           *sizeUpdated = true;
     }
     
     [self updateWaveform];
@@ -408,7 +408,7 @@ static CTFontRef textFontForSize(CGFloat size)
         [_textModel layoutForContainerSize:containerSize];
     
     if (needsContentsUpdate != NULL && updateContents)
-        *needsContentsUpdate = updateContents;
+       *needsContentsUpdate = updateContents;
     
     CGFloat width = MAX(160, MIN(205, _duration * 30));
     

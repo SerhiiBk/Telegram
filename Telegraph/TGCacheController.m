@@ -529,7 +529,7 @@
                     }
                 }
                 
-                *stop = cancelled;
+               *stop = cancelled;
             }];
             
             NSArray *tmpFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:NSTemporaryDirectory() error:nil];

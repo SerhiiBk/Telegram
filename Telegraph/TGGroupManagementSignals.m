@@ -515,7 +515,7 @@
     }];
 }
 
-+ (SSignal *)_validateGlobalPeerReadStates:(NSArray<TGConversation *> *)peers {
++ (SSignal *)_validateGlobalPeerReadStates:(NSArray *)peers {
     if (peers.count == 0) {
         return [SSignal complete];
     }
@@ -526,7 +526,7 @@
     
     return [initialPts mapToSignal:^SSignal *(NSNumber *nInitialPts) {
         TLRPCmessages_getPeerDialogs$messages_getPeerDialogs *getPeerDialogs = [[TLRPCmessages_getPeerDialogs$messages_getPeerDialogs alloc] init];
-        NSMutableArray<TLInputDialogPeer *> *inputDialogPeers = [[NSMutableArray alloc] init];
+        NSMutableArray *inputDialogPeers = [[NSMutableArray alloc] init];
         for (TGConversation *peer in peers) {
             int64_t accessHash = peer.accessHash;
             if (TGPeerIdIsUser(peer.conversationId)) {
@@ -545,8 +545,8 @@
             if (false && result.state.pts != [nInitialPts intValue]) {
                 return [SSignal fail:@true];
             } else {
-                NSMutableDictionary<NSNumber *, TGPeerReadState *> *readStates = [[NSMutableDictionary alloc] init];
-                NSMutableDictionary<NSNumber *, TGUnseenPeerMentionsState *> *resetPeerUnseenMentionsStates = [[NSMutableDictionary alloc] init];
+                NSMutableDictionary *readStates = [[NSMutableDictionary alloc] init];
+                NSMutableDictionary *resetPeerUnseenMentionsStates = [[NSMutableDictionary alloc] init];
                 
                 for (TGConversation *conversation in peers) {
                     readStates[@(conversation.conversationId)] = (TGPeerReadState *)[NSNull null];
@@ -575,8 +575,8 @@
         }];
         
         SSignal *appliedReadStates = [[maybeAppliedReadStates onNext:^(NSDictionary *dict) {
-            NSDictionary<NSNumber *, TGPeerReadState *> *readStates = dict[@"readStates"];
-            NSMutableDictionary<NSNumber *, TGUnseenPeerMentionsState *> *resetPeerUnseenMentionsStates = dict[@"mentionStates"];
+            NSDictionary *readStates = dict[@"readStates"];
+            NSMutableDictionary *resetPeerUnseenMentionsStates = dict[@"mentionStates"];
             [TGDatabaseInstance() transactionAddMessages:nil notifyAddedMessages:false removeMessages:nil updateMessages:nil updatePeerDrafts:nil removeMessagesInteractive:nil keepDates:false removeMessagesInteractiveForEveryone:false updateConversationDatas:nil applyMaxIncomingReadIds:nil applyMaxOutgoingReadIds:nil applyMaxOutgoingReadDates:nil applyUnreadMarks:nil readHistoryForPeerIds:nil resetPeerReadStates:readStates resetPeerUnseenMentionsStates:resetPeerUnseenMentionsStates clearConversationsWithPeerIds:nil clearConversationsInteractive:false removeConversationsWithPeerIds:nil updatePinnedConversations:nil synchronizePinnedConversations:false forceReplacePinnedConversations:false readMessageContentsInteractive:nil deleteEarlierHistory:nil updateFeededChannels:nil newlyJoinedFeedId:nil synchronizeFeededChannels:false calculateUnreadChats:false];
         }] retryIf:^bool(id error) {
             if ([error respondsToSelector:@selector(boolValue)] && [error boolValue]) {
@@ -593,9 +593,9 @@
 }
 
 + (SSignal *)validatePeerReadStates:(SSignal *)peers {
-    return [peers mapToQueue:^SSignal *(NSArray<TGConversation *> *peers) {
-        NSMutableArray<TGConversation *> *globalPeers = [[NSMutableArray alloc] init];
-        NSMutableArray<TGConversation *> *channelPeers = [[NSMutableArray alloc] init];
+    return [peers mapToQueue:^SSignal *(NSArray *peers) {
+        NSMutableArray *globalPeers = [[NSMutableArray alloc] init];
+        NSMutableArray *channelPeers = [[NSMutableArray alloc] init];
         for (TGConversation *conversation in peers) {
             if (TGPeerIdIsUser(conversation.conversationId) || TGPeerIdIsGroup(conversation.conversationId)) {
                 [globalPeers addObject:conversation];
@@ -648,7 +648,7 @@
         SDisposableSet *disposables = [[SDisposableSet alloc] init];
         __weak SDisposableSet *weakDisposables = disposables;
         
-        [disposables add:[peerIdsSets startWithNext:^(NSArray<NSNumber *> *peerIds) {
+        [disposables add:[peerIdsSets startWithNext:^(NSArray *peerIds) {
             for (NSNumber *nPeerId in peerIds) {
                 SMetaDisposable *disposable = [[SMetaDisposable alloc] init];
                 __weak SMetaDisposable *weakDisposable = disposable;
@@ -745,7 +745,7 @@
         }] mapToSignal:^SSignal *(NSArray *completeMessages) {
             return [TGDatabaseInstance() modify:^id {
                 NSMutableDictionary *multipleMessagesByConversation = [[NSMutableDictionary alloc] init];
-                NSMutableDictionary<NSNumber *, TGDatabaseMessageDraft *> *updatePeerDrafts = [[NSMutableDictionary alloc] init];
+                NSMutableDictionary *updatePeerDrafts = [[NSMutableDictionary alloc] init];
                 
                 for (TGMessage *message in completeMessages)
                 {

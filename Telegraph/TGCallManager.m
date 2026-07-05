@@ -17,12 +17,12 @@
     SQueue *_queue;
     int32_t _nextInternalId;
     
-    NSMutableDictionary<NSNumber *, TGCallContext *> *_callContexts;
+    NSMutableDictionary *_callContexts;
     
     SPipe *_incomingCallInternalIdsPipe;
     SPipe *_endedIncomingCallInternalIdsPipe;
     
-    NSMutableArray<NSNumber *> *_discardedCallIds;
+    NSMutableArray *_discardedCallIds;
     
     TGCallKitAdapter *_callKitAdapter;
 }
@@ -150,7 +150,7 @@
                 id<TGCallIdentifiableContext> identifiableContext = context.context;
                 if (identifiableContext.callId == callId) {
                     internalId = [key intValue];
-                    *stop = true;
+                   *stop = true;
                 }
             }
         }];

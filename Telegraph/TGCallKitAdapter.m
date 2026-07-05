@@ -191,7 +191,7 @@
 {
     TGUser *user = [TGDatabaseInstance() loadUser:(int32_t)peerId];
     if (outUser != NULL)
-        *outUser = user;
+       *outUser = user;
     
     bool isContact = user.phoneNumber.length > 0 && [TGDatabaseInstance() contactUsersMatchingPhone:user.phoneNumber].count > 0;
     

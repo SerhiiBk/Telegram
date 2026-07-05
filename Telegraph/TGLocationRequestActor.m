@@ -172,16 +172,16 @@ static TGLocationManager *locationManager()
     if (location == nil)
     {
         if (hasLocation)
-            *hasLocation = false;
+           *hasLocation = false;
     }
     else
     {
         if (hasLocation)
-            *hasLocation = true;
+           *hasLocation = true;
         if (latitude)
-            *latitude = location.coordinate.latitude;
+           *latitude = location.coordinate.latitude;
         if (longitude)
-            *longitude = location.coordinate.longitude;
+           *longitude = location.coordinate.longitude;
     }
 }
 

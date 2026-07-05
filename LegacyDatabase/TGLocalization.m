@@ -34,14 +34,14 @@ static NSString *fallbackString(NSString *key, NSString *code) {
 }
 
 @interface TGLocalization () {
-    NSDictionary<NSString *, NSString *> *_dict;
+    NSDictionary *_dict;
 }
 
 @end
 
 @implementation TGLocalization
     
-- (instancetype)initWithVersion:(int32_t)version code:(NSString *)code dict:(NSDictionary<NSString *, NSString *> *)dict isActive:(bool)isActive {
+- (instancetype)initWithVersion:(int32_t)version code:(NSString *)code dict:(NSDictionary *)dict isActive:(bool)isActive {
     self = [super init];
     if (self != nil) {
         _version = version;
@@ -74,7 +74,7 @@ static NSString *fallbackString(NSString *key, NSString *code) {
     [aCoder encodeBool:_isActive forKey:@"isActive"];
 }
     
-- (TGLocalization *)mergedWith:(NSDictionary<NSString *, NSString *> *)other version:(int32_t)version {
+- (TGLocalization *)mergedWith:(NSDictionary *)other version:(int32_t)version {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:_dict];
     [dict addEntriesFromDictionary:other];
     

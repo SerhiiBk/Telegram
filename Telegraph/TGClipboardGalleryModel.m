@@ -178,7 +178,7 @@
              if ([selectableItem.uniqueIdentifier isEqual:targetSelectableItem.uniqueIdentifier])
              {
                  newIndex = idx;
-                 *stop = true;
+                *stop = true;
              }
          }
      }];
@@ -205,7 +205,7 @@
          if ([item.uniqueIdentifier isEqualToString:currentGalleryItem.selectableMediaItem.uniqueIdentifier])
          {
              currentSelectedItemIndex = index;
-             *stop = true;
+            *stop = true;
          }
      }];
     
@@ -235,7 +235,7 @@
         if (zoomableItemView.contentView != nil)
         {
             if (frame != NULL)
-                *frame = [zoomableItemView transitionViewContentRect];
+               *frame = [zoomableItemView transitionViewContentRect];
             
             return (UIImageView *)zoomableItemView.transitionContentView;
         }
@@ -245,7 +245,7 @@
         TGMediaPickerGalleryVideoItemView *videoItemView = (TGMediaPickerGalleryVideoItemView *)galleryItemView;
         
         if (frame != NULL)
-            *frame = [videoItemView transitionViewContentRect];
+           *frame = [videoItemView transitionViewContentRect];
         
         return (UIView *)videoItemView;
     }
@@ -411,10 +411,10 @@
         [strongSelf updateHiddenItem];
         [strongSelf.interfaceView editorTransitionIn];
         
-        *referenceFrame = refFrame;
+       *referenceFrame = refFrame;
         
         if (referenceView.superview == nil)
-            *parentView = referenceParentView;
+           *parentView = referenceParentView;
         
         if (iosMajorVersion() >= 7)
             [strongSelf.controller setNeedsStatusBarAppearanceUpdate];
@@ -454,11 +454,11 @@
             TGMediaPickerGalleryVideoItemView *videoItemView = (TGMediaPickerGalleryVideoItemView *)referenceView;
             refFrame = [videoItemView editorTransitionViewRect];
             UIImage *screenImage = [videoItemView transitionImage];
-            *parentView = referenceView;
+           *parentView = referenceView;
             referenceView = [[UIImageView alloc] initWithImage:screenImage];
         }
         
-        *referenceFrame = refFrame;
+       *referenceFrame = refFrame;
         
         return referenceView;
     };

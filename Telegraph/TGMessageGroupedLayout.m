@@ -19,16 +19,16 @@
 
 @interface TGMessageGroupedLayoutAttempt : NSObject
 
-@property (nonatomic, readonly) NSArray<NSNumber *> *lineCounts;
-@property (nonatomic, readonly) NSArray<NSNumber *> *heights;
+@property (nonatomic, readonly) NSArray *lineCounts;
+@property (nonatomic, readonly) NSArray *heights;
 
-- (instancetype)initWithLineCounts:(NSArray<NSNumber *> *)lineCounts heights:(NSArray<NSNumber *> *)heights;
+- (instancetype)initWithLineCounts:(NSArray *)lineCounts heights:(NSArray *)heights;
 
 @end
 
 @interface TGMessageGroupedLayout ()
 {
-    NSMutableDictionary<NSNumber *, TGMessagePhotoInfo *> *_layouts;
+    NSMutableDictionary *_layouts;
 }
 @end
 
@@ -46,7 +46,7 @@
         NSString *proportions = @"";
         CGFloat averageAspectRatio = 1.0f;
         bool forceCalc = false;
-        NSMutableArray<TGMessagePhotoInfo *> *photos = [[NSMutableArray alloc] init];
+        NSMutableArray *photos = [[NSMutableArray alloc] init];
         for (TGMessage *message in messages)
         {
             TGMessagePhotoInfo *photo = [[TGMessagePhotoInfo alloc] initWithMessage:message];
@@ -206,7 +206,7 @@
         
         if (forceCalc || photos.count >= 5)
         {
-            NSMutableArray<NSNumber *> *croppedRatios = [[NSMutableArray alloc] init];
+            NSMutableArray *croppedRatios = [[NSMutableArray alloc] init];
             for (TGMessagePhotoInfo *photo in photos)
             {
                 CGFloat aspectRatio = photo.aspectRatio;
@@ -231,7 +231,7 @@
             };
  
             NSMutableArray *attempts = [[NSMutableArray alloc] init];
-            void (^addAttempt)(NSArray<NSNumber *> *, NSArray<NSNumber *> *) = ^(NSArray<NSNumber *> *lineCounts, NSArray<NSNumber *> *heights)
+            void (^addAttempt)(NSArray *, NSArray *) = ^(NSArray *lineCounts, NSArray *heights)
             {
                 [attempts addObject:[[TGMessageGroupedLayoutAttempt alloc] initWithLineCounts:lineCounts heights:heights]];
             };
@@ -488,7 +488,7 @@
 
 @implementation TGMessageGroupedLayoutAttempt
 
-- (instancetype)initWithLineCounts:(NSArray<NSNumber *> *)lineCounts heights:(NSArray<NSNumber *> *)heights
+- (instancetype)initWithLineCounts:(NSArray *)lineCounts heights:(NSArray *)heights
 {
     self = [super init];
     if (self != nil)

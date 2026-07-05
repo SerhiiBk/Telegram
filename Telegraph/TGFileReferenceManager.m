@@ -5,7 +5,7 @@
 @interface TGFileReferenceManager ()
 {
     SQueue *_queue;
-    NSMutableDictionary<NSString *, SVariable *> *_processedOriginInfos;
+    NSMutableDictionary *_processedOriginInfos;
 }
 @end
 

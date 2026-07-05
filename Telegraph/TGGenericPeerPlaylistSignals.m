@@ -161,7 +161,7 @@
                         [TGDatabaseInstance() storeQueuedActions:[NSArray arrayWithObject:[[NSValue alloc] initWithBytes:&action objCType:@encode(TGDatabaseAction)]]];
                         [ActionStageInstance() requestActor:@"/tg/service/synchronizeactionqueue/(global)" options:nil watcher:TGTelegraphInstance];
                         
-                        NSMutableDictionary<NSNumber *, NSArray<NSNumber *> *> *readMessageContentsInteractive = nil;
+                        NSMutableDictionary *readMessageContentsInteractive = nil;
                         if (readMention) {
                             readMessageContentsInteractive = [[NSMutableDictionary alloc] init];
                             readMessageContentsInteractive[@(message.cid)] = @[@(message.mid)];
@@ -326,7 +326,7 @@
     return [SSignal single:playlist];
 }
 
-+ (SSignal *)playlistForItemList:(NSArray<TGMusicPlayerItem *> *)itemList voice:(bool)voice {
++ (SSignal *)playlistForItemList:(NSArray *)itemList voice:(bool)voice {
     TGMusicPlayerPlaylist *playlist = [[TGMusicPlayerPlaylist alloc] initWithVoice:voice items:itemList itemKeyAliases:@{} markItemAsViewed:^(__unused TGMusicPlayerItem *item) {
     }];
     return [SSignal single:playlist];

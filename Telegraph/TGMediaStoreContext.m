@@ -103,7 +103,7 @@
     pthread_rwlock_unlock(&_mediaReducedImageCacheLock);
     
     if (attributes != NULL)
-        *attributes = tempAttributes;
+       *attributes = tempAttributes;
     
     return result;
 }
@@ -131,7 +131,7 @@
     pthread_rwlock_unlock(&_mediaImageCacheLock);
     
     if (attributes != NULL)
-        *attributes = tempAttributes;
+       *attributes = tempAttributes;
     
     return result;
 }

@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#import <MTProtoKitDynamic/MTSerialization.h>
+#import <MTProtoKit/MTSerialization.h>
 
 @interface TGShareMtSerialization : NSObject <MTSerialization>
 

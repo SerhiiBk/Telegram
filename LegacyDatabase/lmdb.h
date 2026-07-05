@@ -302,7 +302,7 @@ typedef void (MDB_rel_func)(MDB_val *item, void *oldptr, void *newptr, void *rel
 	/** use sorted duplicates */
 #define MDB_DUPSORT		0x04
 	/** numeric keys in native byte order.
-	 *  The keys must all be of the same size. */
+	 * The keys must all be of the same size. */
 #define MDB_INTEGERKEY	0x08
 	/** with #MDB_DUPSORT, sorted dup items have fixed size */
 #define MDB_DUPFIXED	0x10
@@ -499,8 +499,8 @@ int  mdb_env_create(MDB_env **env);
 	 * Flags set by mdb_env_set_flags() are also used.
 	 * <ul>
 	 *	<li>#MDB_FIXEDMAP
-	 *      use a fixed address for the mmap region. This flag must be specified
-	 *      when creating the environment, and is stored persistently in the environment.
+	 *     use a fixed address for the mmap region. This flag must be specified
+	 *     when creating the environment, and is stored persistently in the environment.
 	 *		If successful, the memory map will always reside at the same virtual address
 	 *		and pointers used to reference data items in the database will be constant
 	 *		across multiple invocations. This option may not always work, depending on
@@ -712,7 +712,7 @@ int  mdb_env_info(MDB_env *env, MDB_envinfo *stat);
 	 * opened with #MDB_NOSYNC or in part #MDB_NOMETASYNC.
 	 * @param[in] env An environment handle returned by #mdb_env_create()
 	 * @param[in] force If non-zero, force a synchronous flush.  Otherwise
-	 *  if the environment has the #MDB_NOSYNC flag set the flushes
+	 * if the environment has the #MDB_NOSYNC flag set the flushes
 	 *	will be omitted, and with #MDB_MAPASYNC they will be asynchronous.
 	 * @return A non-zero error value on failure and 0 on success. Some possible
 	 * errors are:
@@ -817,7 +817,7 @@ int  mdb_env_get_fd(MDB_env *env, mdb_filehandle_t *fd);
 	 * errors are:
 	 * <ul>
 	 *	<li>EINVAL - an invalid parameter was specified, or the environment has
-	 *   	an active write transaction.
+	 *  	an active write transaction.
 	 * </ul>
 	 */
 int  mdb_env_set_mapsize(MDB_env *env, size_t size);

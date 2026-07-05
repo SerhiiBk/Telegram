@@ -104,7 +104,7 @@ UIImageOrientation TGVideoOrientationForAsset(AVAsset *asset, bool *mirrored)
         CGSize scale = CGSizeMake([[tempView.layer valueForKeyPath: @"transform.scale.x"] floatValue],
                                   [[tempView.layer valueForKeyPath: @"transform.scale.y"] floatValue]);
         
-        *mirrored = (scale.width < 0);
+       *mirrored = (scale.width < 0);
     }
     
     if (fabs(videoRotation - M_PI) < FLT_EPSILON)
@@ -372,7 +372,7 @@ CGAffineTransform TGVideoTransformForCrop(UIImageOrientation orientation, CGSize
                 [self processWithConversionContext:context completionBlock:^
                 {
                     TGMediaVideoConversionContext *resultContext = context.value;
-                    [resultContext.imageGenerator generateCGImagesAsynchronouslyForTimes:@[ [NSValue valueWithCMTime:resultContext.timeRange.start] ] completionHandler:^(__unused CMTime requestedTime, CGImageRef  _Nullable image, __unused CMTime actualTime, AVAssetImageGeneratorResult result, __unused NSError * _Nullable error)
+                    [resultContext.imageGenerator generateCGImagesAsynchronouslyForTimes:@[ [NSValue valueWithCMTime:resultContext.timeRange.start] ] completionHandler:^(__unused CMTime requestedTime, CGImageRef   image, __unused CMTime actualTime, AVAssetImageGeneratorResult result, __unused NSError * error)
                     {
                         UIImage *coverImage = nil;
                         if (result == AVAssetImageGeneratorSucceeded)
@@ -470,8 +470,8 @@ CGAffineTransform TGVideoTransformForCrop(UIImageOrientation orientation, CGSize
         return [context addImageGenerator:imageGenerator];
     }];
     
-    *outputSettings = [TGMediaVideoConversionPresetSettings videoSettingsForPreset:preset dimensions:outputDimensions];
-    *dimensions = outputDimensions;
+   *outputSettings = [TGMediaVideoConversionPresetSettings videoSettingsForPreset:preset dimensions:outputDimensions];
+   *dimensions = outputDimensions;
     
     return output;
 }

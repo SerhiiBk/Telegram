@@ -771,7 +771,7 @@
             [_replyButtonsModel setReplyMarkup:replyMarkup hasReceipt:false];
         }
         if (sizeUpdated) {
-            *sizeUpdated = true;
+           *sizeUpdated = true;
         }
     }
 }

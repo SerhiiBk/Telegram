@@ -332,7 +332,7 @@
     }];
     
     _watchAppInstalledDisposable = [[SMetaDisposable alloc] init];
-    [_watchAppInstalledDisposable setDisposable:[[[SSignal combineSignals:@[[TGPassportSignals hasPassport], watchAppSignal] withInitialStates:@[@false, @false]] deliverOn:[SQueue mainQueue]] startWithNext:^(NSArray<NSNumber *> *next)
+    [_watchAppInstalledDisposable setDisposable:[[[SSignal combineSignals:@[[TGPassportSignals hasPassport], watchAppSignal] withInitialStates:@[@false, @false]] deliverOn:[SQueue mainQueue]] startWithNext:^(NSArray *next)
     {
         __strong TGAccountSettingsController *strongSelf = weakSelf;
         if (strongSelf == nil)

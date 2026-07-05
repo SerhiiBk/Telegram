@@ -9,9 +9,9 @@
 - (instancetype)initWithPath:(NSString *)path;
 //- (SSignal *)contactUsersMatchingQuery:(NSString *)query;
 - (SSignal *)contactUsersMatchingPhone:(NSString *)phoneNumber;
-- (NSArray<TGLegacyUser *> *)contactUsersMatchingPhoneSync:(NSString *)phoneNumber;
-- (NSArray<TGLegacyUser *> *)topUsers;
-- (NSDictionary<NSNumber *, NSNumber *> *)unreadCountsForUsers:(NSArray<TGLegacyUser *> *)users;
+- (NSArray *)contactUsersMatchingPhoneSync:(NSString *)phoneNumber;
+- (NSArray *)topUsers;
+- (NSDictionary *)unreadCountsForUsers:(NSArray *)users;
 
 - (TGLegacyUser *)userWithIdSync:(int32_t)userId;
 - (TGChatModel *)conversationWithIdSync:(int64_t)conversationId;

@@ -7,7 +7,7 @@
 #import <SSignalKit/SSignalKit.h>
 
 @interface TGApplicationMainWindow () {
-    NSMutableArray<TGViewController *> *_presentedControllers;
+    NSMutableArray *_presentedControllers;
 }
 
 @end
@@ -26,7 +26,7 @@
     [super setBounds:bounds];
 }
 
-- (void)presentOverlayController:(TGViewController * _Nonnull)controller {
+- (void)presentOverlayController:(TGViewController * )controller {
     __weak TGApplicationMainWindow *weakSelf = self;
     __weak TGViewController *weakController = controller;
     [controller setProxyDismissBlock:^(__unused bool animated) {

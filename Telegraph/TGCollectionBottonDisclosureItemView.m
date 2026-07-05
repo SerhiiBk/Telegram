@@ -273,9 +273,9 @@
     }
     
     if (outAttributes != NULL)
-        *outAttributes = attributes;
+       *outAttributes = attributes;
     if (outTextCheckingResults != NULL)
-        *outTextCheckingResults = textCheckingResults;
+       *outTextCheckingResults = textCheckingResults;
     
     return string;
 }

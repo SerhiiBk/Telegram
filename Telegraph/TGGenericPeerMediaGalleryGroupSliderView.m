@@ -21,7 +21,7 @@ const CGFloat TGGroupSliderMaxWidth = 75.0f;
 @interface TGGenericPeerMediaGalleryGroupSliderView () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     int64_t _groupedId;
-    NSArray<TGGenericPeerGalleryGroupItem *> *_items;
+    NSArray *_items;
     
     UIScrollView *_scrollView;
     bool _panning;
@@ -262,7 +262,7 @@ const CGFloat TGGroupSliderMaxWidth = 75.0f;
         if (groupItem.keyId == key)
         {
             newCurrentItemIndex = index;
-            *stop = true;
+           *stop = true;
         }
     }];
     

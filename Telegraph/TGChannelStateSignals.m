@@ -392,7 +392,7 @@ static dispatch_block_t recursiveBlock(void (^block)(dispatch_block_t recurse)) 
                             }
                         }
                         
-                        NSMutableArray<TGDatabaseUpdateMessage *> *messageUpdates = [[NSMutableArray alloc] init];
+                        NSMutableArray *messageUpdates = [[NSMutableArray alloc] init];
                         
                         if (readContentsMessageIds.count != 0) {
                             for (NSNumber *nMid in readContentsMessageIds) {
@@ -446,7 +446,7 @@ static dispatch_block_t recursiveBlock(void (^block)(dispatch_block_t recurse)) 
                     }] switchToLatest];
                 }];
             } else {
-                NSMutableArray<TGDatabaseUpdateMessage *> *messageUpdates = [[NSMutableArray alloc] init];
+                NSMutableArray *messageUpdates = [[NSMutableArray alloc] init];
                 
                 if (readContentsMessageIds.count != 0) {
                     for (NSNumber *nMid in readContentsMessageIds) {
@@ -884,7 +884,7 @@ static dispatch_block_t recursiveBlock(void (^block)(dispatch_block_t recurse)) 
                                     [TGDatabaseInstance() addMessagesToChannelAndDispatch:peerId messages:messages deletedMessages:deletedMessageIds holes:nil pts:concreteDifference.pts skipFeedUpdate:false];
                                     
                                     if (updatedMessages.count != 0) {
-                                        NSMutableArray<TGDatabaseUpdateMessage *> *messageUpdates = [[NSMutableArray alloc] init];
+                                        NSMutableArray *messageUpdates = [[NSMutableArray alloc] init];
                                         for (TGMessage *message in updatedMessages) {
                                             [messageUpdates addObject:[[TGDatabaseUpdateMessageWithMessage alloc] initWithPeerId:message.cid messageId:message.mid message:message dispatchEdited:true]];
                                         }

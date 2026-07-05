@@ -127,7 +127,7 @@
         [file seekToFileOffset:0];
         headerData = [file readDataOfLength:(NSUInteger)mdatAtom->_offset];
         if (finalSize != NULL)
-            *finalSize = (NSUInteger)s.st_size;
+           *finalSize = (NSUInteger)s.st_size;
     }
     [file closeFile];
     

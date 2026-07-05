@@ -1,6 +1,6 @@
 #import "TGInstantPageLinkSelectionView.h"
 
-static UIImage *selectionImageWithRects(NSArray<NSValue *> *rects, CGSize size, CGFloat inset, UIColor *color) {
+static UIImage *selectionImageWithRects(NSArray *rects, CGSize size, CGFloat inset, UIColor *color) {
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(size.width + inset + inset, size.height + inset + inset), false, 0.0f);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, inset, inset);
@@ -34,7 +34,7 @@ static UIImage *selectionImageWithRects(NSArray<NSValue *> *rects, CGSize size, 
 static CGFloat inset = 4.0f;
 
 @interface TGInstantPageLinkSelectionView () {
-    NSArray<NSValue *> *_rects;
+    NSArray *_rects;
     id _urlItem;
     UIImageView *_imageView;
     UIColor *_color;
@@ -46,7 +46,7 @@ static CGFloat inset = 4.0f;
 
 @implementation TGInstantPageLinkSelectionView
 
-- (instancetype)initWithFrame:(CGRect)frame rects:(NSArray<NSValue *> *)rects urlItem:(id)urlItem {
+- (instancetype)initWithFrame:(CGRect)frame rects:(NSArray *)rects urlItem:(id)urlItem {
     self = [super initWithFrame:frame];
     if (self != nil) {
         _rects = rects;
@@ -108,7 +108,7 @@ static CGFloat inset = 4.0f;
 
 
 @interface TGInstantPageTextSelectionView () {
-    NSArray<NSValue *> *_rects;
+    NSArray *_rects;
     NSString *_text;
     UIImageView *_imageView;
     UIColor *_color;
@@ -120,7 +120,7 @@ static CGFloat inset = 4.0f;
 
 @implementation TGInstantPageTextSelectionView
 
-- (instancetype)initWithFrame:(CGRect)frame rects:(NSArray<NSValue *> *)rects text:(NSString *)text {
+- (instancetype)initWithFrame:(CGRect)frame rects:(NSArray *)rects text:(NSString *)text {
     self = [super initWithFrame:frame];
     if (self != nil) {
         _rects = rects;

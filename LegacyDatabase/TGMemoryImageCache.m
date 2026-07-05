@@ -83,7 +83,7 @@
             [_cache removeObjectForKey:key];
             
             if (requiredMemory <= 0 && stop != NULL)
-                *stop = true;
+               *stop = true;
         }];
         
         __block NSUInteger currentCacheSize = 0;
@@ -113,7 +113,7 @@
             item.timestamp = CFAbsoluteTimeGetCurrent();
             
             if (attributes != NULL)
-                *attributes = item.attributes;
+               *attributes = item.attributes;
         }
     }];
     
@@ -178,7 +178,7 @@
     }];
     
     if (color)
-        *color = resultColor;
+       *color = resultColor;
     
     return result;
 }

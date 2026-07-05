@@ -1,7 +1,9 @@
 #import "TGRemoteHttpLocationSignal.h"
 
 //#import <thirdparty/AFNetworking/AFHTTPRequestOperation.h>
-#import <MTProtoKitDynamic/MTProtoKitDynamic.h>
+#import <MTProtoKit/MTHttpRequestOperation.h>
+#import "MTSignal.h"
+#import "MTDisposable.h"
 
 @implementation TGRemoteHttpLocationSignal
 

@@ -14,53 +14,53 @@ typedef enum {
 @property (nonatomic, readonly) MediaResourceStatusType status;
 @property (nonatomic, readonly) float progress;
 
-- (_Nonnull instancetype)initWithStatus:(MediaResourceStatusType)status progress:(float)progress;
+- ( instancetype)initWithStatus:(MediaResourceStatusType)status progress:(float)progress;
 
 @end
 
 @interface ResourceStatusContext : NSObject
 
-@property (nonatomic, strong)  MediaResourceStatus * _Nullable status;
-@property (nonatomic, strong)  SBag * _Nonnull subscribers;
+@property (nonatomic, strong)  MediaResourceStatus * status;
+@property (nonatomic, strong)  SBag * subscribers;
 
 @end
 
 @interface ResourceData : NSObject
 
-@property (nonatomic, strong, readonly)  NSString * _Nonnull path;
+@property (nonatomic, strong, readonly)  NSString * path;
 @property (nonatomic, readonly) int32_t size;
 @property (nonatomic, readonly) bool complete;
 
-- (_Nonnull instancetype)initWithPath:(NSString * _Nonnull)path size:(int32_t)size complete:(bool)complete;
+- ( instancetype)initWithPath:(NSString * )path size:(int32_t)size complete:(bool)complete;
 
 @end
 
 @interface ResourceDataContext : NSObject
 
-@property (nonatomic, strong) ResourceData * _Nonnull data;
-@property (nonatomic, strong) SBag * _Nonnull completeDataSubscribers;
-@property (nonatomic, strong) SBag * _Nonnull fetchSubscribers;
-@property (nonatomic, strong) id<SDisposable> _Nullable fetchDisposable;
+@property (nonatomic, strong) ResourceData * data;
+@property (nonatomic, strong) SBag * completeDataSubscribers;
+@property (nonatomic, strong) SBag * fetchSubscribers;
+@property (nonatomic, strong) id<SDisposable>  fetchDisposable;
 
-- (_Nonnull instancetype)initWithData:(ResourceData * _Nonnull)data;
+- ( instancetype)initWithData:(ResourceData * )data;
 
 @end
 
 @interface ResourceStorePaths : NSObject
 
-@property (nonatomic, strong, readonly) NSString * _Nonnull partial;
-@property (nonatomic, strong, readonly) NSString * _Nonnull complete;
+@property (nonatomic, strong, readonly) NSString * partial;
+@property (nonatomic, strong, readonly) NSString * complete;
 
-- (_Nonnull instancetype)initWithPartial:(NSString * _Nonnull)partial complete:(NSString * _Nonnull)complete;
+- ( instancetype)initWithPartial:(NSString * )partial complete:(NSString * )complete;
 
 @end
 
 @interface MediaResourceDataFetchResult : NSObject
 
-@property (nonatomic, strong, readonly) NSData * _Nonnull data;
+@property (nonatomic, strong, readonly) NSData * data;
 @property (nonatomic, readonly) bool complete;
 
-- (_Nonnull instancetype)initWithData:(NSData * _Nonnull)data complete:(bool)complete;
+- ( instancetype)initWithData:(NSData * )data complete:(bool)complete;
 
 @end
 

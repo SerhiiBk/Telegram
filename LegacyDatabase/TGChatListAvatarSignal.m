@@ -145,8 +145,9 @@ static OSSpinLock imageDataLock;
         
         UIFont *font = [UIFont fontWithName:@".SFCompactRounded-Semibold" size:fontSize];
         
-        CGSize lettersSize = [letters sizeWithAttributes:@{NSFontAttributeName: font}];
-        [letters drawAtPoint:CGPointMake((CGFloat)(floor(imageSize.width - lettersSize.width) / 2.0f), (CGFloat)(floor(imageSize.height - lettersSize.height) / 2.0f)) withAttributes:@{NSFontAttributeName: font, NSForegroundColorAttributeName: [UIColor whiteColor]}];
+        [[UIColor whiteColor] set];
+        CGSize lettersSize = [letters sizeWithFont:font];
+        [letters drawAtPoint:CGPointMake((CGFloat)(floor(imageSize.width - lettersSize.width) / 2.0f), (CGFloat)(floor(imageSize.height - lettersSize.height) / 2.0f)) withFont:font];
         
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();

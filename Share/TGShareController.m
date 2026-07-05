@@ -530,7 +530,7 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     uint8_t *data = bytes;
     data += bitOffset / 8;
     bitOffset %= 8;
-    *((int32_t *)data) |= ((value) << bitOffset);
+   *((int32_t *)data) |= ((value) << bitOffset);
 }
 
 + (NSData *)audioWaveform:(NSURL *)url {

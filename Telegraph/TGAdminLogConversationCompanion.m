@@ -138,9 +138,9 @@ static bool isEventFilterAllSet(TGChannelEventFilter filter) {
     
     NSString *_currentSearchQuery;
     TGChannelEventFilter _eventFilter;
-    NSArray<NSNumber *> *_usersFilter;
+    NSArray *_usersFilter;
     
-    NSArray<TGCachedConversationMember *> *_adminMembers;
+    NSArray *_adminMembers;
 }
 
 @end
@@ -371,7 +371,7 @@ static bool isEventFilterAllSet(TGChannelEventFilter filter) {
     __weak TGAdminLogConversationCompanion *weakSelf = self;
     [self.controller setEnableAboveHistoryRequests:false];
     
-    [_requestDisposable setDisposable:[[TGChannelManagementSignals channelAdminLogEvents:_conversation.conversationId accessHash:_accessHash minEntryId:replace ? 0 : _minEntryId count:100 filter:_eventFilter searchQuery:_currentSearchQuery userIds:_usersFilter] startWithNext:^(NSArray<TGChannelAdminLogEntry *> *entries) {
+    [_requestDisposable setDisposable:[[TGChannelManagementSignals channelAdminLogEvents:_conversation.conversationId accessHash:_accessHash minEntryId:replace ? 0 : _minEntryId count:100 filter:_eventFilter searchQuery:_currentSearchQuery userIds:_usersFilter] startWithNext:^(NSArray *entries) {
         [TGModernConversationCompanion dispatchOnMessageQueue:^{
             __strong TGAdminLogConversationCompanion *strongSelf = weakSelf;
             if (strongSelf != nil) {

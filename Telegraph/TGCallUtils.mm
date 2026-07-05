@@ -22,7 +22,7 @@ typedef struct {
 
 #if UNALIGNED_MEMOPS_ARE_FAST
 # define load_block(d, s)        (d) = *(const aes_block_t *)(s)
-# define store_block(d, s)       *(aes_block_t *)(d) = (s)
+# define store_block(d, s)      *(aes_block_t *)(d) = (s)
 #else
 # define load_block(d, s)        memcpy((d).data, (s), AES_BLOCK_SIZE)
 # define store_block(d, s)       memcpy((d), (s).data, AES_BLOCK_SIZE)
@@ -270,7 +270,7 @@ static void ctr128_inc_aligned(unsigned char *counter)
     if (16 % sizeof(size_t) == 0) { /* always true actually */
         do {
             while (n && len) {
-                *(out++) = *(in++) ^ _ecount[n];
+               *(out++) = *(in++) ^ _ecount[n];
                 --len;
                 n = (n + 1) % 16;
             }
@@ -280,8 +280,8 @@ static void ctr128_inc_aligned(unsigned char *counter)
                 CCCryptorUpdate(_cryptor, _ivec, 16, _ecount, 16, &dataOutMoved);
                 ctr128_inc_aligned(_ivec);
                 for (n = 0; n < 16; n += sizeof(size_t))
-                    *(size_t *)(out + n) =
-                    *(size_t *)(in + n) ^ *(size_t *)(_ecount + n);
+                   *(size_t *)(out + n) =
+                   *(size_t *)(in + n) ^ *(size_t *)(_ecount + n);
                 len -= 16;
                 out += 16;
                 in += 16;
@@ -330,7 +330,7 @@ void TGCallAesCtrEncrypt(uint8_t *inOut, size_t length, uint8_t *key, uint8_t *i
     [aesCtr getIv:iv];
     
     memcpy(ecount, [aesCtr ecount], 16);
-    *num = [aesCtr num];
+   *num = [aesCtr num];
 }
 
 void TGCallSha1(uint8_t *msg, size_t length, uint8_t *output)

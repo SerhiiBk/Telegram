@@ -320,7 +320,7 @@
     CGFloat overlayHeightValue = 0.0f;
     
     if (overlayHeight) {
-        *overlayHeight = overlayHeightValue;
+       *overlayHeight = overlayHeightValue;
     }
     
     height += overlayHeightValue;

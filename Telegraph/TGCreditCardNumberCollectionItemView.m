@@ -41,7 +41,7 @@
     _cardField.frame = CGRectInset(self.bounds, -5.0f + self.safeAreaInset.left, 0.0f);
 }
 
-- (void)paymentCardTextFieldDidChange:(nonnull STPPaymentCardTextField *)textField {
+- (void)paymentCardTextFieldDidChange:( STPPaymentCardTextField *)textField {
     if (textField.valid) {
         if (_cardChanged) {
             _cardChanged(textField.cardParams);

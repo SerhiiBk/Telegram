@@ -39,8 +39,8 @@
 #include <malloc.h>
 #include <windows.h>
 /** getpid() returns int; MinGW defines pid_t but MinGW64 typedefs it
- *  as int64 which is wrong. MSVC doesn't define it at all, so just
- *  don't use it.
+ * as int64 which is wrong. MSVC doesn't define it at all, so just
+ * don't use it.
  */
 #define MDB_PID_T	int
 #define MDB_THR_T	DWORD
@@ -1504,9 +1504,9 @@ mdb_cursor_chk(MDB_cursor *mc)
 
 #if (MDB_DEBUG) > 2
 /** Count all the pages in each DB and in the freelist
- *  and make sure it matches the actual number of pages
- *  being used.
- *  All named DBs must be open for a correct count.
+ * and make sure it matches the actual number of pages
+ * being used.
+ * All named DBs must be open for a correct count.
  */
 static void mdb_audit(MDB_txn *txn)
 {
@@ -1951,7 +1951,7 @@ mdb_page_dirty(MDB_txn *txn, MDB_page *mp)
  *	database for which we are allocating.
  * @param[in] num the number of pages to allocate.
  * @param[out] mp Address of the allocated page(s). Requests for multiple pages
- *  will always be satisfied by a single contiguous chunk of memory.
+ * will always be satisfied by a single contiguous chunk of memory.
  * @return 0 on success, non-zero on failure.
  */
 static int
@@ -5096,10 +5096,10 @@ mdb_page_search_lowest(MDB_cursor *mc)
  * @param[in,out] mc the cursor for this operation.
  * @param[in] key the key to search for, or NULL for first/last page.
  * @param[in] flags If MDB_PS_MODIFY is set, visited pages in the DB
- *   are touched (updated with new page numbers).
- *   If MDB_PS_FIRST or MDB_PS_LAST is set, find first or last leaf.
- *   This is used by #mdb_cursor_first() and #mdb_cursor_last().
- *   If MDB_PS_ROOTONLY set, just fetch root node, no further lookups.
+ *  are touched (updated with new page numbers).
+ *  If MDB_PS_FIRST or MDB_PS_LAST is set, find first or last leaf.
+ *  This is used by #mdb_cursor_first() and #mdb_cursor_last().
+ *  If MDB_PS_ROOTONLY set, just fetch root node, no further lookups.
  * @return 0 on success, non-zero on failure.
  */
 static int
@@ -7410,7 +7410,7 @@ mdb_node_move(MDB_cursor *csrc, MDB_cursor *cdst)
 }
 
 /** Merge one page into another.
- *  The nodes from the page pointed to by \b csrc will
+ * The nodes from the page pointed to by \b csrc will
  *	be copied to the page pointed to by \b cdst and then
  *	the \b csrc page will be freed.
  * @param[in] csrc Cursor pointing to the source page.

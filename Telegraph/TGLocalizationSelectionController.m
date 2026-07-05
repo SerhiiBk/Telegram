@@ -77,9 +77,9 @@
     
     SMetaDisposable *_disposable;
     
-    NSArray<TGAvailableLocalization *> *_items;
+    NSArray *_items;
     NSString *_filterString;
-    NSArray<TGAvailableLocalization *> *_filteredItems;
+    NSArray *_filteredItems;
     
     TGLocalization *_currentCustomLocalization;
     TGLocalization *_currentLocalization;

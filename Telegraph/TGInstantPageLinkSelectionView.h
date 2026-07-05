@@ -5,7 +5,7 @@
 @property (nonatomic, copy) void (^itemTapped)(id);
 @property (nonatomic, copy) void (^itemLongPressed)(id);
 
-- (instancetype)initWithFrame:(CGRect)frame rects:(NSArray<NSValue *> *)rects urlItem:(id)urlItem;
+- (instancetype)initWithFrame:(CGRect)frame rects:(NSArray *)rects urlItem:(id)urlItem;
 - (void)setColor:(UIColor *)color;
 
 @end
@@ -15,7 +15,7 @@
 
 @property (nonatomic, copy) void (^itemLongPressed)(TGInstantPageTextSelectionView *, NSString *);
 
-- (instancetype)initWithFrame:(CGRect)frame rects:(NSArray<NSValue *> *)rects text:(NSString *)text;
+- (instancetype)initWithFrame:(CGRect)frame rects:(NSArray *)rects text:(NSString *)text;
 
 - (void)setHighlighted:(bool)highlighted;
 - (void)setColor:(UIColor *)color;

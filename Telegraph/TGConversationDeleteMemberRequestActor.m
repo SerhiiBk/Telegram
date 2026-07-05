@@ -49,16 +49,16 @@
     if ([updates isKindOfClass:[TLUpdates$updates class]])
     {
         if (chats)
-            *chats = ((TLUpdates$updates *)updates).chats;
+           *chats = ((TLUpdates$updates *)updates).chats;
         if (users)
-            *users = ((TLUpdates$updates *)updates).users;
+           *users = ((TLUpdates$updates *)updates).users;
         
         for (id update in ((TLUpdates$updates *)updates).updates)
         {
             if ([update isKindOfClass:[TLUpdate$updateNewMessage class]])
             {
                 if (message)
-                    *message = ((TLUpdate$updateNewMessage *)update).message;
+                   *message = ((TLUpdate$updateNewMessage *)update).message;
                 break;
             }
         }

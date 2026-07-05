@@ -53,7 +53,7 @@ NSString * TGURLEncodedStringFromStringWithEncoding(NSString *string, NSStringEn
     
     /*
      The documentation for `CFURLCreateStringByAddingPercentEscapes` suggests that one should "pre-process" URL strings with unpredictable sequences that may already contain percent escapes. However, if the string contains an unescaped sequence with '%' appearing without an escape code (such as when representing percentages like "42%"), `stringByReplacingPercentEscapesUsingEncoding` will return `nil`. Thus, the string is only unescaped if there are no invalid percent-escaped sequences.
-     */
+    */
     NSString *unescapedString = [string stringByReplacingPercentEscapesUsingEncoding:encoding];
     if (unescapedString) {
         string = unescapedString;
@@ -88,6 +88,30 @@ static NSString * TGQueryStringFromParametersWithEncoding(NSDictionary *paramete
 static NSArray * TGQueryStringComponentsFromKeyAndValue(NSString *key, id value);
 NSArray * TGQueryStringComponentsFromKeyAndDictionaryValue(NSString *key, NSDictionary *value);
 NSArray * TGQueryStringComponentsFromKeyAndArrayValue(NSString *key, NSArray *value);
+
+static NSString *TGDecodedURLQueryComponent(NSString *value)
+{
+    NSString *spaceAdjusted = [value stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+    NSString *decoded = [spaceAdjusted stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return decoded == nil ? spaceAdjusted : decoded;
+}
+
+static NSDictionary *TGQueryItemsFromURL(NSURL *url)
+{
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+    for (NSString *component in [[url query] componentsSeparatedByString:@"&"])
+    {
+        if (component.length == 0)
+            continue;
+        
+        NSRange separatorRange = [component rangeOfString:@"="];
+        NSString *key = separatorRange.location == NSNotFound ? component : [component substringToIndex:separatorRange.location];
+        NSString *value = separatorRange.location == NSNotFound ? @"" : [component substringFromIndex:separatorRange.location + 1];
+        if (key.length != 0)
+            [result setObject:TGDecodedURLQueryComponent(value) forKey:TGDecodedURLQueryComponent(key)];
+    }
+    return result;
+}
 
 static NSString * TGQueryStringFromParametersWithEncoding(NSDictionary *parameters, NSStringEncoding stringEncoding) {
     NSMutableArray *mutableComponents = [NSMutableArray array];
@@ -146,33 +170,14 @@ NSArray * TGQueryStringComponentsFromKeyAndArrayValue(NSString *key, NSArray *va
 
 + (SSignal *)_appleMapsLocationContentForURL:(NSURL *)url
 {
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:false];
-    NSArray *queryItems = urlComponents.queryItems;
+    NSDictionary *queryItems = TGQueryItemsFromURL(url);
     
-    NSString *latLon = nil;
-    NSString *name = nil;
-    NSString *address = nil;
-    NSString *venueId = nil;
-    for (NSURLQueryItem *queryItem in queryItems)
-    {
-        if ([queryItem.name isEqualToString:TGShareAppleMapsLatLonKey])
-        {
-            latLon = queryItem.value;
-        }
-        else if ([queryItem.name isEqualToString:TGShareAppleMapsNameKey])
-        {
-            if (latLon != nil && ![queryItem.value isEqualToString:latLon])
-                name = queryItem.value;
-        }
-        else if ([queryItem.name isEqualToString:TGShareAppleMapsAddressKey])
-        {
-            address = queryItem.value;
-        }
-        else if ([queryItem.name isEqualToString:TGShareAppleMapsIdKey])
-        {
-            venueId = queryItem.value;
-        }
-    }
+    NSString *latLon = [queryItems objectForKey:TGShareAppleMapsLatLonKey];
+    NSString *name = [queryItems objectForKey:TGShareAppleMapsNameKey];
+    NSString *address = [queryItems objectForKey:TGShareAppleMapsAddressKey];
+    NSString *venueId = [queryItems objectForKey:TGShareAppleMapsIdKey];
+    if (latLon != nil && [name isEqualToString:latLon])
+        name = nil;
     
     if (latLon == nil)
         return [SSignal fail:nil];
@@ -181,7 +186,7 @@ NSArray * TGQueryStringComponentsFromKeyAndArrayValue(NSString *key, NSArray *va
     if (coordComponents.count != 2)
         return [SSignal fail:nil];
     
-    double latitude = [coordComponents.firstObject floatValue];
+    double latitude = [[coordComponents objectAtIndex:0] floatValue];
     double longitude = [coordComponents.lastObject floatValue];
     
     Api86_InputGeoPoint *geoPoint = [Api86_InputGeoPoint inputGeoPointWithLat:@(latitude) plong:@(longitude)];
@@ -289,12 +294,12 @@ NSArray * TGQueryStringComponentsFromKeyAndArrayValue(NSString *key, NSArray *va
             {
                 return [SSignal fail:nil];
             }
-            else if (isSearch && [component containsString:@","])
+            else if (isSearch && [component rangeOfString:@","].location != NSNotFound)
             {
                 NSArray *coordinates = [component componentsSeparatedByString:@","];
                 if (coordinates.count == 2)
                 {
-                    latitude = [coordinates.firstObject doubleValue];
+                    latitude = [[coordinates objectAtIndex:0] doubleValue];
                     longitude = [coordinates.lastObject doubleValue];
                     break;
                 }

@@ -8,7 +8,7 @@
 @optional
 
 - (int64_t)groupedId;
-@property (nonatomic, strong) NSArray<TGGenericPeerGalleryGroupItem *> *groupItems;
+@property (nonatomic, strong) NSArray *groupItems;
 
 @required
 

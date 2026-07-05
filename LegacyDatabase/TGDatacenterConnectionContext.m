@@ -1,6 +1,6 @@
 #import "TGDatacenterConnectionContext.h"
 
-#import <MTProtoKitDynamic/MTRequest.h>
+#import <MTProtoKit/MTRequest.h>
 
 @interface TGDatacenterConnectionContext () <MTRequestMessageServiceDelegate>
 

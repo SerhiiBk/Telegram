@@ -145,7 +145,7 @@
                 [strongSelf updateSections:preferences animated:animated];
         }];
         
-        _brightnessDisposable = [[TGScreenBrightnessSignals brightnessSignal] startWithNext:^(NSNumber  *next)
+        _brightnessDisposable = [[TGScreenBrightnessSignals brightnessSignal] startWithNext:^(NSNumber *next)
         {
             __strong TGAppearanceAutoNightController *strongSelf = weakSelf;
             if (strongSelf != nil)
@@ -510,7 +510,7 @@
     }
 }
 
-- (void)locationManager:(CLLocationManager *)__unused manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+- (void)locationManager:(CLLocationManager *)__unused manager didUpdateLocations:(NSArray *)locations
 {
     if (locations.count == 0)
         return;

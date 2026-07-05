@@ -1729,7 +1729,7 @@
                         if (message.group != nil) {
                             if (stop) {
                                 hadGroups = true;
-                                *stop = true;
+                               *stop = true;
                             }
                         }
                     }];

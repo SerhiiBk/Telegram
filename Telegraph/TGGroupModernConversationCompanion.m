@@ -828,7 +828,7 @@ typedef enum {
         }
     }
     if (hasSingleBot)
-        *hasSingleBot = count == 1;
+       *hasSingleBot = count == 1;
     return hasBots;
 }
 

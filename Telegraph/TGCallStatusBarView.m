@@ -244,7 +244,7 @@
     return point.y < 40.0f;
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)__unused touches withEvent:(UIEvent *)__unused event
+- (void)touchesEnded:(NSSet *)__unused touches withEvent:(UIEvent *)__unused event
 {
     if (self.statusBarPressed != nil)
         self.statusBarPressed();

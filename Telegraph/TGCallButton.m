@@ -249,7 +249,7 @@ const CGSize TGCallNormalButtonSize = { 75.0f, 75.0f };
     }
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     _animateHighlight = true;
     [super touchesBegan:touches withEvent:event];

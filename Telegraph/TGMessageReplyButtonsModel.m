@@ -26,7 +26,7 @@
 @end
 
 @interface TGMessageReplyButtonsModel () {
-    NSMutableArray<TGModernButtonViewModel *> *_buttons;
+    NSMutableArray *_buttons;
     
     TGModernViewContext *_context;
 }

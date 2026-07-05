@@ -17,15 +17,15 @@
 @interface TGMessagesWatcherAdapter : NSObject <ASWatcher>
 {
     int64_t _peerId;
-    NSArray<TGMessage *> *_messages;
-    void (^_updated)(NSArray<TGMessage *> *);
+    NSArray *_messages;
+    void (^_updated)(NSArray *);
     bool _includeExpired;
     STimer *_timer;
 }
 
 @property (nonatomic, strong) ASHandle *actionHandle;
 
-- (instancetype)initWithPeerId:(int64_t)peerId messages:(NSArray<TGMessage *> *)messages includeExpired:(bool)includeExpired updated:(void (^)(NSArray<TGMessage *> *))updated;
+- (instancetype)initWithPeerId:(int64_t)peerId messages:(NSArray *)messages includeExpired:(bool)includeExpired updated:(void (^)(NSArray *))updated;
 
 @end
 
@@ -101,7 +101,7 @@
 + (NSArray *)filterLiveLocationMessages:(NSArray *)messages includeExpired:(bool)includeExpired
 {
     int32_t currentTime = (int32_t)[[TGTelegramNetworking instance] globalTime];
-    NSMutableDictionary<NSNumber *, TGMessage *> *locationMessages = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *locationMessages = [[NSMutableDictionary alloc] init];
     for (TGMessage *message in messages)
     {
         TGLocationMediaAttachment *location = message.locationAttachment;
@@ -152,11 +152,11 @@
         return [self filterLiveLocationMessages:messages includeExpired:includeExpired];
     }];
     
-    SSignal *(^updates)(NSArray<TGMessage *> *) = ^(NSArray<TGMessage *> *initialMessages)
+    SSignal *(^updates)(NSArray *) = ^(NSArray *initialMessages)
     {
         return [[SSignal alloc] initWithGenerator:^id<SDisposable>(SSubscriber *subscriber)
         {
-            TGMessagesWatcherAdapter *adapter = [[TGMessagesWatcherAdapter alloc] initWithPeerId:peerId messages:initialMessages includeExpired:includeExpired updated:^(NSArray<TGMessage *> *messages)
+            TGMessagesWatcherAdapter *adapter = [[TGMessagesWatcherAdapter alloc] initWithPeerId:peerId messages:initialMessages includeExpired:includeExpired updated:^(NSArray *messages)
             {
                 [subscriber putNext:messages];
             }];
@@ -169,7 +169,7 @@
     };
     
     SSignal *initialSignal = TGPeerIdIsChannel(peerId) ? channelLocalMessages : localMessages;
-    return [initialSignal mapToSignal:^SSignal *(NSArray<TGMessage *> *messages)
+    return [initialSignal mapToSignal:^SSignal *(NSArray *messages)
     {
         SSignal *nextSignal = updates(messages);
         if (!onlyLocal)
@@ -219,7 +219,7 @@
 
 @implementation TGMessagesWatcherAdapter
 
-- (instancetype)initWithPeerId:(int64_t)peerId messages:(NSArray<TGMessage *> *)messages includeExpired:(bool)includeExpired updated:(void (^)(NSArray<TGMessage *> *))updated
+- (instancetype)initWithPeerId:(int64_t)peerId messages:(NSArray *)messages includeExpired:(bool)includeExpired updated:(void (^)(NSArray *))updated
 {
     self = [super init];
     if (self != nil)

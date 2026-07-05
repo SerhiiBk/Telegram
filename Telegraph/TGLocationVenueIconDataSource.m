@@ -78,7 +78,7 @@ static ASQueue *taskManagementQueue()
     CGSize imageSize = CGSizeMake([args[@"width"] intValue], [args[@"height"] intValue]);
     
     if (size != NULL)
-        *size = imageSize;
+       *size = imageSize;
     
     if (args[@"type"] == nil)
         return nil;

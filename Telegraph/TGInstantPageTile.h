@@ -6,7 +6,7 @@
 
 @property (nonatomic, readonly) CGRect frame;
 
-+ (NSArray<TGInstantPageTile *> *)tilesWithLayout:(TGInstantPageLayout *)layout boundingWidth:(CGFloat)boundingWidth;
++ (NSArray *)tilesWithLayout:(TGInstantPageLayout *)layout boundingWidth:(CGFloat)boundingWidth;
 
 - (void)drawInContext;
 

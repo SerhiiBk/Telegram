@@ -1,6 +1,6 @@
 #import "TGShareContext.h"
 
-#import <MTProtoKitDynamic/MTRequest.h>
+#import <MTProtoKit/MTRequest.h>
 
 #import <LegacyDatabase/LegacyDatabase.h>
 

@@ -193,7 +193,7 @@
     if (presence.online)
     {
         if (active != NULL)
-            *active = true;
+           *active = true;
         return TGLocalized(@"Presence.online");
     }
     else if (presence.lastSeen != 0)

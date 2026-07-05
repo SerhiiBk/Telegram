@@ -803,7 +803,7 @@ static CGRect viewFrame(UIView *view)
          {
              linkCandidate = [[result URL] absoluteString];
              if (stop)
-                 *stop = true;
+                *stop = true;
          }
      }];
     
@@ -1186,7 +1186,7 @@ static CGRect viewFrame(UIView *view)
         animated = false;
     
     UIButton *appearingButton;
-    NSArray<UIButton *> *disappearingButtons;
+    NSArray *disappearingButtons;
     if (!TGIsPad() && [_customKeyboardView isKindOfClass:[TGStickerKeyboardView class]] && !_stickerKeyboardView.isGif)
     {
         appearingButton = _stickersArrowButton;

@@ -746,7 +746,7 @@ bool debugShowMessageIds = false;
         [_messageViewsModel sizeToFit];
         if (ABS(previousWidth - _messageViewsModel.frame.size.width) > FLT_EPSILON) {
             if (sizeUpdated) {
-                *sizeUpdated = true;
+               *sizeUpdated = true;
             }
         }
     }
@@ -773,7 +773,7 @@ bool debugShowMessageIds = false;
                 if (webPage.title.length != 0 || webPage.pageDescription.length != 0 || webPage.siteName.length != 0 || [webPage.photo.imageInfo imageUrlForLargestSize:NULL] != nil || [webPage.document.thumbnailInfo imageUrlForLargestSize:NULL] != nil) {
                     [self setWebPageFooter:webPage invoice:invoice viewStorage:viewStorage];
                     if (sizeUpdated)
-                        *sizeUpdated = true;
+                       *sizeUpdated = true;
                 }
             }
         } else if (![_webPage isEqual:webPage])
@@ -783,7 +783,7 @@ bool debugShowMessageIds = false;
             
             [self setWebPageFooter:webPage invoice:invoice viewStorage:viewStorage];
             if (sizeUpdated)
-                *sizeUpdated = true;
+               *sizeUpdated = true;
         }
         else {
             [_webPageFooterModel updateMessageId:_mid];
@@ -796,7 +796,7 @@ bool debugShowMessageIds = false;
         
         [self setWebPageFooter:nil invoice:invoice viewStorage:viewStorage];
         if (sizeUpdated)
-            *sizeUpdated = true;
+           *sizeUpdated = true;
     }
     
     bool byAdmin = [_context isByAdmin:message];
@@ -826,7 +826,7 @@ bool debugShowMessageIds = false;
         [_contentModel setNeedsSubmodelContentsUpdate];
         
         if (sizeUpdated) {
-            *sizeUpdated = true;
+           *sizeUpdated = true;
         }
     }
     
@@ -1099,7 +1099,7 @@ bool debugShowMessageIds = false;
             [_replyButtonsModel setReplyMarkup:replyMarkup hasReceipt:hasReceipt];
         }
         if (sizeUpdated) {
-            *sizeUpdated = true;
+           *sizeUpdated = true;
         }
     }
     
@@ -1120,7 +1120,7 @@ bool debugShowMessageIds = false;
             [_contentModel addSubmodel:_editedLabelModel];
             
             if (sizeUpdated) {
-                *sizeUpdated = true;
+               *sizeUpdated = true;
             }
         }
     }

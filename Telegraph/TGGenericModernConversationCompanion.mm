@@ -3093,7 +3093,7 @@ static NSString *addGameShareHash(NSString *url, NSString *addHash) {
                 if (messageItem != nil && messageItem->_message.mid == messageIndex.messageId && messageItem->_message.fromUid == messageIndex.peerId)
                 {
                     [updatedMessageIndices removeObjectAtIndex:index];
-                    *stop = true;
+                   *stop = true;
                     
                     if (TGPeerIdIsChannel(_conversationId) && messageItem->_message.cid != _conversationId) {
                         TGMessage *message = [messageItem->_message copy];
@@ -3613,7 +3613,7 @@ static NSString *addGameShareHash(NSString *url, NSString *addHash) {
             if ([sampleExtension isEqualToString:@"gif"])
             {
                 if (outAnimated)
-                    *outAnimated = true;
+                   *outAnimated = true;
             }
             return true;
         }
@@ -3626,7 +3626,7 @@ static NSString *addGameShareHash(NSString *url, NSString *addHash) {
             if ([sampleMimeType isEqualToString:@"image/gif"])
             {
                 if (outAnimated)
-                    *outAnimated = true;
+                   *outAnimated = true;
             }
             return true;
         }
@@ -4122,7 +4122,7 @@ static NSString *addGameShareHash(NSString *url, NSString *addHash) {
     {
         [TGDatabaseInstance() dispatchOnDatabaseThread:^
         {
-            NSMutableArray<TGDatabaseUpdateMessage *> *messageUpdates = [[NSMutableArray alloc] init];
+            NSMutableArray *messageUpdates = [[NSMutableArray alloc] init];
             
             for (NSArray *pair in replaceInDatabaseMessages)
             {
@@ -5601,7 +5601,7 @@ static NSString *addGameShareHash(NSString *url, NSString *addHash) {
             __block bool hadIncomingUnread = false;
             __block NSInteger incomingUnreadCount = 0;
             bool treatIncomingAsUnread = [arguments[@"treatIncomingAsUnread"] boolValue];
-            NSMutableSet<NSNumber *> *incomingUnreadMessageIds = [[NSMutableSet alloc] init];
+            NSMutableSet *incomingUnreadMessageIds = [[NSMutableSet alloc] init];
             
             [_conversationAtomic with:^id(TGConversation *conversation) {
                 for (TGMessage *message in messages) {
@@ -6663,7 +6663,7 @@ static id mediaIdForMessage(TGMessage *message)
                             [TGDatabaseInstance() storeQueuedActions:[NSArray arrayWithObject:[[NSValue alloc] initWithBytes:&action objCType:@encode(TGDatabaseAction)]]];
                             [ActionStageInstance() requestActor:@"/tg/service/synchronizeactionqueue/(global)" options:nil watcher:TGTelegraphInstance];
                             
-                            NSMutableDictionary<NSNumber *, NSArray<NSNumber *> *> *readMessageContentsInteractive = nil;
+                            NSMutableDictionary *readMessageContentsInteractive = nil;
                             if (readMention) {
                                 readMessageContentsInteractive = [[NSMutableDictionary alloc] init];
                                 readMessageContentsInteractive[@(item->_message.cid)] = @[@(item->_message.mid)];
@@ -7125,7 +7125,7 @@ static id mediaIdForMessage(TGMessage *message)
         }
     }];
     
-    SSignal *otherLiveLocationsSignal = [[[TGLiveLocationSignals liveLocationsForPeerId:self.conversationId includeExpired:false onlyLocal:[self useOnlyLocalLiveLocations]] map:^NSArray *(NSArray<TGMessage *> *messages)
+    SSignal *otherLiveLocationsSignal = [[[TGLiveLocationSignals liveLocationsForPeerId:self.conversationId includeExpired:false onlyLocal:[self useOnlyLocalLiveLocations]] map:^NSArray *(NSArray *messages)
     {
         NSMutableArray *filteredMessages = [[NSMutableArray alloc] init];
         for (TGMessage *message in messages)

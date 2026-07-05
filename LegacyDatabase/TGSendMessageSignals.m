@@ -40,7 +40,7 @@
                 {
                     TGChannelChatModel *channel = (TGChannelChatModel *)model;
                     if (isChannel != NULL)
-                        *isChannel = !channel.isGroup;
+                       *isChannel = !channel.isGroup;
                     
                     return [Api86_InputPeer inputPeerChannelWithChannelId:@(channel.peerId.peerId) accessHash:@(channel.accessHash)];
                 }

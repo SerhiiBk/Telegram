@@ -4,6 +4,6 @@
 
 @interface TGExternalShareSignals : NSObject
 
-+ (SSignal *)shareItemsForMessages:(NSArray<TGMessage *> *)messages;
++ (SSignal *)shareItemsForMessages:(NSArray *)messages;
 
 @end

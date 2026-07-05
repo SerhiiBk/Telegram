@@ -1336,7 +1336,7 @@
              [conversationIds addObject:@(message.cid)];
          }
          
-         NSMutableDictionary<NSNumber *, TGConversation *> *conversations = [[NSMutableDictionary alloc] init];
+         NSMutableDictionary *conversations = [[NSMutableDictionary alloc] init];
          for (NSNumber *peerId in conversationIds) {
              TGConversation *conversation = [self loadConversationWithId:[peerId longLongValue]];
              if (conversationIds != nil) {

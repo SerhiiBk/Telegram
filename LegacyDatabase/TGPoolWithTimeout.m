@@ -98,7 +98,7 @@
 {
     id object = nil;
     [_lock lock];
-    TGPoolObject *poolObject = [_objects firstObject];
+    TGPoolObject *poolObject = _objects.count == 0 ? nil : [_objects objectAtIndex:0];
     if (poolObject != nil)
     {
         [_objects removeObjectAtIndex:0];

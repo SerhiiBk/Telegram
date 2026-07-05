@@ -142,7 +142,7 @@
             [_venueAddressModel layoutForContainerSize:addressContainerSize];
         
         if (needsContentsUpdate != NULL && updateContents)
-            *needsContentsUpdate = updateContents;
+           *needsContentsUpdate = updateContents;
 
         size.height += 21.0f;
     }

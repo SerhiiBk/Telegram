@@ -8,6 +8,15 @@
 
 #import "TGCommon.h"
 
+@implementation NSArray (TGIOS6FirstObject)
+
+- (id)firstObject
+{
+    return self.count == 0 ? nil : [self objectAtIndex:0];
+}
+
+@end
+
 #import "TGTelegraph.h"
 #import "TGTelegramNetworking.h"
 
@@ -2928,7 +2937,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
     return true;
 }
 
-- (BOOL)application:(UIApplication *)__unused application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)__unused options {
+- (BOOL)application:(UIApplication *)__unused application openURL:(NSURL *)url options:(NSDictionary *)__unused options {
     [self handleOpenDocument:url animated:false keepStack:false bundleId:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
     
     return true;
@@ -3819,7 +3828,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
     [self application:application handleActionWithIdentifier:identifier forRemoteNotification:userInfo withResponseInfo:@{} completionHandler:completionHandler];
 }
 
-- (void)application:(UIApplication *)__unused application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(nonnull NSDictionary *)responseInfo completionHandler:(nonnull void (^)())completionHandler
+- (void)application:(UIApplication *)__unused application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:( NSDictionary *)responseInfo completionHandler:( void (^)())completionHandler
 {
     id nFromId = [userInfo objectForKey:@"from_id"];
     id nChatId = [userInfo objectForKey:@"chat_id"];
@@ -3864,7 +3873,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
     [self application:application handleActionWithIdentifier:identifier forLocalNotification:notification withResponseInfo:@{} completionHandler:completionHandler];
 }
 
-- (void)application:(UIApplication *)__unused application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification withResponseInfo:(nonnull NSDictionary *)responseInfo completionHandler:(nonnull void (^)())completionHandler
+- (void)application:(UIApplication *)__unused application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification withResponseInfo:( NSDictionary *)responseInfo completionHandler:( void (^)())completionHandler
 {
     int64_t peerId = [notification.userInfo[@"cid"] longLongValue];
     int32_t mid = [notification.userInfo[@"mid"] int32Value];
@@ -4109,7 +4118,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
     if ([TGDatabaseInstance() isPasswordSet:NULL])
     {
         if (canBeLocked) {
-            *canBeLocked = true;
+           *canBeLocked = true;
         }
         NSNumber *nDeactivationDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"Passcode_deactivationDate"];
         bool displayByDeactivationTimeout = false;
@@ -4120,7 +4129,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
             {
                 displayByDeactivationTimeout = [[NSDate date] timeIntervalSince1970] > ([nDeactivationDate doubleValue] + lockTimeout);
                 if (byTimeout)
-                    *byTimeout = displayByDeactivationTimeout;
+                   *byTimeout = displayByDeactivationTimeout;
             }
         }
         
@@ -4671,7 +4680,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
     }
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
     

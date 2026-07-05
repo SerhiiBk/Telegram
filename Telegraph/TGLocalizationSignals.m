@@ -157,7 +157,7 @@
             TLRPClangpack_getDifference$langpack_getDifference *getLangPack = [[TLRPClangpack_getDifference$langpack_getDifference alloc] init];
             getLangPack.from_version = 0;
             [disposable setDisposable:[[[TGTelegramNetworking instance] requestSignal:getLangPack] startWithNext:^(TLLangPackDifference *next) {
-                NSMutableDictionary<NSString *, NSString *> *dict = [[NSMutableDictionary alloc] init];
+                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
                 for (TLLangPackString *string in next.strings) {
                     if ([string isKindOfClass:[TLLangPackString$langPackStringPluralized class]]) {
                         TLLangPackString$langPackStringPluralized *pluralized = (TLLangPackString$langPackStringPluralized *)string;
@@ -207,7 +207,7 @@
     TGLocalization *current = currentNativeLocalization();
     getDifference.from_version = current.version;
     return [[[TGTelegramNetworking instance] requestSignal:getDifference] onNext:^(TLLangPackDifference *next) {
-        NSMutableDictionary<NSString *, NSString *> *dict = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         for (TLLangPackString *string in next.strings) {
             if ([string isKindOfClass:[TLLangPackString$langPackStringPluralized class]]) {
                 TLLangPackString$langPackStringPluralized *pluralized = (TLLangPackString$langPackStringPluralized *)string;
@@ -244,7 +244,7 @@
 }
 
 + (void)mergeLocalization:(TLLangPackDifference *)next replace:(bool)replace {
-    NSMutableDictionary<NSString *, NSString *> *dict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     for (TLLangPackString *string in next.strings) {
         if ([string isKindOfClass:[TLLangPackString$langPackStringPluralized class]]) {
             TLLangPackString$langPackStringPluralized *pluralized = (TLLangPackString$langPackStringPluralized *)string;

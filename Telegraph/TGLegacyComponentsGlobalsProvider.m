@@ -48,7 +48,7 @@ static __strong NSTimer *userInteractionEnableTimer = nil;
     return TGAppDelegateInstance.rootController;
 }
 
-- (NSArray<UIWindow *> *)applicationWindows {
+- (NSArray *)applicationWindows {
     return [[UIApplication sharedApplication] windows];
 }
 

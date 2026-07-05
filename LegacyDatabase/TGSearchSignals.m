@@ -87,7 +87,7 @@ static void enumerateStringParts(NSString *string, void (^block)(NSString *, boo
                             {
                                 matches = true;
                                 if (stop)
-                                    *stop = true;
+                                   *stop = true;
                             }
                         });
                         
@@ -111,7 +111,7 @@ static void enumerateStringParts(NSString *string, void (^block)(NSString *, boo
                     {
                         matches = true;
                         if (stop)
-                            *stop = true;
+                           *stop = true;
                     }
                 });
                 
@@ -127,7 +127,7 @@ static void enumerateStringParts(NSString *string, void (^block)(NSString *, boo
                     {
                         matches = true;
                         if (stop)
-                            *stop = true;
+                           *stop = true;
                     }
                 });
                 

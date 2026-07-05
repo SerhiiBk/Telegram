@@ -52,7 +52,7 @@ typedef enum {
     SVariable *_conversationsToBeRemovedToAssignPublicUsernames;
     SMetaDisposable *_conversationsToBeRemovedToAssignPublicUsernamesDisposable;
     
-    NSArray<TGConversation *> *_conversationsToDelete;
+    NSArray *_conversationsToDelete;
     
     void (^_block)(NSString *);
 }
@@ -431,7 +431,7 @@ typedef enum {
     [_conversationsToBeRemovedToAssignPublicUsernames set:[TGGroupManagementSignals conversationsToBeRemovedToAssignPublicUsernames:_conversation.conversationId accessHash:_conversation.accessHash]];
 }
 
-- (void)setConversationsToDelete:(NSArray<TGConversation *> *)conversationsToDelete {
+- (void)setConversationsToDelete:(NSArray *)conversationsToDelete {
     if ([_conversationsToDelete isEqual:conversationsToDelete]) {
         return;
     }

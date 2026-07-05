@@ -69,7 +69,7 @@ static ASQueue *taskManagementQueue()
     NSInteger offset = [args[@"offset"] integerValue];
     
     if (size != NULL)
-        *size = imageSize;
+       *size = imageSize;
     
     TGMapSnapshotOptions *options = [[TGMapSnapshotOptions alloc] init];
 
@@ -88,7 +88,7 @@ static ASQueue *taskManagementQueue()
     NSInteger offset = [args[@"offset"] integerValue];
     
     if (size != NULL)
-        *size = imageSize;
+       *size = imageSize;
     
     CLLocationDegrees latitude = [TGLocationUtils adjustGMapLatitude:[args[@"latitude"] doubleValue] withPixelOffset:offset zoom:15];
     

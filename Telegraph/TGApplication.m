@@ -46,7 +46,7 @@
             if ([arguments isEqualToString:@"single"])
             {
                 if (groupedSingle)
-                    *groupedSingle = true;
+                   *groupedSingle = true;
             }
             else
             {
@@ -54,11 +54,11 @@
                 if (dict.count == 1 && (dict[@"start"] != nil || dict[@"startgroup"] || dict[@"game"]))
                 {
                     if (startPrivatePayload)
-                        *startPrivatePayload = dict[@"start"];
+                       *startPrivatePayload = dict[@"start"];
                     if (startGroupPayload)
-                        *startGroupPayload = dict[@"startgroup"];
+                       *startGroupPayload = dict[@"startgroup"];
                     if (gamePayload)
-                        *gamePayload = dict[@"game"];
+                       *gamePayload = dict[@"game"];
                 }
                 else
                     return nil;
@@ -80,11 +80,11 @@
                 if (dict.count == 1 && (dict[@"start"] != nil || dict[@"startgroup"] || dict[@"game"]))
                 {
                     if (startPrivatePayload)
-                        *startPrivatePayload = dict[@"start"];
+                       *startPrivatePayload = dict[@"start"];
                     if (startGroupPayload)
-                        *startGroupPayload = dict[@"startgroup"];
+                       *startGroupPayload = dict[@"startgroup"];
                     if (gamePayload)
-                        *gamePayload = dict[@"game"];
+                       *gamePayload = dict[@"game"];
                 }
                 else
                     return nil;

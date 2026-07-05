@@ -221,7 +221,7 @@
     {
         AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
         imageGenerator.appliesPreferredTrackTransform = true;
-        [imageGenerator generateCGImagesAsynchronouslyForTimes:@[ [NSValue valueWithCMTime:kCMTimeZero] ] completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error)
+        [imageGenerator generateCGImagesAsynchronouslyForTimes:@[ [NSValue valueWithCMTime:kCMTimeZero] ] completionHandler:^(CMTime requestedTime, CGImageRef   image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * error)
         {
             if (error != nil)
             {
@@ -247,7 +247,7 @@
         
         bool (^isWhitePixel)(NSInteger, NSInteger) = ^bool(NSInteger x, NSInteger y)
         {
-            int pixelInfo = ((image.size.width  * y) + x ) * 4;
+            int pixelInfo = ((image.size.width * y) + x ) * 4;
             
             UInt8 red = data[pixelInfo];
             UInt8 green = data[(pixelInfo + 1)];

@@ -74,7 +74,7 @@
         _channelsDisposable = [[SMetaDisposable alloc] init];
         
         __weak TGFeedDialogListCompanion *weakSelf = self;
-        [_channelsDisposable setDisposable:[[[[[TGChatListSignals chatListWithLimit:256] take:1] map:^id(NSArray<TGConversation *> *next)
+        [_channelsDisposable setDisposable:[[[[[TGChatListSignals chatListWithLimit:256] take:1] map:^id(NSArray *next)
         {
             NSMutableArray *filtered = [[NSMutableArray alloc] init];
             for (TGConversation *conversation in next)

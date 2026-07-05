@@ -265,7 +265,7 @@ const NSInteger TGRecentSearchLimit = 20;
     {
         [TGUserDataRequestBuilder executeUserDataUpdate:result.users];
         
-        NSMutableArray<TGConversation *> *conversations = [[NSMutableArray alloc] init];
+        NSMutableArray *conversations = [[NSMutableArray alloc] init];
         NSMutableDictionary *channels = [[NSMutableDictionary alloc] init];
         for (TLChat *chat in result.chats) {
             TGConversation *conversation = [[TGConversation alloc] initWithTelegraphChatDesc:chat];

@@ -115,7 +115,7 @@ static INPerson *personWithContact(CNContact *contact) {
     return _sendMessageDisposable;
 }
 
-- (void)resolveRecipients:(NSArray<INPerson *> *)recipients withCompletion:(void (^)(NSArray<INPersonResolutionResult *> *resolutionResults))completion {
+- (void)resolveRecipients:(NSArray *)recipients withCompletion:(void (^)(NSArray *resolutionResults))completion {
     NSArray *initialRecipients = recipients;
     if (recipients.count == 0) {
         completion(@[[INPersonResolutionResult needsValue]]);
@@ -156,7 +156,7 @@ static INPerson *personWithContact(CNContact *contact) {
     __weak IntentHandler *weakSelf = self;
     [[self resolutionDisposable] setDisposable:[[[self database] map:^id(TGLegacyDatabase *database) {
         __strong IntentHandler *strongSelf = weakSelf;
-        NSArray<CNContact *> *contacts = nil;
+        NSArray *contacts = nil;
         if (recipients.count == 1 && recipients[0].contactIdentifier.length != 0) {
             contacts = [strongSelf matchedNativeContactsByContactId:recipients[0].contactIdentifier];
         } else if (recipients.count != 0) {
@@ -166,7 +166,7 @@ static INPerson *personWithContact(CNContact *contact) {
         if (contacts.count == 0) {
             return @[[INPersonResolutionResult needsValue]];
         } else if (contacts.count != 1) {
-            NSMutableArray<INPerson *> *persons = [[NSMutableArray alloc] init];
+            NSMutableArray *persons = [[NSMutableArray alloc] init];
             for (CNContact *contact in contacts) {
                 [persons addObject:personWithContact(contact)];
             }
@@ -175,7 +175,7 @@ static INPerson *personWithContact(CNContact *contact) {
             for (CNLabeledValue<CNPhoneNumber*> *phoneNumber in contacts[0].phoneNumbers) {
                 NSString *phone = phoneNumber.value.stringValue;
                 if (phone.length != 0) {
-                    NSArray<TGLegacyUser *> *users = [database contactUsersMatchingPhoneSync:phone];
+                    NSArray *users = [database contactUsersMatchingPhoneSync:phone];
                     if (users.count == 1) {
                         NSMutableArray *results  = [[NSMutableArray alloc] init];
                         [results addObject:[INPersonResolutionResult successWithResolvedPerson:personWithLegacyUser(users[0])]];
@@ -183,7 +183,7 @@ static INPerson *personWithContact(CNContact *contact) {
                             [results addObject:[INPersonResolutionResult notRequired]];
                         return results;
                     } else {
-                        NSMutableArray<INPerson *> *persons = [[NSMutableArray alloc] init];
+                        NSMutableArray *persons = [[NSMutableArray alloc] init];
                         for (TGLegacyUser *user in users) {
                             [persons addObject:personWithLegacyUser(user)];
                         }
@@ -195,14 +195,14 @@ static INPerson *personWithContact(CNContact *contact) {
         }
         
         return @[[INPersonResolutionResult needsValue]];
-    }] startWithNext:^(NSArray<INPersonResolutionResult *> *result) {
+    }] startWithNext:^(NSArray *result) {
         [[SQueue mainQueue] dispatch:^{
             completion(result);
         }];
     }]];
 }
 
-- (void)resolveRecipientsForSendMessage:(INSendMessageIntent *)intent withCompletion:(void (^)(NSArray<INPersonResolutionResult *> *resolutionResults))completion {
+- (void)resolveRecipientsForSendMessage:(INSendMessageIntent *)intent withCompletion:(void (^)(NSArray *resolutionResults))completion {
     [self resolveRecipients:intent.recipients withCompletion:completion];
 }
 
@@ -225,7 +225,7 @@ static INPerson *personWithContact(CNContact *contact) {
     [[self sendMessageDisposable] setDisposable:[[[[[self shareContext] take:1] mapToSignal:^SSignal *(TGShareContext *context) {
         INPerson *person = [[intent recipients] firstObject];
         if (person != nil) {
-            NSMutableArray<TGUserModel *> *users = [[NSMutableArray alloc] init];
+            NSMutableArray *users = [[NSMutableArray alloc] init];
             if ([person.customIdentifier hasPrefix:@"tg"]) {
                 NSRange underscoreRange = [person.customIdentifier rangeOfString:@"_"];
                 if (underscoreRange.location != NSNotFound) {
@@ -255,21 +255,21 @@ static INPerson *personWithContact(CNContact *contact) {
 
 #pragma mark - INStartAudioCallIntentHandling
 
-- (void)resolveContactsForStartAudioCall:(INStartAudioCallIntent *)intent withCompletion:(void (^)(NSArray<INPersonResolutionResult *> * _Nonnull))completion {
+- (void)resolveContactsForStartAudioCall:(INStartAudioCallIntent *)intent withCompletion:(void (^)(NSArray * ))completion {
     [self resolveRecipients:intent.contacts withCompletion:completion];
 }
 
-- (void)confirmStartAudioCall:(INStartAudioCallIntent *)intent completion:(void (^)(INStartAudioCallIntentResponse * _Nonnull))completion {
+- (void)confirmStartAudioCall:(INStartAudioCallIntent *)intent completion:(void (^)(INStartAudioCallIntentResponse * ))completion {
     NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:NSStringFromClass([INStartAudioCallIntent class])];
     INStartAudioCallIntentResponse *response = [[INStartAudioCallIntentResponse alloc] initWithCode:INStartAudioCallIntentResponseCodeReady userActivity:userActivity];
     completion(response);
 }
 
-- (void)handleStartAudioCall:(INStartAudioCallIntent *)intent completion:(void (^)(INStartAudioCallIntentResponse * _Nonnull))completion {
+- (void)handleStartAudioCall:(INStartAudioCallIntent *)intent completion:(void (^)(INStartAudioCallIntentResponse * ))completion {
     [[self sendMessageDisposable] setDisposable:[[[[[self shareContext] take:1] mapToSignal:^SSignal *(TGShareContext *context) {
         INPerson *person = [[intent contacts] firstObject];
         if (person != nil) {
-            NSMutableArray<TGUserModel *> *users = [[NSMutableArray alloc] init];
+            NSMutableArray *users = [[NSMutableArray alloc] init];
             if ([person.customIdentifier hasPrefix:@"tg"]) {
                 NSRange underscoreRange = [person.customIdentifier rangeOfString:@"_"];
                 if (underscoreRange.location != NSNotFound) {
@@ -286,7 +286,7 @@ static INPerson *personWithContact(CNContact *contact) {
         } else {
             return [SSignal fail:nil];
         }
-    }] deliverOn:[SQueue mainQueue]] startWithNext:^(NSArray<TGUserModel *> *next) {
+    }] deliverOn:[SQueue mainQueue]] startWithNext:^(NSArray *next) {
         NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:NSStringFromClass([INStartAudioCallIntent class])];
         userActivity.userInfo = @{ @"handle": [NSString stringWithFormat:@"TGCA%d", next.firstObject.userId] };
         INStartAudioCallIntentResponse *response = [[INStartAudioCallIntentResponse alloc] initWithCode:INStartAudioCallIntentResponseCodeContinueInApp userActivity:userActivity];
@@ -298,20 +298,20 @@ static INPerson *personWithContact(CNContact *contact) {
     } completed:nil]];
 }
 
-- (NSArray<CNContact *> *)matchedNativeContacts:(NSString *)query {
+- (NSArray *)matchedNativeContacts:(NSString *)query {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized) {
         CNContactStore *store = [[CNContactStore alloc] init];
-        NSArray<CNContact *> *contacts = [store unifiedContactsMatchingPredicate:[CNContact predicateForContactsMatchingName:query] keysToFetch:@[CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] error:nil];
+        NSArray *contacts = [store unifiedContactsMatchingPredicate:[CNContact predicateForContactsMatchingName:query] keysToFetch:@[CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] error:nil];
         return contacts;
     } else {
         return @[];
     }
 }
 
-- (NSArray<CNContact *> *)matchedNativeContactsByContactId:(NSString *)contactId {
+- (NSArray *)matchedNativeContactsByContactId:(NSString *)contactId {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized) {
         CNContactStore *store = [[CNContactStore alloc] init];
-        NSArray<CNContact *> *contacts = [store unifiedContactsMatchingPredicate:[CNContact predicateForContactsWithIdentifiers:@[contactId]] keysToFetch:@[CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] error:nil];
+        NSArray *contacts = [store unifiedContactsMatchingPredicate:[CNContact predicateForContactsWithIdentifiers:@[contactId]] keysToFetch:@[CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] error:nil];
         return contacts;
     } else {
         return @[];

@@ -23,7 +23,7 @@ const NSTimeInterval TGForceTouchDelay = 0.4;
     [_forceTimer invalidate];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)__unused event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)__unused event
 {
     if (touches.count > 1)
     {
@@ -34,7 +34,7 @@ const NSTimeInterval TGForceTouchDelay = 0.4;
     self.state = UIGestureRecognizerStatePossible;
 }
 
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (self.state == UIGestureRecognizerStateFailed || self.state == UIGestureRecognizerStateRecognized)
         return;
@@ -53,7 +53,7 @@ const NSTimeInterval TGForceTouchDelay = 0.4;
         [self _updateWithTouch:touch];
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)__unused touches withEvent:(UIEvent *)__unused event
+- (void)touchesEnded:(NSSet *)__unused touches withEvent:(UIEvent *)__unused event
 {
     [self _invalidateForceTimer];
     
@@ -65,7 +65,7 @@ const NSTimeInterval TGForceTouchDelay = 0.4;
     _triggered = false;
 }
 
-- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesCancelled:touches withEvent:event];
     

@@ -58,10 +58,10 @@
         return nil;
     
     if (size != NULL)
-        *size = CGSizeMake([nWidth intValue], [nHeight intValue]);
+       *size = CGSizeMake([nWidth intValue], [nHeight intValue]);
     
     if (length != NULL && [nSize respondsToSelector:@selector(intValue)])
-        *length = [nSize intValue];
+       *length = [nSize intValue];
     
     return mediaUrl;
 }

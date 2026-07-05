@@ -193,10 +193,10 @@
                 {
                     NSUInteger index = [strongSelf.items indexOfObject:item];
                     if (index != NSNotFound)
-                        *position = index;
+                       *position = index;
                 }
                 if (count != NULL)
-                    *count = strongSelf.items.count;
+                   *count = strongSelf.items.count;
             }
         }];
     } else {

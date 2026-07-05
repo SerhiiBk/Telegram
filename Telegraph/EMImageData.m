@@ -45,7 +45,7 @@ typedef struct {
         generator([_data mutableBytes], _bytesPerRow);
         
         if (image)
-            *image = [self _createImage];
+           *image = [self _createImage];
         else
             [_data endContentAccess];
     }

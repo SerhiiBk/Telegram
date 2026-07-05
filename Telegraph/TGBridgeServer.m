@@ -703,7 +703,7 @@
     }];
 }
 
-- (void)session:(WCSession *)session didReceiveUserInfo:(NSDictionary<NSString *,id> *)userInfo
+- (void)session:(WCSession *)session didReceiveUserInfo:(NSDictionary *)userInfo
 {
     [[TGBridgeServer queue] dispatch:^{
         int64_t peerId = [userInfo[@"peerId"] int64Value];

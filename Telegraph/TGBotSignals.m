@@ -123,7 +123,7 @@
         }
         
         if (onlyIfRelevantToUser)
-            *onlyIfRelevantToUser = concreteMarkup.flags & (1 << 2);
+           *onlyIfRelevantToUser = concreteMarkup.flags & (1 << 2);
         
         return [[TGBotReplyMarkup alloc] initWithUserId:userId messageId:messageId rows:rows matchDefaultHeight:(concreteMarkup.flags & (1 << 0)) == 0 hideKeyboardOnActivation:(concreteMarkup.flags & (1 << 1)) != 0 alreadyActivated:false manuallyHidden:false isInline:false];
     }
@@ -168,18 +168,18 @@
         TLReplyMarkup$replyKeyboardHide *concreteMarkup = (TLReplyMarkup$replyKeyboardHide *)markup;
         
         if (hidePreviousMarkup)
-            *hidePreviousMarkup = true;
+           *hidePreviousMarkup = true;
         if (onlyIfRelevantToUser)
-            *onlyIfRelevantToUser = concreteMarkup.flags & (1 << 2);
+           *onlyIfRelevantToUser = concreteMarkup.flags & (1 << 2);
         return nil;
     }
     else if ([markup isKindOfClass:[TLReplyMarkup$replyKeyboardForceReply class]])
     {
         TLReplyMarkup$replyKeyboardForceReply *concreteMarkup = (TLReplyMarkup$replyKeyboardForceReply *)markup;
         if (forceReply)
-            *forceReply = true;
+           *forceReply = true;
         if (onlyIfRelevantToUser)
-            *onlyIfRelevantToUser = concreteMarkup.flags & (1 << 2);
+           *onlyIfRelevantToUser = concreteMarkup.flags & (1 << 2);
     }
     
     return nil;
@@ -255,7 +255,7 @@
     {
         [TGUserDataRequestBuilder executeUserDataUpdate:updates.users];
         
-        NSMutableArray<TGConversation *> *channelConversations = [[NSMutableArray alloc] init];
+        NSMutableArray *channelConversations = [[NSMutableArray alloc] init];
         for (TLChat *chat in [updates chats]) {
             TGConversation *conversation = [[TGConversation alloc] initWithTelegraphChatDesc:chat];
             if (conversation.isChannel) {
@@ -680,7 +680,7 @@
              @property (nonatomic, retain) NSArray *n_id;
              @property (nonatomic, retain) NSArray *random_id;
              @property (nonatomic, retain) TLInputPeer *to_peer;
-             */
+            */
             forwardMessages.flags |= (withScore ? (1 << 8) : 0);
             forwardMessages.from_peer = peers[0];
             forwardMessages.n_id = @[@(messageId)];
@@ -736,7 +736,7 @@
 }
 
 + (TGInvoice *)invoiceWithDesc:(TLInvoice$invoice *)invoiceDesc {
-    NSMutableArray<TGInvoicePrice *> *amounts = [[NSMutableArray alloc] init];
+    NSMutableArray *amounts = [[NSMutableArray alloc] init];
     for (TLLabeledPrice *amount in invoiceDesc.prices) {
         [amounts addObject:[[TGInvoicePrice alloc] initWithLabel:amount.label amount:amount.amount]];
     }

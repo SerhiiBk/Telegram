@@ -137,7 +137,7 @@
     CGFloat width = MIN(typeWidth, timeWidth) + fabs(typeWidth - timeWidth);
     width = MAX(110, width);
     
-    *needsContentsUpdate = updateTypeContents || updateTimeContents;
+   *needsContentsUpdate = updateTypeContents || updateTimeContents;
     
     return CGSizeMake(width + 60.0f, 52.0f);
 }

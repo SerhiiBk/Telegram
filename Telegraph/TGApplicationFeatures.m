@@ -38,7 +38,7 @@ static NSUInteger cachedLargeGroupLimit = 100;
         return true;
     
     if (!feature.enabled && disabledMessage)
-        *disabledMessage = feature.disabledMessage;
+       *disabledMessage = feature.disabledMessage;
     return feature.enabled;
 }
 

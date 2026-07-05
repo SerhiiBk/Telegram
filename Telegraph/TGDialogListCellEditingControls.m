@@ -154,8 +154,8 @@ static CGRect validatedRect(CGRect value) {
     TGDialogListCellEditingControlsScroller *_scroller;
     NSArray *_leftButtonTypes;
     NSArray *_rightButtonTypes;
-    NSMutableArray<TGDialogListCellEditingButton *> *_leftButtons;
-    NSMutableArray<TGDialogListCellEditingButton *> *_rightButtons;
+    NSMutableArray *_leftButtons;
+    NSMutableArray *_rightButtons;
     bool _labelOnly;
     bool _smallLabels;
     bool _offsetLabels;
@@ -202,11 +202,11 @@ static CGRect validatedRect(CGRect value) {
         
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            NSArray<NSString *> *leftStrings = @[
+            NSArray *leftStrings = @[
                 TGLocalized(@"DialogList.Read"),
                 TGLocalized(@"DialogList.Unread"),
             ];
-            NSArray<NSString *> *rightStrings = @[
+            NSArray *rightStrings = @[
                 TGLocalized(@"Common.Delete"),
                 TGLocalized(@"DialogList.Pin"),
                 TGLocalized(@"DialogList.Unpin"),
@@ -349,7 +349,7 @@ static CGRect validatedRect(CGRect value) {
 }
 
 - (void)resetButtons {
-    void(^processButtons)(NSArray *, NSMutableArray<TGDialogListCellEditingButton *> *, SEL) = ^(NSArray *buttonTypes, NSMutableArray<TGDialogListCellEditingButton *> *buttons, SEL action)
+    void(^processButtons)(NSArray *, NSMutableArray *, SEL) = ^(NSArray *buttonTypes, NSMutableArray *buttons, SEL action)
     {
         NSUInteger index = 0;
         for (NSNumber *nButtonType in buttonTypes) {
@@ -620,7 +620,7 @@ static CGRect validatedRect(CGRect value) {
     [self buttonPressed:button buttonTypes:_rightButtonTypes buttons:_rightButtons];
 }
 
-- (void)buttonPressed:(UIButton *)button buttonTypes:(NSArray *)buttonTypes buttons:(NSMutableArray<TGDialogListCellEditingButton *> *)buttons {
+- (void)buttonPressed:(UIButton *)button buttonTypes:(NSArray *)buttonTypes buttons:(NSMutableArray *)buttons {
     TGDialogListCellEditingControlButton action = TGDialogListCellEditingControlsUnmute;
     for (NSUInteger index = 0; index < buttonTypes.count; index++) {
         if (index < buttons.count) {
